@@ -1,23 +1,23 @@
 ---
 title: "GroundWater Spatiotemporal Data Analysis Tool"
-subtitle: "GWSDAT Version 3.0 \\ User Manual"
-author: | 
-    | Wayne R. Jones
-    | Principal Data Scientist, Shell, London
-    | Wayne.W.Jones@shell.com
-    | Matthijs Bonte
-    | Senior soil and groundwater scientist & EU SGW R&D lead, Shell, Amsterdam
-    | Matthijs.Bonte@shell.com
-    | Ludger Evers, Marnie Low & Adrian Bowman
-    | School of Mathematics & Statistics, The University of Glasgow
-    | ludger.evers@glasgow.ac.uk, marnie.low@glasgow.ac.uk, adrian.bowman@glasgow.ac.uk
-date: "February 2020"
+author: |
+  | Wayne R. Jones (Wayne.W.Jones@shell.com)
+  | Principal Data Scientist, Shell, London 
+  |
+  | Luc Rock (Luc.Rock@shell.com)
+  | Soil and Groundwater Scientist, Shell, Amsterdam
+  |
+  |
+  | Claire Miller (Claire.Miller@glasgow.ac.uk) 
+  | Marnie Low (Marnie.Low@glasgow.ac.uk)
+  | Craig Alexander (Craig.Alexander.2@glasgow.ac.uk)
+  | Adrian Bowman (Adrian.Bowman@glasgow.ac.uk)
+  | School of Mathematics & Statistics, The University of Glasgow
+  
+date: "Jan 2021"
+output: pdf_document
+subtitle: GWSDAT Version 4.0  User Manual
 bibliography: gwsdat_manual.bib
-output:
-  pdf_document:
-    number_sections: true
-    toc: true
-    fig_caption: TRUE
 ---
 
 ```{r setup, include = FALSE}
@@ -26,13 +26,8 @@ library(magrittr)
 library(kableExtra)
 opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
 ```
-```{r echo = T}
-library(knitr)
-library(magrittr)
-library(kableExtra)
-   print(getwd())
-```
 
+\newpage
 ```{r}
 include_graphics("figures/gwsdat-logo.png")
 ```
@@ -54,7 +49,7 @@ include_graphics("figures/gwsdat-logo.png")
 ```
 
 \newpage
-```{r child = 'analysis.Rmd'}
+```#{r child = 'analysis.Rmd'}
 ```
 
 \newpage

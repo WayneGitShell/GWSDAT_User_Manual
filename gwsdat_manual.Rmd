@@ -1,0 +1,64 @@
+---
+title: "GroundWater Spatiotemporal Data Analysis Tool"
+subtitle: "GWSDAT Version 3.0 \\ User Manual"
+author: | 
+    | Wayne R. Jones
+    | Principal Data Scientist, Shell, London
+    | Wayne.W.Jones@shell.com
+    | Matthijs Bonte
+    | Senior soil and groundwater scientist & EU SGW R&D lead, Shell, Amsterdam
+    | Matthijs.Bonte@shell.com
+    | Ludger Evers, Marnie Low & Adrian Bowman
+    | School of Mathematics & Statistics, The University of Glasgow
+    | ludger.evers@glasgow.ac.uk, marnie.low@glasgow.ac.uk, adrian.bowman@glasgow.ac.uk
+date: "February 2020"
+bibliography: gwsdat_manual.bib
+output:
+  pdf_document:
+    number_sections: true
+    toc: true
+    fig_caption: TRUE
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+library(magrittr)
+library(kableExtra)
+opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
+```
+
+```{r}
+include_graphics("figures/gwsdat-logo.png")
+```
+
+\newpage
+```{r child = 'sections/acknowledgements.Rmd'}
+```
+
+\newpage
+```{r child = 'sections/introduction.Rmd'}
+```
+
+\newpage
+```{r child = 'sections/installation.Rmd'}
+```
+
+\newpage
+```{r child = 'sections/data-entry.Rmd'}
+```
+
+\newpage
+```{r child = 'sections/analysis.Rmd'}
+```
+
+\newpage
+```{r child = 'sections/reporting.Rmd'}
+```
+
+\newpage
+```{r child = 'sections/appendix_model.Rmd'}
+```
+
+\newpage
+
+# References

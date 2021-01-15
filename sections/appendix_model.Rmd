@@ -1,0 +1,101 @@
+# The statistical models behind GWSDAT
+
+\label{sec:methods}
+
+## Spatiotemporal Solute Concentration Smoother
+
+The spatiotemporal solute concentration smoother is estimated using a non parametric
+regression technique known as Penalised Splines (P-Splines). It is beyond the scope of this document to give a full and detailed explanation of this technique here. However, the
+following outlines some of the most important aspects for the purposes of GWSDAT. For a more detailed explanation the reader is referred to (@Eilers92) and (@Eilers96).
+
+Let $y_i$ be the solute concentration at $\boldsymbol{x_i}  =(x_{i1}, x_{i2}, x_{i3})$
+where $x_{i1}$ and $x_{i2}$ stand for the spatial coordinates of the well and $x_{i3}$ represents the corresponding time point for the *i-th* observation with $i = 1, \ldots, n$. We start by modelling the solute concentration as
+
+\begin{equation}
+      y_i = \sum_{j=1}^m\, b_j(\boldsymbol{x_i})\alpha_j + \epsilon_i
+\label{eq:int}
+\end{equation}
+where the $b_j$, $j = 1, \ldots, m$ are $m$ functions (known as *basis functions*) conveniently chosen to achieve smoothness (generally a particular kind of polynomial of order 3). The first term in equation (\ref{eq:int}) is a linear combination of the basis functions $b_j$, each evaluated at $\boldsymbol{x_i}$, and aims at capturing the deterministic part of the \textit{i-th} observation, generally known as 'signal'; the second term, $\epsilon_i$, accounts for the variability in the measurement due to randomness and is usually termed as 'noise'. The behaviour of $\epsilon_i$ is described in terms of a convenient probabilistic model; such a model guarantees that the value of $\epsilon_i$ fluctuates around zero conveying the idea that we do not expect to make any systematic error in the measurement. This model also comprises the notion that the expected spread of $\epsilon_i$ is given by $\sigma^2$,
+%a non-negative parameter $\sigma$; its squared
+%value  is known as
+the *variance* of the random component $\epsilon_i$.  By using the matrix notation
+
+\begin{equation*}
+\boldsymbol B(\boldsymbol{x}) =
+ \begin{pmatrix}
+  b_1(x_1)   & \cdots &  b_j(x_1)  & \cdots &  b_m(x_1) \\
+  b_1(x_2)   & \cdots &  b_j(x_2)  & \cdots &  b_m(x_2) \\
+  \vdots     & \cdots &  \vdots    & \cdots &  \vdots   \\
+  b_1(x_i)   & \cdots &  b_j(x_i)  & \cdots &  b_m(x_i) \\
+  \vdots     & \cdots &  \vdots    & \cdots &  \vdots   \\
+  b_1(x_n)   & \cdots &  b_j(x_n)  & \cdots &  b_m(x_n) \\
+\end{pmatrix}
+\end{equation*}
+
+equation (\ref{eq:int}) can be written in a more compact fashion as
+$\boldsymbol y  = \boldsymbol B(\boldsymbol{x})\boldsymbol\alpha + \boldsymbol\epsilon$. Because, as mentioned earlier, we expect the $\epsilon_i$'s to oscillate around zero, a sensible choice for the regression parameters $\boldsymbol\alpha$ is the one that minimises the norm of the vector $\boldsymbol\epsilon$ defined as $\mathrm{S}\left(\boldsymbol\alpha\right) = \Vert
+\boldsymbol\epsilon \Vert^2 = \Vert \boldsymbol y - \boldsymbol B(\boldsymbol x) \boldsymbol\alpha\Vert^2$. A large value of basis functions is
+generally chosen to allow the model to capture most of the signal. The downside of this approach is that it tends also to overfit, that is to fit the noise in the observations, with the consequent loss of smoothness. To overcome this hurdle, the objective function
+%to be optimised $\mathrm{S}\left(\boldsymbol\alpha\right)$ is
+modified with the addition of a term that penalises the lack of smoothness of the fit.
+
+The objective function now takes the form
+$\mathrm{S}\left(\boldsymbol\alpha\right)
+  = \Vert \boldsymbol y - \boldsymbol B(\boldsymbol x) \boldsymbol\alpha\Vert^2 + \lambda \Vert D \alpha \Vert^2$
+where $\lambda$ is a non-negative smoothing parameter and $D$ is the $(m-2) \times m$ matrix
+
+\begin{equation*}
+\boldsymbol D = \begin{pmatrix}
+      1 & -2  &  1 &  0 & 0 & \cdots & 0 & 0 & 0 \\
+      0 &  1  & -2 &  1 & 0 & \cdots & 0 & 0 & 0 \\
+      0 &  0  &  1 & -2 & 1 & \cdots & 0 & 0 & 0 \\
+      \vdots &  \vdots  &  \vdots & \vdots & \vdots & \ddots  & \vdots \\
+      0 &  0  &  0 & 0 & 0 & \cdots & 1  &-2 & 1
+      \end{pmatrix}
+\end{equation*}
+
+The additional term in the objective function
+
+$$\Vert D \alpha \Vert^2   =  \left(\alpha_1 - 2\alpha_2 + \alpha_3\right)^2 +
+                                                  \ldots +
+                                                \left(\alpha_{m-2} - 2\alpha_{m-1} + \alpha_m\right)^2
+$$
+
+controls the smoothness of the fit by applying penalties over adjacent coefficients.
+By minimising the new objective function for a given value of $\lambda$, we obtain
+the least squares estimator of the parameters
+$$
+      \boldsymbol{\hat{\alpha}} = \left(\boldsymbol B'\boldsymbol B + \lambda \boldsymbol D'\boldsymbol D\right)^{-1}\boldsymbol B'\boldsymbol y .
+$$
+Consequently, the fitted values are given by:
+$$
+\boldsymbol{\hat{y}} = \boldsymbol{B\hat{\alpha}} =
+\boldsymbol B\left(\boldsymbol B'\boldsymbol B + \lambda \boldsymbol D' \boldsymbol D\right)^{-1}\boldsymbol B'\boldsymbol y = \boldsymbol{Hy}
+$$
+
+When $\lambda = 0$, the expression for the estimator of the parameters {\mathversion{bold} $\hat{\alpha}$ } boils down to the classical solution in linear models theory. As $\lambda \rightarrow \infty$, the fitted function tends to a linear function. The Figure below shows the effect of penalisation: it forces the coefficients to yield a smooth pattern. The fitting process of a function using B-Splines is pictured with and without penalisation, together with the basis functions (the columns of the $\boldsymbol B$ matrix). The left plot
+ results from not penalising ($\lambda=0$) the term in the objective function that accounts for the smoothness; it can be noticed that it yields a rather wiggly regression function. In the right plot, a suitable choice for $\lambda$ constrains the optimisation method to find values for the coefficients $\hat{\alpha}$ which
+result in a smoother regression curve.
+
+```{r echo = FALSE, out.width = '50%', fig.align = 'default', fig.show = 'hold'}
+include_graphics(c("figures/PSplines_00.jpeg", "figures/PSplines_06.jpeg"))
+```
+
+fig.cap: Curve based on 20 nodes in the basis, without penalisation (left), with penalisation (right).
+
+Prior to fitting the regression coefficients $\boldsymbol \alpha$ the observed solute concentration values are natural log transformed. This avoids the possibility of predicting negative concentration values and also helps the model cope with data which often spans several orders of magnitude. Furthermore, the uncertainty in the measured concentrations can reasonably be expected to be proportional to the magnitude of the value, e.g. the uncertainty around a measured value of 10ug/l would be expected to be very much less than the uncertainty surrounding a measured value of 10000ug/l. The natural log transformation stabilises the variance.
+
+The choice of the penalisation parameter $\lambda$ is a crucial matter as a
+too small value would result in 'overfitting' (tracking the noise) whereas an extremely large value would lead to 'underfitting' (producing a flat estimated function as a result of loss of signal). `several criterias have been proposed, such
+as those described by [@Hurvich] and [@WoodB], but we tackled the issue by a *Bayesian* approach; see [@Denison], [@Raftery] and [@WoodP].
+
+Under this paradigm, $\lambda$ is not considered to be a fixed unknown quantity to be estimated but rather a random variable whose value may vary within a given range. This behaviour is described in probabilistic terms which assign a measure of confidence or *probability* to each of the values $\lambda$ may take on.
+
+The Bayesian framework allows to compute the probability that the random variable
+$\lambda$ may take a particular value, conditional on the fact that
+$\boldsymbol y$ has already been observed. This probability, indicated as
+$f(\lambda | \boldsymbol y)$, is known as the *posterior distribution* of $\lambda$.
+
+Bayes' rule states that $f(\lambda | \boldsymbol y) \propto f(\boldsymbol y | \lambda) f(\lambda)$ where $\propto$ stands for "proportional to". $f(\boldsymbol y | \lambda)$ is known as the *likelihood function* and expresses the conditional probability of observing data $\boldsymbol y$, given that the true value of the parameter is $\lambda$; $f(\lambda)$ is known as the *prior distribution* of the random variable $\lambda$ and comprises our prior beliefs on its uncertainty.
+
+The optimal value of $\lambda$ is the one that maximises the posterior distribution and is computed using numerical methods.

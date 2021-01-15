@@ -1,0 +1,11 @@
+# Reporting
+
+<!-- \label{sec:reporting} -->
+
+In addition to providing visualisation of groundwater monitoring data, GWSDAT is also able to export displays in a variety of file formats, for inclusion in reports.  The map displays in the *Spatial Plot* tab of the *Analyse* section are used to illustrate this.  At the foot of the main map display there are three buttons.
+
+* **Image format** provides a drop-down menu of the file type used when a spatial plot at a particular time point is created.  The available file types `png`, `jpg`, `pdf`, `ps` and `pptx`.
+
+* **Save Plot** creates and downloads a file in the specified format.
+
+* **Generate PPT Animation** creates a downloads a sequence of plots which display concentration maps across the whole time course.  Paging through these slides provides a very simple but effective means of animation.

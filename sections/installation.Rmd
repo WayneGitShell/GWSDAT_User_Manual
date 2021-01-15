@@ -1,0 +1,22 @@
+# Accessing GWSDAT
+
+The simplest way to use GWSDAT is through the on-line version available at (gwsdat.net).  This web site also has general information about the the software tool, help files and videos, and case studies of its use.
+
+However, it will sometimes be helpful to be able to use GWSDAT without internet access.  Also, datasets may sometimes need to be retained and analysed locally.  In these circumstances, GWSDAT can be downloaded onto any computer.  The instructions below describe how to do that.
+
+GWSDAT uses the widely available, open source, statistical computing environment `R` [@R].  This should be downloaded from `www.r-project.org` where versions for all major computing platforms are available.  Installation is a very simple process.  You may also find it convenient to install the *RStudio* 'front end' for `R`, freely available from `www.rstudio.com`.  This manages some aspects of the `R` environment in a helpful way.
+
+When `R` or `RStudio` is launched, one of the visible windows is a 'console'.  GWSDAT is available as a package in `R` and this can be installed by typing the instruction
+```{r eval = FALSE, echo = TRUE}
+    install.packages("GWSDAT")
+```
+in the console window.  Note the capital letters, as `R` is case-sensitive.  The package is retrieved from the `R` archive (`CRAN`), so an internet connection is required for this step.  The package will then be installed locally.  GWSDAT uses several other `R` packages and these will be installed at the same time.  There may be a warning message about a mismatch between the version of `R` used to build the package and the version of `R` installed on your computer if this is not the most recent one, but this is unlikely to cause any difficulty.  The installation step is required only once.  GWSDAT will now be available on your computer at any time, with or without an internet connection.
+
+To launch GWSDAT, issue the following two instructions in the console window:
+```{r eval = FALSE, echo = TRUE}
+    library(GWSDAT)
+    launchApp()
+```
+The first instruction loads the package so that it can be used in the current session of `R`.  The second instruction launches GWSDAT.
+
+\fbox{Excel installation instructions to be added}

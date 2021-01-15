@@ -26,37 +26,43 @@ library(magrittr)
 library(kableExtra)
 opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
 ```
+```{r echo = T}
+library(knitr)
+library(magrittr)
+library(kableExtra)
+   print(getwd())
+```
 
 ```{r}
 include_graphics("figures/gwsdat-logo.png")
 ```
 
 \newpage
-```{r child = 'sections/acknowledgements.Rmd'}
+```{r child = 'acknowledgements.Rmd'}
 ```
 
 \newpage
-```{r child = 'sections/introduction.Rmd'}
+```{r child = 'introduction.Rmd'}
 ```
 
 \newpage
-```{r child = 'sections/installation.Rmd'}
+```{r child = 'installation.Rmd'}
 ```
 
 \newpage
-```{r child = 'sections/data-entry.Rmd'}
+```{r child = 'data-entry.Rmd'}
 ```
 
 \newpage
-```{r child = 'sections/analysis.Rmd'}
+```{r child = 'analysis.Rmd'}
 ```
 
 \newpage
-```{r child = 'sections/reporting.Rmd'}
+```{r child = 'reporting.Rmd'}
 ```
 
 \newpage
-```{r child = 'sections/appendix_model.Rmd'}
+```{r child = 'appendix_model.Rmd'}
 ```
 
 \newpage

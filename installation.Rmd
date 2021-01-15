@@ -19,4 +19,7 @@ To launch GWSDAT, issue the following two instructions in the console window:
 ```
 The first instruction loads the package so that it can be used in the current session of `R`.  The second instruction launches GWSDAT.
 
+```{r eval = T, echo = TRUE}
+    getwd()
+```
 \fbox{Excel installation instructions to be added}

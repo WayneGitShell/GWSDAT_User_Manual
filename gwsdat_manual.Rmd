@@ -33,7 +33,7 @@ include_graphics("figures/gwsdat-logo.png")
 ```
 
 \newpage
-```{r child = 'acknowledgements.Rmd'}
+```{r child = '[01] acknowledgements.Rmd'}
 ```
 
 \newpage
@@ -49,7 +49,7 @@ include_graphics("figures/gwsdat-logo.png")
 ```
 
 \newpage
-```#{r child = 'analysis.Rmd'}
+```{r child = 'analysis.Rmd'}
 ```
 
 \newpage

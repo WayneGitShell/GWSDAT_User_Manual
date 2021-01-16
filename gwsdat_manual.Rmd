@@ -37,27 +37,27 @@ include_graphics("figures/gwsdat-logo.png")
 ```
 
 \newpage
-```{r child = 'introduction.Rmd'}
+```{r child = '[02] introduction.Rmd'}
 ```
 
 \newpage
-```{r child = 'installation.Rmd'}
+```{r child = '[03] installation.Rmd'}
 ```
 
 \newpage
-```{r child = 'data-entry.Rmd'}
+```{r child = '[04] data-entry.Rmd'}
 ```
 
 \newpage
-```{r child = 'analysis.Rmd'}
+```{r child = '[05] analysis.Rmd'}
 ```
 
 \newpage
-```{r child = 'reporting.Rmd'}
+```{r child = '[06] reporting.Rmd'}
 ```
 
 \newpage
-```{r child = 'appendix_model.Rmd'}
+```{r child = '[07] appendix_model.Rmd'}
 ```
 
 \newpage

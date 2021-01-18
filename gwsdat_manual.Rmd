@@ -27,31 +27,31 @@ opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
 
 
 \newpage
-```{r child = '[01] acknowledgements.Rmd'}
+```{r child = '01_acknowledgements.Rmd'}
 ```
 
 \newpage
-```{r child = '[02] introduction.Rmd'}
+```{r child = '02_introduction.Rmd'}
 ```
 
 \newpage
-```{r child = '[03] installation.Rmd'}
+```{r child = '03_installation.Rmd'}
 ```
 
 \newpage
-```{r child = '[04] data-entry.Rmd'}
+```{r child = '04_data-entry.Rmd'}
 ```
 
 \newpage
-```{r child = '[05] analysis.Rmd'}
+```{r child = '05_analysis.Rmd'}
 ```
 
 \newpage
-```{r child = '[06] reporting.Rmd'}
+```{r child = '06_reporting.Rmd'}
 ```
 
 \newpage
-```{r child = '[07] appendix_model.Rmd'}
+```{r child = '07_appendix_model.Rmd'}
 ```
 
 \newpage

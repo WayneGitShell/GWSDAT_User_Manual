@@ -9,8 +9,9 @@ author: "| Wayne R. Jones (Wayne.W.Jones@shell.com)\n| Principal Data Scientist,
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output:
   pdf_document: 
-    toc: false
     number_sections: true
+    
+link-citations: true   
 
 subtitle: Version 4.0 User Manual
 bibliography: gwsdat_manual.bib

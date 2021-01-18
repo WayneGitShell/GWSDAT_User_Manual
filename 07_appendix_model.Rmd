@@ -4,7 +4,7 @@
 
 The spatiotemporal solute concentration smoother is estimated using a non parametric
 regression technique known as Penalised Splines (P-Splines). It is beyond the scope of this document to give a full and detailed explanation of this technique here. However, the
-following outlines some of the most important aspects for the purposes of GWSDAT. For a more detailed explanation the reader is referred to (@Eilers92) and (@Eilers96).
+following outlines some of the most important aspects for the purposes of GWSDAT. For a more detailed explanation the reader is referred to @Eilers92 and @Eilers96.
 
 Let $y_i$ be the solute concentration at $\boldsymbol{x_i}  =(x_{i1}, x_{i2}, x_{i3})$
 where $x_{i1}$ and $x_{i2}$ stand for the spatial coordinates of the well and $x_{i3}$ represents the corresponding time point for the *i-th* observation with $i = 1, \ldots, n$. We start by modelling the solute concentration as
@@ -84,8 +84,8 @@ fig.cap: Curve based on 20 nodes in the basis, without penalisation (left), with
 Prior to fitting the regression coefficients $\boldsymbol \alpha$ the observed solute concentration values are natural log transformed. This avoids the possibility of predicting negative concentration values and also helps the model cope with data which often spans several orders of magnitude. Furthermore, the uncertainty in the measured concentrations can reasonably be expected to be proportional to the magnitude of the value, e.g. the uncertainty around a measured value of 10ug/l would be expected to be very much less than the uncertainty surrounding a measured value of 10000ug/l. The natural log transformation stabilises the variance.
 
 The choice of the penalisation parameter $\lambda$ is a crucial matter as a
-too small value would result in 'overfitting' (tracking the noise) whereas an extremely large value would lead to 'underfitting' (producing a flat estimated function as a result of loss of signal). `several criterias have been proposed, such
-as those described by [@Hurvich] and [@WoodB], but we tackled the issue by a *Bayesian* approach; see [@Denison], [@Raftery] and [@WoodP].
+too small value would result in 'overfitting' (tracking the noise) whereas an extremely large value would lead to 'underfitting' (producing a flat estimated function as a result of loss of signal). Several criterias have been proposed, such
+as those described by @Hurvich and @WoodB, but we tackled the issue by a *Bayesian* approach; see @Denison, @Raftery and @WoodP.
 
 Under this paradigm, $\lambda$ is not considered to be a fixed unknown quantity to be estimated but rather a random variable whose value may vary within a given range. This behaviour is described in probabilistic terms which assign a measure of confidence or *probability* to each of the values $\lambda$ may take on.
 
@@ -97,6 +97,50 @@ $f(\lambda | \boldsymbol y)$, is known as the *posterior distribution* of $\lamb
 Bayes' rule states that $f(\lambda | \boldsymbol y) \propto f(\boldsymbol y | \lambda) f(\lambda)$ where $\propto$ stands for "proportional to". $f(\boldsymbol y | \lambda)$ is known as the *likelihood function* and expresses the conditional probability of observing data $\boldsymbol y$, given that the true value of the parameter is $\lambda$; $f(\lambda)$ is known as the *prior distribution* of the random variable $\lambda$ and comprises our prior beliefs on its uncertainty.
 
 The optimal value of $\lambda$ is the one that maximises the posterior distribution and is computed using numerical methods.
+
+
+
+
+## Plume Diagnostics {#AppendixPlumeDiagnostics}
+GWSDAT calculates plume diagnostic quantities from the predictions of the [`Spatiotemporal Solute Concentration Smoother`](#SSCS). In common to @Maros1 and @RickerPlumeQuant, numerical methods are employed to integrate out the plume diagnostic quantities. For a given model time step a fine spatial mesh grid of predictions is generated. The plume boundary region $D$, for a given plume threshold concentration value, is calculated using the R function \emph{contourLines} which is included in the base distribution of the R programming language (@R).
+The plume area, $A$, is defined as 
+<!-- %ref to Ricker. -->
+\begin{equation}\label{EqPlumeArea}
+A=\iint\limits_D dx dy
+\end{equation}
+
+where where $x$ and $y$ are the spatial coordinates and is calculated numerically using the \emph{areapl} function from the R package splancs @splancs. 
+The average plume concentration is defined as 
+\begin{equation}\label{EqPlumeAveragePlumeConc}
+\frac{1}{A}\iint\limits_D  \hat{s_t}\left(x,y\right)  dx dy
+\end{equation}
+where $\hat{s_t}\left(x,y\right)$ represents the predictions of the spatiotemporal solute concentration smoother evaluated at time $t$. 
+This integral (and all subsequent integrals in this section) is calculated numerically using a method described in @Oloufa91. 
+A Delaunay triangulation is performed using the R package 'deldir', @deldir, on the spatial mesh grid of predictions within the plume boundary, $D$.  
+The integral is numerically approximated by summing up the individual volumes under each prism formed. 
+
+Plume mass is calculated from the scaled product of plume area and average concentration. The scaling factor encompasses the user specified value of ground porosity (see [`Plume Diagnostics`](#PlumeDiagnostics)) and appropriate scaling values for mapping together the volumetric concentration units (e.g. ug/l) with the length scale (see \textbf{CoordUnits} in [`Well Coordinates Table`](#WellCoordsTabExplan)) of the Well coordinates (e.g. metres or feet). 
+The plume mass is calculated on a mass per unit aquifer depth basis (e.g. kg/m). To calculate the total plume mass the user must multiply this value by the aquifer depth.
+
+
+The plume center of mass $(x,y)$ is defined as the mean location of the concentration distribution within the plume boundary region $D$. 
+The x-coordinate of the plume Centre of Mass is evaluated by numerical calculation of 
+
+\begin{equation}\label{EqCOMX}
+X_c= \frac{\iint\limits_D x \hat{s_t}\left(x,y\right)  dx dy}{\iint\limits_D  \hat{s_t}\left(x,y\right)  dx dy}
+\end{equation}
+
+where $x$ and $y$ are the spatial coordinates and $\hat{s_t}\left(x,y\right)$ represents the predictions of the spatiotemporal solute concentration smoother evaluated at time $t$. In a completely analogous manner the y-coordinate of the plume Centre of Mass is evaluated as follows: 
+
+\begin{equation}\label{EqCOMY}
+Y_c= \frac{\iint\limits_D y \hat{s_t}\left(x,y\right)  dx dy}{\iint\limits_D  \hat{s_t}\left(x,y\right)  dx dy}
+\end{equation}
+
+In the event that multiple plumes are detected then the above quantities are calculated for each individual plume and aggregated together. The individual plume areas and masses are summed to calculate the total over all plumes. The aggregate average plume concentration and aggregate plume centre of mass is calculated by taking a weighted average of the individual quantities. 
+
+
+
+
 
 
 
@@ -113,7 +157,7 @@ For a given well, a linear plane is fitted to the local GW level data:
 L_i=a+bx_i+cy_i+\epsilon_i
 \end{equation} 
 where $L_i$ represents the GW level at location $(x_i,y_i)$. Local data is defined as the neighbouring wells 
-as given by a Delauney triangulation (\url{http://en.wikipedia.org/wiki/Delaunay_triangulation}, [@DelRef]) 
+as given by a Delauney triangulation (\url{http://en.wikipedia.org/wiki/Delaunay_triangulation}, @DelRef) 
 of the monitoring well locations.
 The gradient of this linear surface in both x and y directions 
 is given by the coefficients $b$ and $c$. Estimated direction of flow is given by: 
@@ -128,6 +172,101 @@ R=\sqrt{b^2+c^2}
 \end{equation} 
 
 For any given model output interval this algorithm is applied to each and every well where a GW level has been recorded. 
+
+
+
+
+
+## Well Trend Plot Smoother {#smregressCalc}
+
+The well trend plot smoother is fitted using a nonparametric method called local linear regression. 
+This involves solving locally the least squares problem:
+
+\begin{equation}\label{locallinreg}
+\textrm{min}_{\alpha , \beta} \sum_{i}^{n}\left\{ y_i - \alpha - \beta (x_i-x) \right\}^2 w(x_i-x; h)
+\end{equation} 
+
+where $w(x_i-x; h)$ is called the kernel function. 
+A normally-distributed probability density function with standard deviation $h$ is used as the kernel. 
+$h$ is also called smoothing parameter that controls the width of the kernel function, 
+and hence the degree of smoothing applied to the data (the higher the value of h, the smoother the estimates).
+Within GWSDAT, local linear regression is deployed using the R package 'sm' (@smbook) and the
+bandwidth is selected using the method published in @Hurvichetal. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+## Converting a CAD drawing to a Shapefile {#ConvShapRosie}
+
+System requirements: ArcGIS comprising ArcMap, ArcEditor, ArcCatalog
+
+<!-- \begin{enumerate} -->
+<!-- \item Open ArcCatalog from the Start Menu (`Start' -$>$ `All Programs' -$>$ `ArcGIS' -$>$ `ArcCatalog') -->
+<!-- \item In ArcCatalog navigate to ArcMap (globe with magnifying glass icon) -->
+<!-- \item 	When ArcMap opens a screen will pop-up. Select `A New Empty Map' then click `OK'. -->
+<!-- \item 	 Go to `File' -$>$ `Add Data' (positive sign with yellow triangle underneath) -$>$ Select site CAD drawing saved as a `.dxf' file  -$>$ `Add'. -->
+<!-- \item 	Click on the `+' symbol to expand the sub-layers of the dxf file (e.g. `Polyline', `Polygon', `Multipatch', `Point').  -->
+<!-- \item 	Right click on required layer (e.g. Polyline or an edited \& exported shapefile) to open the drop down menu. -->
+<!-- \item 	On drop down menu select `Data' -$>$ `Export Data'. -->
+<!-- \item 	On `Export Data' pop-up menu choose `Select All Features' + `This Layers Source Data' and select the folder you wish to save the shapefile into, then click `OK'. -->
+<!-- \item 	Click `Yes' to add the exported data as a new layer. -->
+<!-- \item 	Repeat steps 6-9 to convert all the layers required to produce the base-map in GWSDAT into shapefiles. -->
+<!-- \item 	Add the shapefiles into GWSDAT one by one to produce the complete base-map image. -->
+<!-- \end{enumerate} -->
+
+ #. Open ArcCatalog from the Start Menu ('Start' -$>$ 'All Programs' -$>$ 'ArcGIS' -$>$ 'ArcCatalog').
+ 
+ #. In ArcCatalog navigate to ArcMap (globe with magnifying glass icon).
+ 
+ #. When ArcMap opens a screen will pop-up. Select 'A New Empty Map' then click 'OK'.
+ 
+ #. Go to 'File' -$>$ 'Add Data' (positive sign with yellow triangle underneath) -$>$ Select site CAD drawing saved as a '.dxf' file  -$>$ 'Add'.
+ 
+ #. Click on the '+' symbol to expand the sub-layers of the dxf file (e.g. 'Polyline', 'Polygon', 'Multipatch', 'Point'). 
+ 
+ #. Right click on required layer (e.g. Polyline or an edited \& exported shapefile) to open the drop down menu.
+ 
+ #. On drop down menu select 'Data' -$>$ 'Export Data'.
+ 
+ #. On 'Export Data' pop-up menu choose 'Select All Features' + 'This Layers Source Data' and select the folder you wish to save the shapefile into, then click 'OK'.
+ 
+ #. Click 'Yes' to add the exported data as a new layer.
+ 
+ #. Repeat steps 6-9 to convert all the layers required to produce the base-map in GWSDAT into shapefiles.
+ 
+ #. Add the shapefiles into GWSDAT (see [`GIS ShapeFiles Table`](#ShapeFileTableExplan)) one by one to produce the complete base-map image. 
+
+
+The next section details how to edit layers in ArcMap after their conversion to shapefiles, prior to upload into GWSDAT (useful for removing gridlines etc)
+
+ #. Uncheck the CAD layer used to produce shapefile to remove image from view window.
+ 
+ #.	Ensure exported Shapefile is selected and visible in view window.
+ 
+ #.	Click 'Start Editing' on the 'Editor' toolbar above the map.
+ 
+ #.	Use the arrow pointer to select lines and press delete on the keyboard to remove from drawing. (Select 'UnDo' from 'Edit' Toolbar in case of errors).
+ 
+ #.	'Editor' -$>$ 'Stop Editing'. Click 'Yes' to save edits.
+ 
+ #.	Repeat data export as detailed in steps 6-9 above and re-save as new shapefile.
+
+
+
+
+
+
 
 
 

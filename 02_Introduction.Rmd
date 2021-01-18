@@ -1,11 +1,12 @@
+
 # Introduction
 
-The GroundWater Spatiotemporal Data Analysis Tool (GWSDAT) has been developed by Shell Global Solutions and the University of Glasgow to help visualise trends in groundwater monitoring data. It is designed to work with simple time-series data for solute concentration and ground water elevation, but can also plot non-aqueous phase liquid (NAPL) thickness if required. Spatial data is input in the form of well coordinates, and wells can be grouped to separate data from different aquifer units. The software also allows the import of a site basemap in GIS shapefile format. Trend and contour plots generated using GWSDAT can be exported directly to Microsoft PowerPoint and Word to expedite reporting.  
+The GroundWater Spatiotemporal Data Analysis Tool (GWSDAT^[**Disclaimer**: There is no warranty for the Program (GWSDAT), to the extent permitted by applicable law. SHELL, Affiliates of SHELL, the copyright holders and/or any other party provide the Program `as is' without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of the Program is with the LICENSEE. Should the Program prove defective, the LICENSEE assumes the cost of all necessary servicing, repair or correction.]) has been developed by Shell Global Solutions and the University of Glasgow to help visualise trends in groundwater monitoring data. It is designed to work with simple time-series data for solute concentration and ground water elevation, but can also plot non-aqueous phase liquid (NAPL) thickness if required. Spatial data is input in the form of well coordinates, and wells can be grouped to separate data from different aquifer units. The software also allows the import of a site basemap in GIS shapefile format. Trend and contour plots generated using GWSDAT can be exported directly to Microsoft PowerPoint and Word to expedite reporting.  
 
-GWSDAT version 3.0 can be operated on-line or downloaded to run locally.   Access to the on-line version, and instructions for downloading the local version, are available at `gwsdat.net`.
-^[Version 2.2 of GWSDAT uses Microsoft Excel as the primary user interface and this version remains available from the *API* `https://www.api.org/oil-and-natural-gas/environment/clean-water/ground-water/gwsdat` and *Cl:aire* (`https://www.claire.co.uk/projects-and-initiatives/gwsdat`) websites.]
-The underlying statistical calculations and graphical output are generated using the
-open source statistical program R (@R). More details on the statistical methods can be found in Section \ref{sec:methods}. 
+<!-- GWSDAT version 3.0 can be operated on-line or downloaded to run locally.   Access to the on-line version, and instructions for downloading the local version, are available at `gwsdat.net`. -->
+<!-- ^[Version 2.2 of GWSDAT uses Microsoft Excel as the primary user interface and this version remains available from the *API* `https://www.api.org/oil-and-natural-gas/environment/clean-water/ground-water/gwsdat` and *Cl:aire* (`https://www.claire.co.uk/projects-and-initiatives/gwsdat`) websites.] -->
+
+The underlying geostatistical calculations are generated using the open source statistical program R (@R). Since version 3.0 the graphical user interface is the open source web framework R Shiny package (`https://shiny.rstudio.com`) which enables both local and online deployment.  More details on the statistical methods can be found in the [`Appendices`](#SSCS). 
 
 Potential applications where GWSDAT can add value (cost savings and reduction in environmental liabilities) through improved risk-based decision making and response include:
 
@@ -15,4 +16,8 @@ Potential applications where GWSDAT can add value (cost savings and reduction in
 * Reduction in the number of sites in long-term monitoring or active remediation through simple, visual demonstrations of groundwater data and trends.
 * More efficient evaluation and reporting of groundwater monitoring trends via simple, standardised plots and tables created at the `click of a mouse'.
 
-**Disclaimer**: There is no warranty for the Program (GWSDAT), to the extent permitted by applicable law. SHELL, Affiliates of SHELL, the copyright holders and/or any other party provide the Program `as is' without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of the Program is with the LICENSEE. Should the Program prove defective, the LICENSEE assumes the cost of all necessary servicing, repair or correction.
+
+
+
+
+

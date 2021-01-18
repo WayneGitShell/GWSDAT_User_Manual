@@ -1,8 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
+
 # Acknowledgements
 
 The authors gratefully acknowledge the many different people who have willingly contributed their knowledge and their time to the development of GWSDAT.

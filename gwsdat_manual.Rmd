@@ -8,9 +8,11 @@ author: "| Wayne R. Jones (Wayne.W.Jones@shell.com)\n| Principal Data Scientist,
   School of Mathematics & Statistics, The University of Glasgow\n\n\n\n"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output:
-  pdf_document: default
-  word_document: default
-subtitle: Version 4.0  User Manual
+  pdf_document: 
+    toc: false
+    number_sections: true
+
+subtitle: Version 4.0 User Manual
 bibliography: gwsdat_manual.bib
 ---
 
@@ -22,9 +24,8 @@ bibliography: gwsdat_manual.bib
 library(knitr)
 library(magrittr)
 library(kableExtra)
-opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
+ opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
 ```
-
 
 \newpage
 ```{r child = '01_acknowledgements.Rmd'}

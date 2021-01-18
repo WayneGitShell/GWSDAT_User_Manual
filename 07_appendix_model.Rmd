@@ -1,8 +1,6 @@
-# The statistical models behind GWSDAT
+# Appendices {#Appmethods}
 
-\label{sec:methods}
-
-## Spatiotemporal Solute Concentration Smoother
+## Spatiotemporal Solute Concentration Smoother {#SSCS}
 
 The spatiotemporal solute concentration smoother is estimated using a non parametric
 regression technique known as Penalised Splines (P-Splines). It is beyond the scope of this document to give a full and detailed explanation of this technique here. However, the
@@ -99,3 +97,41 @@ $f(\lambda | \boldsymbol y)$, is known as the *posterior distribution* of $\lamb
 Bayes' rule states that $f(\lambda | \boldsymbol y) \propto f(\boldsymbol y | \lambda) f(\lambda)$ where $\propto$ stands for "proportional to". $f(\boldsymbol y | \lambda)$ is known as the *likelihood function* and expresses the conditional probability of observing data $\boldsymbol y$, given that the true value of the parameter is $\lambda$; $f(\lambda)$ is known as the *prior distribution* of the random variable $\lambda$ and comprises our prior beliefs on its uncertainty.
 
 The optimal value of $\lambda$ is the one that maximises the posterior distribution and is computed using numerical methods.
+
+
+
+
+
+## Groundwater Flow Calculation {#GWCalc}
+For a given model output interval the Groundwater (GW) flow strength and direction are estimated using 
+available GW level and well coordinates data. The model is based on the simple premise that local 
+GW flow will follow the local direction of steepest descent (hydraulic gradient). 
+
+For a given well, a linear plane is fitted to the local GW level data:
+
+\begin{equation}\label{GWLinSurface}
+L_i=a+bx_i+cy_i+\epsilon_i
+\end{equation} 
+where $L_i$ represents the GW level at location $(x_i,y_i)$. Local data is defined as the neighbouring wells 
+as given by a Delauney triangulation (\url{http://en.wikipedia.org/wiki/Delaunay_triangulation}, [@DelRef]) 
+of the monitoring well locations.
+The gradient of this linear surface in both x and y directions 
+is given by the coefficients $b$ and $c$. Estimated direction of flow is given by: 
+
+\begin{equation}
+\theta = \tan^{-1}\left (\frac{c}{b} \right)
+\end{equation} 
+and the relative hydraulic gradient (a measure of relative flow velocity) is given by 
+
+\begin{equation}
+R=\sqrt{b^2+c^2}
+\end{equation} 
+
+For any given model output interval this algorithm is applied to each and every well where a GW level has been recorded. 
+
+
+
+
+
+
+

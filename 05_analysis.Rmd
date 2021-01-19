@@ -1,6 +1,5 @@
-# Analysing the data
+# Analysing the data {#Analysingthedata}
 
-<!-- \label{sec:analysis} -->
 
 GWSDAT is designed to produce informative visualisations of groundwater monitoring over space and time.  To illustrate this, we will use the *Basic Example*.  If you are still in the detailed pages of the *Manage Data* section, click on the `back-arrow' in the top left hand corner to return to the main \textit{manage Data} page and then click on *Analyse* on the left had sidebar.  You will then be asked to specify which dataset you would like to analyse.  In addition to the standard examples, any other datasets you have created will be listed here too.  For the moment, click on the *Select* button for the *Basic Example'*.  You should now see a screen similar to the image below.
 

@@ -1,62 +1,76 @@
 
 # Data Input {#DataInput}
-There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of data input tables will be the same. Hence, this section will first describe the standardised data table input structure and then discuss the details with repsect to the mode of access. 
+There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables will be the same. Hence, this section will first describe the standardised data table input structure and then discuss the details with respect to the mode of access. 
 
 ## Input Data Format
 
+There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. PLease note that there should be no empty rows in either table.
+<!-- THe user can optionally specify an associated additionally -->
+<!-- The third *GIS Shapefiles* table may be populated with links to the location of GIS shapefiles for use as basemaps or site plans, if required.  -->
+<!-- Please ensure that there are no empty rows in these completed data input tables.  -->
+<!-- Two example data sets are provided with the software for training purposes, the use of which is explained in section \ref{GettingStarted}. -->
 
 
 ### Historical Monitoring Data Input Table
 
-```{r cho = FALSE}
+```{r, fig.cap = "Example Historical Monitoring Data.", label="EgHistMonitoringData"}
 include_graphics("figures/data-format-1.png")
 ```
 
-Each row of this table gives the details of a particular measurement.  There should be no empty rows in the table.
+Each row of this table corresponds to a unique combination of well, sampling date and solute type. Groundwater and NAPL (Non-Aqueous Phase Liquids) gauging data may also be entered in this table. Figure \ref{fig:EgHistMonitoringData} displays an example GWSDAT input data set for
+illustrative purposes. The columns (fields) in the *Historical Monitoring Data* input table are as follows: 
 
-* **WellName**: the name or identifier of the well (or soil boring) from which the sample was collected. Well names must be consistent and unique. For example, `MW-1' and `MW1' will be treated as different wells.
+* **WellName**: the name or identifier of the well (or soil boring) from which the sample was collected. Well names must be consistent and unique. For example, 'MW-1' and 'MW1' will be treated as different wells.
 
-* **Constituent**: the name of the solute, for example `Benzene` or `Toluene`. The name of a solute must be consistent and unique.  The name `GW` is reserved for measurements of groundwater level and `NAPL` is reserved for NAPL thickness data.  There are further details on this below.
+* **Constituent**: Here enter the name of the solute type, e.g. Benzene, Toluene. Again in the same manner as WellName please ensure that the name of a solute is consistent and unique for all entries.  The identifiers 'GW' and 'NAPL' are reserved for Groundwater elevation measurements 
+and NAPL thickness data respectively, see further details below.
 
 * **SampleDate**: the date at which the well was sampled (not the date the results were returned from laboratory analysis). 
-Please use a calendar date format, the preferred format is `dd/mm/yyyy`. Do not include a time of day. 
+Please use a calendar date format, the preferred format is 'dd/mm/yyyy'. Do not include a time of day. 
 
 * **Result**: the value of the measurement made. This will be a solute concentration, a groundwater level or a NAPL thickness, as specified in the *Constituent* column.
 
-For solute concentrations, non-detect values should be entered as either `<X` or `ND<X`, where `X` is the detection limit specified by the laboratory. For example, if the detection limit is $100\mu g/l$ then either `<100` or `ND<100` is acceptable. The non-detect threshold value must be specified so `ND` on its own is not permissible. In the absence of known detection limits, a sensible value must be substituted.  This could be the lowest measured value for the solute in the dataset.   
+  + **Solute Concentrations**:
+The concentration of the constituent is entered here. Non-detect values should be entered as either `<X` or `ND<X`, where `X` is the detection limit specified by the laboratory. For example, if the detection limit is $100\mu g/l$ then either `<100` or `ND<100` is acceptable. The non-detect threshold value must be specified so 'ND' on its own is not permissible. In the absence of known detection limits, a sensible value must be substituted.  This could be the lowest measured value for the solute in the dataset.   
 
-Groundwater level data is entered as an elevation above a common datum, such as metres or feet above sea level or some other common reference height. All groundwater measurement entries should have the same units, such as metres or feet, and the `Constituent~ field should be set to `GW`. In the presence of NAPL, please ensure that the groundwater level has been corrected for NAPL density.
+  + **Groundwater** 
+level data is entered as an elevation above a common datum, such as metres or feet above sea level or some other common reference height. All groundwater measurement entries should have the same units, such as metres or feet, and the 'Constituent' field should be set to 'GW'. In the presence of NAPL, please ensure that the groundwater level has been corrected for NAPL density.
 
-For NAPL thickness data, all entries should have the same units, such as feet or metres, and the `Constituent' field should be set to `NAPL`.  If no NAPL is present, do not add a NAPL entry with zero thickness -- simply do not add an entry.
+  + **NAPL** thickness data is also entered here. Please ensure that all NAPL thickness entries 
+have the same units, e.g. feet or metres and that the Constituent field is set to 'NAPL'. 
+If no NAPL is present, do not add a NAPL entry with zero thickness; simply omit from the table. Where NAPL is recorded in soil borings that do not reach the water table the NAPL thickness should be entered as zero.  Well location markers for soil borings or wells where NAPL has been recorded are highlighted in red.
 
-Where NAPL is recorded in soil borings that do not reach the water table, the NAPL thickness should be entered as zero.  
-Well location markers for soil borings or wells where NAPL has been recorded are  highlighted in red.
+* **Units**:  Solute concentration data can either be `mg/l` or $\mu$`g/l`. For groundwater elevation and NAPL thickness data please set to one of 'mm', 'cm', 'metres', 'inches', 'feet' or 'level'. Units must be specified for each entry. All 
+entered groundwater elevation measurements must have the same units. Likewise for NAPL thickness.
 
-* **Units**: the units of the *Result*.This must be specified for each entry, with consistent units for each type of *Constituent*. Solute concentration data can either be `mg/l` or $\mu$`g/l`. Groundwater level and NAPL thickness data should be set to one of `mm`, `cm`, `metres`, `inches`, `feet` or `level`.
+* **Flags**:  Four different flags are available to modify the way in which certain types of data are handled by the software. 
+The 'E-Acc' (Electron Acceptor), 'NotInNAPL' and 'Redox' flags are used to identify input data types 
+which are to be omitted in the event that the user activates the NAPL substitution function (see section \ref{NAPLHandlingMethod}). 
+Note, that it is only necessary to flag one data row in this way for all rows containing that constituent to be excluded from NAPL substitution. The fourth flag ('Omit') can be used to exclude individual data entry rows from the GWSDAT analysis. 
+  
 
-* **Flags**: these are available to modify the way in which certain types of data are handled by the software. The `E-Acc` (Electron Acceptor), `NotInNAPL` and `Redox` flags are used to identify results which are to be omitted in the event that the user activates the NAPL substitution function; see the Section on NAPL handling. Note that it is only necessary to flag one data row in this way for all rows containing that constituent to be excluded from NAPL. The `Omit` flag can be used to exclude any individual data row from the analysis. 
 
 
 ### Well Coordinates Table {#WellCoordinatesTable}
 
-
-```{r echo = FALSE}
+```{r, fig.cap = "Example Well Coordinates Table.", label="EgWellCoordsTable", echo = FALSE}
 include_graphics("figures/data-format-2.png")
 ```
 
-An example of a *WellCoordinates* table is shown above.  This can be viewed by clicking on the *Well Coordinates* tab in the *Edit Data* page for the *Basic Example*.  This table is used to store the co-ordinates of the groundwater monitoring wells or soil borings. This information is essential for spatial and spatiotemporal analyses. For most of the purposes of GWSDAT modelling, it is only the relative distances between wells which are important.  This means any arbitrary cartesian co-ordinate system can be used as long as well co-ordinate values have an aspect ratio very close to 1 -- in other words, a unit in the x-coordinate corresponds to the same distance as a unit in the y-coordinate. Hence, well co-ordinates can be measured directly from a map, or given in easting and northing, etc. 
+The *Well Coordinates* table is used to store the coordinates of groundwater monitoring wells or soil borings. For most of the purposes of GWSDAT modelling, it is only the relative distances between wells which are important. This means any arbitrary cartesian coordinate system can be used as long as well coordinate values have an aspect ratio very close to 1, i.e. a unit in the x-coordinate is the same distance as a unit in the y-coordinate. Hence, well coordinates can be measured directly from a map, or given in easting and northing, etc. 
 
-The columns of the spreadsheet are described below.  There should be no empty rows in the table.
 
-* **WellName**: the name or identifier of the well or soil boring. Well names must be identical to those specified in the *Contaminant Data* table. On a point of detail, it is better to name wells using the convention of `MW-01` rather than `MW1` so that plots in GWSDAT are correctly ordered. 
+* **WellName**: the name or identifier of the well or soil boring. Well names must be identical to those specified in the *Historical Monitoring Data* table. On a point of detail, it is better to name wells using the convention of 'MW-01' rather than 'MW1' so that plots in GWSDAT are correctly ordered. 
 
 * **XCoord**: the x-coordinate of the well.
 
 * **YCoord**: the y-coordinate of the well.
 
-* **Aquifer**: an optional column which allows wells or soil borings to be associated with particular subsurface features such as aquifers or sub-strata, in case these data need to be modelled separately. The name (maximum of 8 characters) of the aquifer or sub-stratum can be entered or a letter (A--G) can be used.  The aquifer field can also be used to partition the dataset from a large site, in the event that multiple unrelated plumes are present or wells are grouped into well separated clusters. When analysis begins, the user is asked to select an aquifer (subsurface feature) to analyse. Plots generated using data associated with particular subsurface features have the feature name appended to the title. 
+* **Aquifer**: The (optional) aquifer field allows the user to associate wells or soil borings with particular subsurface features (e.g. aquifers, sub-strata), in the event that data from these needs to be modelled separately. The user can enter the name (maximum of 8 characters) of the aquifer or sub-stratum, or select a letter A-G from the drop-down listbox. The aquifer field can also be used to partition the dataset from a large site, in the event that mutiple unrelated plumes are present or if wells are clustered with large gaps in between. On initiation of a GWSDAT analysis the user is asked to select an aquifer (subsurface feature) to analyse. **Note**: Plots generated using data associated with particular subsurface features have the feature name appended to the title, e.g. Shallow aquifer. If the user leaves the aquifer flag as blank, no such appending will occur. 
 
-Notice the *Coordinate Unit* button in the box to the left of the spreadsheet.  This enables the spatial units to be specified as metres or feet, through a drop-down menu.
+* **CoordUnits**:
+Either leave this field blank or select 'metres' or 'feet'. The units specified in this field are used in the calculation of plume mass balance parameters (e.g. plume area and solute mass), for further details see Section \ref{PlumeDiagnostics} on plume diagnostics.
+
 
 
 ### GIS ShapeFiles

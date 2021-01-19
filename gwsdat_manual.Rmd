@@ -13,7 +13,7 @@ output:
     
 link-citations: true   
 
-subtitle: Version 4.0 User Manual
+subtitle: Version 3.1 User Manual
 bibliography: gwsdat_manual.bib
 ---
 

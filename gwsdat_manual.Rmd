@@ -8,16 +8,17 @@ author: "| Wayne R. Jones (Wayne.W.Jones@shell.com)\n| Principal Data Scientist,
   School of Mathematics & Statistics, The University of Glasgow\n\n\n\n"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output:
-  pdf_document: 
-    number_sections: true
-    
+  bookdown::pdf_document2: default    
+toc: false
+number_sections: true
 link-citations: true   
 
 subtitle: Version 3.1 User Manual
 bibliography: gwsdat_manual.bib
 ---
 
-\newpage 
+
+\newpage
 \tableofcontents
 \listoffigures
 
@@ -25,6 +26,7 @@ bibliography: gwsdat_manual.bib
 library(knitr)
 library(magrittr)
 library(kableExtra)
+library(bookdown)
  opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '60%')
 ```
 
@@ -41,15 +43,15 @@ library(kableExtra)
 ```
 
 \newpage
-```{r child = '04_data-entry.Rmd'}
+```{r child = '04_data-input-format.Rmd'}
 ```
 
 \newpage
-```{r child = '05_analysis.Rmd'}
+```{r child = '05_excel-addin.Rmd'}
 ```
 
 \newpage
-```{r child = '06_reporting.Rmd'}
+```{r child = '06_shiny-gui.Rmd'}
 ```
 
 \newpage

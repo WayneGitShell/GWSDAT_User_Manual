@@ -1,10 +1,8 @@
 
-# Data Input {#DataInput}
-There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables will be the same. Hence, this section will first describe the standardised data table input structure and then discuss the details with respect to the mode of access. 
-
-## Input Data Format
-
-There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. Please note that there should be no empty rows in either table. Optionally, users can specify  links to the location of GIS shapefiles for use as basemaps or site plans.
+# Input Data Format {#DataInput}
+There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables are identical. Hence, this section is dedicated to describing the standardised data table input structure and formatting conventions. Later sections will discuss the data input details with respect to the mode of access. Section \@ref(DataInputExcelAddin) for data input via Excel Add-in and Section \@ref(DataInputviaGUI) for data input directly via the Graphical User Interface. 
+ 
+There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. Please note that there should be no empty rows in either table. Optionally, users can also specify links to the location of GIS shapefiles for use as basemaps or site plans.
 
 <!-- THe user can optionally specify an associated additionally -->
 <!-- The third *GIS Shapefiles* table may be populated with links to the location of GIS shapefiles for use as basemaps or site plans, if required.  -->
@@ -12,7 +10,7 @@ There are only two input tables that must be completed, namely, the *Historical 
 <!-- Two example data sets are provided with the software for training purposes, the use of which is explained in section \ref{GettingStarted}. -->
 
 
-### Historical Monitoring Data Input Table
+## Historical Monitoring Data Input Table {#HistoricalMonitoringDataInputTable}
 
 ```{r, fig.cap = "Example Historical Monitoring Data.", label="EgHistMonitoringData"}
 include_graphics("figures/data-format-1.png")
@@ -46,13 +44,13 @@ entered groundwater elevation measurements must have the same units. Likewise fo
 
 * **Flags**:  Four different flags are available to modify the way in which certain types of data are handled by the software. 
 The 'E-Acc' (Electron Acceptor), 'NotInNAPL' and 'Redox' flags are used to identify input data types 
-which are to be omitted in the event that the user activates the NAPL substitution function (see section \ref{NAPLHandlingMethod}). 
+which are to be omitted in the event that the user activates the NAPL substitution function (see Section \ref{NAPLHandlingMethod}). 
 Note, that it is only necessary to flag one data row in this way for all rows containing that constituent to be excluded from NAPL substitution. The fourth flag ('Omit') can be used to exclude individual data entry rows from the GWSDAT analysis. 
   
 
 
 
-### Well Coordinates Table {#WellCoordinatesTable}
+## Well Coordinates Table {#WellCoordinatesTable}
 
 ```{r, fig.cap = "Example Well Coordinates Table.", label="EgWellCoordsTable", echo = FALSE}
 include_graphics("figures/data-format-2.png")
@@ -74,7 +72,7 @@ Either leave this field blank or select 'metres' or 'feet'. The units specified 
 
 
 
-### GIS ShapeFiles
+## GIS ShapeFiles {#GISShapeFiles}
 
 A site plan can be superposed over plots of concentration distribution, NAPL
 thickness and groundwater elevation (see Figure ??). Site plans are imported
@@ -88,104 +86,66 @@ into GWSDAT in the form of shapefiles (see `http://en.wikipedia.org/wiki/Shapefi
 <!-- The various ways in which data can be entered are described below.  The easiest option is likely to be to create the spreadsheets in a format you are familiar with, such as *Excel*, and then load the files into GWSDAT. -->
 
 
-## Data Input via Excel Add-in {#DataInputExcelAddin}
+<!-- # GWSDAT Excel Add-in {#DataInputExcelAddin} -->
 
-Figure \ref{fig:GWSDATExcelAddinmenu} displays the Excel add-in menu together with a populated data set. 
+<!-- ## Add-in Menu {#DataInputExcelAddinMenu} -->
 
-```{r, fig.cap = "GWSDAT Excel Add-in menu and example data file.", label="GWSDATExcelAddinmenu",out.width = '100%', echo = FALSE}
-include_graphics("figures/GWSDAT_Add-in_Menu.png")
-```
+<!-- ```{r, fig.cap = "GWSDAT Excel Add-in menu and example data file.", label="GWSDATExcelAddinmenu",out.width = '100%', echo = FALSE} -->
+<!-- include_graphics("figures/GWSDAT_Add-in_Menu.png") -->
+<!-- ``` -->
 
-```{r, fig.cap = "GWSDAT Excel Add-in Processing Options", label="ExcelAddinProcessingOptions", echo = FALSE}
-    include_graphics("figures/ExcelAddinProcessingOptions.png")
-```
+<!-- Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for details on how to install the GWSDAT Excel Add-in. The menu options, as shown in Figure \ref{fig:GWSDATExcelAddinmenu}, are as follows: -->
 
+<!-- * **New GWSDAT Sheet**: Inserts a blank GWSDAT data input template worksheet into the active Excel workbook.  -->
 
+<!-- * **Insert Shapefile**: Interactively browse for a shapefile and add location to GIS Shapefiles table, see Section \@ref(GISShapeFiles) for more information. -->
 
+<!-- * **Analyse**: Begin GWSDAT analysis on the Excel active worksheet data. -->
 
+<!-- * **Restore Session**: Load a previously saved GWSDAT session, see Section ?? for more information. -->
 
-## Data Input via Graphical User Interface 
+<!-- * **Open Example -$>$ Simple Example**: Inserts an example GWSDAT worksheet data set into the active Excel workbook. -->
 
-GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window.
+<!-- * **Open Example -$>$ Comprehensive Example**: Inserts a more detailed example GWSDAT worksheet data set which includes a site plan, NAPL thickness data, 'Electron Acceptor' flagged solutes and multiple aquifers into the active Excel workbook. -->
 
+<!-- * **User Manual**: Opens the online GWSDAT user manual via user's web browser. You must be connected to the internet for this to work.  -->
 
-```{r echo = FALSE}
-    include_graphics("figures/data_manager.png", auto_pdf = FALSE)
-```
+<!-- * **About GWSDAT**: Displays version information and Terms & Conditions for GWSDAT. -->
 
-
-
-A *Basic Example* and a *Comprehensive Example* are supplied but the buttons at the top of the page allow other data to be entered, in different forms.
-
-```{r eho = FALSE}
-tbl <- matrix(c("Restore Examples", "This allows the two in-built examples to be restored at any point, should this be needed.",
-                "Load Data", "Use the *Browse* button to	loaded from a previous GWSDAT session.",
-                "Add New Data", "This allows data to be entered manually into a spreadsheet (and saved for later use).",
-                "Import .csv Data", "Use the *Browse* buttons to load separate 'Contaminant Data' and 'Well Coordinates' files, each in `.csv` form.  One or more shapefiles may also be loaded.",
-                "Import Excel File", "Use the *Browse* button to load an Excel spreadsheet containing both 'Contaminant Data' and 'Well Coordinates'. One or more shapefiles may also be loaded."
-                ), ncol = 2, byrow = TRUE)
-kable(tbl) %>%
-  column_spec(2, width = "30em")
-```
+<!-- * **Update GWSDAT**: Check if a newer version of the underlying GWSDAT R package exists at `https://cran.r-project.org/package=GWSDAT`. If a more recent version is detetced then it will be automatically installed. You must be connected to the internet for this to work.   -->
 
 
+<!-- ## Add-in Data Processing Options {#ExcelAddinMenuDataProcessingOptions} -->
+
+<!-- ```{r, fig.cap = "GWSDAT Excel Add-in Processing Options", label="ExcelAddinProcessingOptions", echo = FALSE} -->
+<!--     include_graphics("figures/ExcelAddinProcessingOptions.png") -->
+<!-- ``` -->
+<!-- On initiation of a GWSDAT analysis via the Excel Add-in, data processing options are displayed, as shown in Figure \ref{fig:ExcelAddinProcessingOptions}. The data processing options influence how the data is displayed and how non-detects are handled. -->
 
 
+<!-- * **Model Output Interval**: -->
+<!-- The spatiotemporal model can generate predictions at a user specified interval. The three different options are as follows: -->
+
+<!--   + **Day**: Concentration and groundwater elevation contour plots are generated for every date represented in the input dataset. This is a good option to choose if each monitoring event comprises samples/ measurements collected within one 24-hour period.  -->
+
+<!--   + **Month**: Concentration and groundwater elevation contours are generated at monthly intervals, working backwards  -->
+<!-- in time from the latest date in the input dataset. Choosing this option aggregates groundwater elevation data within each  -->
+<!-- monthly interval so that a larger dataset is available for the plotting of elevation contours (by local linear regression).  -->
+
+<!--   + **Quarter**: Concentration and groundwater elevation contours are generated at quarterly (3 month) intervals, working backwards in time from the latest date in the input dataset. Choosing this option aggregates groundwater elevation data within each 3-month interval so that a larger dataset is available for the plotting of elevation contours (by local linear regression).  -->
+
+<!--   Note that both the monthly and quarterly model output options only aggregate the dataset used to plot groundwater elevation contours. The solute concentration dataset is not aggregated in time because the spatiotemporal model from which concentration contours are generated does not require this, i.e. the underlying spatiotemporal model used to generate the solute concentration smoother plots does not vary with the data aggregation interval. -->
+
+<!--   Note that if no monitoring data is present within a particular monthly or quarterly interval, then GWSDAT will not generate a groundwater elevation contour or spatio-temporal solute concentration smoother plot. This is to avoid producing potentially misleading spatial plots far away in time from any actual data. -->
+
+<!-- * **GW Level Aggregation Method**: In the event that there are multiple groundwater elevation measurements from the same well within a given output interval, the user can select how to use this data. The user can select to calculate either the 'Mean', 'Median', -->
+<!-- 'Min', or 'Max' groundwater elevation. Again, this choice does not affect the spatiotemporal model used to generate the solute concentration smoother plots. -->
+
+<!-- * **Non-Detect Handling Method**: GWSDAT handles non-detect data by a method of substitution. In accordance with general convention, the default option is to substitute the non-detect data with half its detection limit, e.g. ND<50ug/l is substituted with 25ug/l. For a more conservative choice, select the alternative of non-detect data to be substituted with its full detection limit, e.g. ND<50ug/l is substituted with 50ug/l.  -->
+
+<!-- * **Model Resolution**: This option controls the resolution of the spatiotemporal solute concentration smoother (see Appendix \@ref(SSCS)). The user can select between either a default resolution or a higher resolution model fit. In most instances there will be little difference in the modelling results between the two settings. However, in some rare circumstances with complex data sets, it may well be necessary to use the higher resolution setting. Please note it takes approximately 3-4 times longer to fit a higher resolution model.  -->
 
 
-
-
-```{r echo = FALSE}
-tbl <- matrix(c("Import Excel File", "The file to be loaded should contain two spreadsheets labelled `Contaminant Data` and `Well Coordinates` and have the structure described above.  An example spreadsheet is available at *web address at gwsdat.net*.",
-              "Import .csv Data", "The data can be exported from *Excel() into `.csv` format.  In this case there should be separate `.csv` files for the *Contaminant Data* and *Well Coordinates*.  Click on the *Browse* button to select these files.  For convenience, GWSDAT gives options for the *Column separator* and the *Quote for Character Strings* at the foot of this page. Click on the *Import|* button to read the data.",
-              "Add New Data", "This creates blank spreadsheets with the required structure.  Entries can by typed in directly or copied and pasted from another source.  There is an *+Add Row* button and right clicking gives further options for adding and removing rows.",
-              "Load Data", "This allows data which has previously been saved from GWSDAT to be loaded again."
-              ), ncol = 2, byrow = TRUE)
-kable(tbl) %>%
-  column_spec(2, width = "30em")
-```
-
-
-
-<!-- \begin{tabular}{rm{0.7\textwidth}} -->
-<!-- \cline{2-2} -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Restore Examples}} & -->
-<!-- This allows the two in-built examples to be restored at any point, should this be needed.  \\ -->
-<!-- \cline{2-2} -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Load Data}} & -->
-<!-- Use the \textit{Browse} button to	loaded from a previous GWSDAT session. \\ -->
-<!-- \cline{2-2} -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Add New Data}} & -->
-<!-- This allows data to be entered manually into a spreadsheet (and saved for later use).  \\ -->
-<!-- \cline{2-2} -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Import .csv Data}} & -->
-<!-- Use the \textit{Browse} buttons to load separate 'Contaminant Data' and 'Well Coordinates' files, each in \texttt{.csv} form.  One or more shapefiles may also be loaded. \\ -->
-<!-- \cline{2-2} -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Import Excel File}} & -->
-<!-- Use the \textit{Browse} button to load an Excel spreadsheet containing both 'Contaminant Data' and 'Well Coordinates. One or more shapefiles may also be loaded. \\ -->
-<!-- \cline{2-2} -->
-<!-- \end{tabular} -->
-
-The details of data entry are described below but it is helpful first to describe the format of the data which is required.  The essential information is in are two spreadsheets - one which contains the contaminant data, and a second one which gives the co-ordinates of the wells.  There is also an option to use shape files to superimpose map information on spatial plots.
-
-An example of the first spreadsheet is shown for the *Basic Example* in the screenshot below.  The full spreadsheet can be viewed by clicking the *Edit* button for the *Basic Example* in the *Manage Data* page of GWSDAT.  (When you wish to return to the *Manage Data* page, click the `back-arrow' button in the top left hand corner of the *Edit Data* page.)  The columns of the spreadsheet are explained in detail below.
-
-\fbox{Wayne advises against the use of the term 'contaminant' but this is the terminology used in the software.}
-
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Import Excel File}}  The file to be loaded should contain two spreadsheets labelled `Contaminant Data' and `Well Coordinates' and have the structure described above.  An example spreadsheet is available at \fbox{web address at gwsdat.net}. -->
-
-<!-- \ -->
-
-<!-- \noindent -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Import .csv Data}}   The data can be exported from Excel into \texttt{.csv} format.  In this case there should be separate \texttt{.csv} files for the Contaminant Data and Well Coordinates.  Click on the `Browse' buttons to select these files.  For convenience, GWSDAT gives options for the `Column separator' and the `Quote for Character Strings' at the foot of this page. Click on the `Import' button to lead the data. -->
-
-<!-- \ -->
-
-<!-- \noindent -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Add New Data}}  This creates blank spreadsheets with the required structure.  Entries can by typed in directly or copied and pasted from another source.  There is an \textit{+Add Row} button and right clicking gives further options for adding and removing rows. -->
-
-<!-- \ -->
-
-<!-- \noindent -->
-<!-- \colorbox{NavyBlue}{\color{white} \textsf{Load Data}}  \fbox{Is this option available - I can't see a Save option?} -->
+<!-- ## NAPL Handling Method {#NAPLHandlingMethod} -->
+<!-- An additional pop-up box will be displayed after the GWSDAT options box if the input contains NAPL data (i.e. 'NAPL' is entered in the constituent field). Selecting 'Yes' to the question 'Do you wish to substitute NAPL values with maximum observed solute concentrations?' forces GWSDAT to recognise NAPL data in the input dataset as indicative of high dissolved solute concentrations. This option has been added to provide the user with a more realistic picture of the area of impacted groundwater in the event that NAPL in wells prevents direct measurement of CoC concentrations. *Before using this function the user should, however, be confident that dissolved solutes are derived from the observed NAPL and not from a different source*. Solutes flagged as 'Electron Acceptors' (see Section \@ref(HistoricalMonitoringDataInputTable)) are omitted from the NAPL substitution process. -->
 

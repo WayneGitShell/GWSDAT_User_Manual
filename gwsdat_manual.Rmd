@@ -19,7 +19,7 @@ bibliography: gwsdat_manual.bib
 
 \newpage 
 \tableofcontents
-
+\listoffigures
 
 ```{r setup, include = FALSE}
 library(knitr)

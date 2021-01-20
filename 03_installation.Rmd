@@ -1,9 +1,9 @@
 # Accessing GWSDAT {#AccessingGWSDAT}
 
-There are now several different ways for users to gain access to GWSDAT: 
+There are several different ways for users to gain access to GWSDAT: 
 
 ## Online Version {#GWSDATOnline}
-With no software installation required, the easiest way is to use the online version, available at `www.gwsdat.net`. This web site also has general information about the software tool, including help files, videos and case studies (`www.gwsdat.net/case-studies`). The underlying architecture is the GWSDAT [`R package`](#GWSDATRPackage) deployed as an app on a [`Shiny server`](https://shiny.rstudio.com/articles/shiny-server.html) hosted by the University of Glasgow's School of Mathematics and Statistics. See the GWSDAT GitHub development page `wwww.github.com/waynegitshell/GWSDAT` for more details on how to deploy on a Shiny server. 
+With no software installation required, the easiest way is to use the online version, available at `www.gwsdat.net`. This web site also has general information about the software tool, including help files, videos and case studies (`www.gwsdat.net/case-studies`). The underlying architecture is the GWSDAT [`R package`](#GWSDATRPackage) deployed as an app on a [`Shiny server`](https://shiny.rstudio.com/articles/shiny-server.html) hosted by the University of Glasgow's School of Mathematics and Statistics. See the GWSDAT GitHub development page `www.github.com/WayneGitShell/GWSDAT` for more details on how to deploy on a Shiny server. 
 
 ## Excel Add-in Interface {#ExcelDataEntryInterface}
 The most traditional and  widely used method to access GWSDAT is to use the Excel Add-in interface. The latest version together with installation instructions and supporting information can can be found on the industry websites:
@@ -32,7 +32,7 @@ To launch GWSDAT, issue the following two instructions in the console window:
 The first instruction loads the package so that it can be used in the current session of `R`.  The second instruction launches GWSDAT.
 
 
-See `wwww.github.com/waynegitshell/GWSDAT` for  the latest development version together with more advanced information and details on how to use the GWSDAT R package.  
+See `www.github.com/WayneGitShell/GWSDAT` for  the latest development version together with more advanced information and details on how to use the GWSDAT R package.  
 
 
 

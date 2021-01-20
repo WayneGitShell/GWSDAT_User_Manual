@@ -4,7 +4,8 @@ There are a few different ways to enter user data into GWSDAT and the available 
 
 ## Input Data Format
 
-There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. PLease note that there should be no empty rows in either table.
+There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. Please note that there should be no empty rows in either table. Optionally, users can specify  links to the location of GIS shapefiles for use as basemaps or site plans.
+
 <!-- THe user can optionally specify an associated additionally -->
 <!-- The third *GIS Shapefiles* table may be populated with links to the location of GIS shapefiles for use as basemaps or site plans, if required.  -->
 <!-- Please ensure that there are no empty rows in these completed data input tables.  -->
@@ -75,37 +76,35 @@ Either leave this field blank or select 'metres' or 'feet'. The units specified 
 
 ### GIS ShapeFiles
 
-<!-- \label{sec:shapefiles} -->
+A site plan can be superposed over plots of concentration distribution, NAPL
+thickness and groundwater elevation (see Figure ??). Site plans are imported
+into GWSDAT in the form of shapefiles (see `http://en.wikipedia.org/wiki/Shapefile` for more information). A shapefile is actually a collection of several files, typically created using ARC-GIS. See the section [`Converting a CAD drawing to a Shapefile`](#ConvShapRosie) for more details on how to generate a shapefile from a CAD drawing using ARC-GIS.
 
-A further possible component of the data is a site map in the form of a *shape file*.  This is optional but can be very useful in superimposing map information on spatial plots.  Examples will be given later in the manual.
+<!-- A further possible component of the data is a site map in the form of a *shape file*.  This is optional but can be very useful in superimposing map information on spatial plots.  Examples will be given later in the manual. -->
+<!-- \fbox{The paragraphs below need to be updated.} -->
+<!-- A 'shapefile' is actually a collection of several files, typically created using ARC-GIS.^[See `http://en.wikipedia.org/wiki/Shapefile` for more information on this format.]  The *Shape Files* table consists of a single column where each entry is the name of a file (including its path) containing site plans.  These must be in shapefile format. Filenames can be entered manually or, in interactive mode, the `Browse ...' can be used. Only the location of the main shapefile (file ending with a `.shp' extension) needs to be specified in this table - the associated data files (such as `.dbf`, `.sbn`, `.sbx`, `.shx`) will be picked up automatically, but they must be in the same folder. An example is given in the Figure below.  -->
+<!-- It is possible to overlay multiple shapefiles up to a maximum of seven.  There should be no empty rows in the table. -->
+<!-- ## Entering your own data -->
+<!-- The various ways in which data can be entered are described below.  The easiest option is likely to be to create the spreadsheets in a format you are familiar with, such as *Excel*, and then load the files into GWSDAT. -->
 
-\fbox{The paragraphs below need to be updated.}
 
-A 'shapefile' is actually a collection of several files, typically created using ARC-GIS.^[See `http://en.wikipedia.org/wiki/Shapefile` for more information on this format.]  The *Shape Files* table consists of a single column where each entry is the name of a file (including its path) containing site plans.  These must be in shapefile format. Filenames can be entered manually or, in interactive mode, the `Browse ...' can be used. Only the location of the main shapefile (file ending with a `.shp' extension) needs to be specified in this table - the associated data files (such as `.dbf`, `.sbn`, `.sbx`, `.shx`) will be picked up automatically, but they must be in the same folder. An example is given in the Figure below. 
+## Data Input via Excel Add-in {#DataInputExcelAddin}
 
-It is possible to overlay multiple shapefiles up to a maximum of seven.  There should be no empty rows in the table.
+Figure \ref{fig:GWSDATExcelAddinmenu} displays the Excel add-in menu together with a populated data set. 
 
+```{r, fig.cap = "GWSDAT Excel Add-in menu and example data file.", label="GWSDATExcelAddinmenu",out.width = '100%', echo = FALSE}
+include_graphics("figures/GWSDAT_Add-in_Menu.png")
+```
 
-## Entering your own data
-
-<!-- \label{sec:entering-data} -->
-
-The various ways in which data can be entered are described below.  The easiest option is likely to be to create the spreadsheets in a format you are familiar with, such as *Excel*, and then load the files into GWSDAT.
-
-```{r echo = FALSE}
-tbl <- matrix(c("Import Excel File", "The file to be loaded should contain two spreadsheets labelled `Contaminant Data` and `Well Coordinates` and have the structure described above.  An example spreadsheet is available at *web address at gwsdat.net*.",
-              "Import .csv Data", "The data can be exported from *Excel() into `.csv` format.  In this case there should be separate `.csv` files for the *Contaminant Data* and *Well Coordinates*.  Click on the *Browse* button to select these files.  For convenience, GWSDAT gives options for the *Column separator* and the *Quote for Character Strings* at the foot of this page. Click on the *Import|* button to read the data.",
-              "Add New Data", "This creates blank spreadsheets with the required structure.  Entries can by typed in directly or copied and pasted from another source.  There is an *+Add Row* button and right clicking gives further options for adding and removing rows.",
-              "Load Data", "This allows data which has previously been saved from GWSDAT to be loaded again."
-              ), ncol = 2, byrow = TRUE)
-kable(tbl) %>%
-  column_spec(2, width = "30em")
+```{r, fig.cap = "GWSDAT Excel Add-in Processing Options", label="ExcelAddinProcessingOptions", echo = FALSE}
+    include_graphics("figures/ExcelAddinProcessingOptions.png")
 ```
 
 
-## Excel Add-in Data Entry
 
-## Graphical User Interface Data Entry
+
+
+## Data Input via Graphical User Interface 
 
 GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window.
 
@@ -113,6 +112,8 @@ GWSDAT comes supplied with examples of groundwater monitoring data and these can
 ```{r echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
 ```
+
+
 
 A *Basic Example* and a *Comprehensive Example* are supplied but the buttons at the top of the page allow other data to be entered, in different forms.
 
@@ -126,6 +127,25 @@ tbl <- matrix(c("Restore Examples", "This allows the two in-built examples to be
 kable(tbl) %>%
   column_spec(2, width = "30em")
 ```
+
+
+
+
+
+
+
+
+```{r echo = FALSE}
+tbl <- matrix(c("Import Excel File", "The file to be loaded should contain two spreadsheets labelled `Contaminant Data` and `Well Coordinates` and have the structure described above.  An example spreadsheet is available at *web address at gwsdat.net*.",
+              "Import .csv Data", "The data can be exported from *Excel() into `.csv` format.  In this case there should be separate `.csv` files for the *Contaminant Data* and *Well Coordinates*.  Click on the *Browse* button to select these files.  For convenience, GWSDAT gives options for the *Column separator* and the *Quote for Character Strings* at the foot of this page. Click on the *Import|* button to read the data.",
+              "Add New Data", "This creates blank spreadsheets with the required structure.  Entries can by typed in directly or copied and pasted from another source.  There is an *+Add Row* button and right clicking gives further options for adding and removing rows.",
+              "Load Data", "This allows data which has previously been saved from GWSDAT to be loaded again."
+              ), ncol = 2, byrow = TRUE)
+kable(tbl) %>%
+  column_spec(2, width = "30em")
+```
+
+
 
 <!-- \begin{tabular}{rm{0.7\textwidth}} -->
 <!-- \cline{2-2} -->

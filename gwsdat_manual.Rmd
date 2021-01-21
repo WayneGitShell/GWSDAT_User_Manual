@@ -12,6 +12,7 @@ output:
 toc: false
 number_sections: true
 link-citations: true   
+urlcolor: blue
 
 subtitle: Version 3.1 User Manual
 bibliography: gwsdat_manual.bib

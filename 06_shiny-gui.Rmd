@@ -92,7 +92,7 @@ An example of the first spreadsheet is shown for the *Basic Example* in the scre
 
 GWSDAT is designed to produce informative visualisations of groundwater monitoring over space and time.  To illustrate this, we will use the *Basic Example*.  If you are still in the detailed pages of the *Manage Data* section, click on the `back-arrow' in the top left hand corner to return to the main \textit{manage Data} page and then click on *Analyse* on the left had sidebar.  You will then be asked to specify which dataset you would like to analyse.  In addition to the standard examples, any other datasets you have created will be listed here too.  For the moment, click on the *Select* button for the *Basic Example'*.  You should now see a screen similar to the image below.
 
-```{r echo = FALSE}
+```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot",out.width = '100%', echo = FALSE}
 include_graphics("figures/analysis-1.png")
 ```
 
@@ -101,21 +101,67 @@ The tabs at the top of this page give access to several different forms of analy
 
 ## Spatial plot
 
+The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
+
 A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data.  Use the slider at the foot of the page to explore how the estimates of Benzene concentration change across the month of October.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again.
 
-The *Settings* box gives control over many aspects of the display.
+### Settings 
 
-* **Aggregate by** provides a drop-down menu which allows the temporal resolution to be altered (Day, Month, Quarter, Year).  This gives different perspectives on the trends present in the data.  Of course, the highest resolution (here, day) will be constrained by the frequency of data collection.
+The *Settings* tab located to the left hand side of the spatial plot gives control over many aspects of the display:
 
-* **Substance** allows different contaminants to be inspected, if these have been recorded in the dataset.  Use the drop-down menu to select this.
+* **Aggregate by** provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Year).  In the example in Figure \@ref(fig:GWSDATSpatialPlot), a monthly model output interval has been selected and the displayed actual solute concentration values were sampled between the 2nd Oct 2009 and the 1st Nov 2009. This functionality is identical to the 'Model Output Interval' detailed in Section \@ref(ExcelAddinMenuDataProcessingOptions). 
 
-* **Solute Conc. Unit** allows the units to be changed.
+* **Substance** allows different solutes to be inspected, if these have been recorded in the dataset.  Use the drop-down menu to select this.
+
+* **Solute Conc. Unit** allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'.
 
 * **Plot Type** allows the contour colours to be changed or the display to be focussed on the wells through the size and colour of plotted circels.
 
 * **Plot Options** gives control over a variety if different annotations which add detailed information to the map.
 
 * **Groundwater Flows** gives control over the display of this information.
+
+
+
+
+
+
+\newpage
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{gray!10}{
+\parbox{370pt}{{%\fontfamily{phv}\selectfont 
+The spatiotemporal solute concentration smoother is a function which simultaneously estimates both the spatial and 
+time series trend in site solute concentrations. By smoothing the data in both space and time 
+it provides a clearer interpretation of site solute concentration dynamics than would otherwise be gleaned 
+from the raw data. 
+\uline{However, it is important to note that it is a smoother function and as such, the predictions 
+do not necessarily lie on the observed data points}.
+In the event that a sampled concentration value is significantly larger 
+than the predictions of the spatiotemporal smoother, the well label is coloured red and surrounded by braces, 
+e.g. \textcolor{red}{`$<$MW-1$>$'}. This serves as a very useful method for outlier detection. 
+In addition, the analysis may be skewed if data are input from monitoring wells with disparate construction or 
+screened in different aquifer systems.
+
+
+Another important point to consider is that the quality of the spatiotemporal smoother is directly influenced 
+by quality of the underlying data. In general, data originating from sites with many evenly spatially 
+distributed wells with a long time history leads to better quality smoother predictions. 
+The converse of a small number of wells or poor well location network design 
+(e.g. wells located in almost a straight line), or short monitoring history, 
+will lead to less reliable smoother predictions, particularly at the edges. 
+
+In summary, the `spatiotemporal solute concentration smoother' plot is provided to 
+help the user visualise the distribution of solutes and as an aid to risk-based decision-making.
+However, for the reasons stated above, the predictions should be interpreted with care and 
+a more detailed evaluation may be necessary to understand observed trends and outliers. 
+
+Further methods for assessing the goodness of fit of the spatiotemporal smoother can be found in Section \ref{SectionSpatiotemporalDiagnostics}.
+For more details on the spatiotemporal smoothing algorithm, please see Appendix \ref{SSCS}.
+}
+}
+}
+\end{center}
 
 
 ## Time Series

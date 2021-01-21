@@ -1,6 +1,6 @@
 
 # Input Data Format {#DataInput}
-There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables are identical. Hence, this section is dedicated to describing the standardised data table input structure and formatting conventions. Later sections will discuss the data input details with respect to the mode of access. Section \@ref(DataInputExcelAddin) for data input via Excel Add-in and Section \@ref(DataInputviaGUI) for data input directly via the Graphical User Interface. 
+There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables are identical. Hence, this section is dedicated to describing the standardised data table input structure and formatting conventions. Later sections will discuss the data input details with respect to the mode of access. See Section \@ref(DataInputExcelAddin) for data input via Excel Add-in and Section \@ref(DataInputviaGUI) for data input directly via the Graphical User Interface. 
  
 There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. Please note that there should be no empty rows in either table. Optionally, users can also specify links to the location of GIS shapefiles for use as basemaps or site plans.
 
@@ -75,8 +75,15 @@ Either leave this field blank or select 'metres' or 'feet'. The units specified 
 ## GIS ShapeFiles {#GISShapeFiles}
 
 A site plan can be superposed over plots of concentration distribution, NAPL
-thickness and groundwater elevation (see Figure ??). Site plans are imported
+thickness and groundwater elevation (see example in Figure \ref{fig:GWSDATSpatialPlot}). Site plans are imported
 into GWSDAT in the form of shapefiles (see `http://en.wikipedia.org/wiki/Shapefile` for more information). A shapefile is actually a collection of several files, typically created using ARC-GIS. See the section [`Converting a CAD drawing to a Shapefile`](#ConvShapRosie) for more details on how to generate a shapefile from a CAD drawing using ARC-GIS.
+
+If using the GWSDAT Excel Add-in interface (Section \@ref(DataInputExcelAddinMenu)) then only the location of the main shapefile (file ending with a '.shp' extension) needs to be specified in the GIS Shapefile table.  The associated
+data files (e.g. .dbf, .sbn, .sbx, .shx) will be picked up automatically,provided they are in the same folder (see example in Figure \ref{fig:GWSDATExcelAddinmenu}).It is possible to overlay multiple shapefiles up to a maximum of seven.
+
+Alternatively, if using the GWSDAT Graphical User Interface interface (Section \@ref(DataInputviaGUI)) to input data then all the associated Shapefiles (e.g. .shp, .dbf, .sbn, .sbx, .shx) need to be selected and uploaded. 
+
+
 
 <!-- A further possible component of the data is a site map in the form of a *shape file*.  This is optional but can be very useful in superimposing map information on spatial plots.  Examples will be given later in the manual. -->
 <!-- \fbox{The paragraphs below need to be updated.} -->

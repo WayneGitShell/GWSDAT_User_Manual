@@ -36,7 +36,7 @@ Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for 
 On initiation of a GWSDAT analysis via the Excel Add-in, data processing options are displayed, as shown in Figure \ref{fig:ExcelAddinProcessingOptions}. The data processing options influence how the data is displayed and how non-detects are handled.
 
 
-* **Model Output Interval**:
+* **Model Output Interval**: 
 The spatiotemporal model can generate predictions at a user specified interval. The three different options are as follows:
 
   + **Day**: Concentration and groundwater elevation contour plots are generated for every date represented in the input dataset. This is a good option to choose if each monitoring event comprises samples/ measurements collected within one 24-hour period. 

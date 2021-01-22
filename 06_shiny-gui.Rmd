@@ -226,6 +226,48 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 include_graphics("figures/time-series-plot.png")
 ```
 
+The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example dataset. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section \@ref(NAPLHandlingMethod). Red points represent the NAPL substitued solute concentration values.
+
+To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* allows the user to overlay threshold value used to colour code the Trend and Threshold Inidictor plot - see Section \@ref(TRendTHreshMat). 
+
+The *Time Series Plot Options* checkbox control includes: 
+
+* **Conc. Trend Smoother**:
+This displays the estimated time series trend in solute concentration using a nonparametric smoother (see Figure \@ref(fig:GWSDATTimeSeriesPlot). The solid blue line displays the estimate of the mean trend level at a particular point in time. The upper and lower dashed blue lines depict a 95\% confidence interval around this estimate. This is interpreted as *'one is 95\% confident that the actual mean trend level lies within this region'*. The smaller the 95\% confidence interval, the more confidence one has in the estimated time series trend. Areas of the trend smoother fit in which the 95\% confidence intervals are very large (i.e. very low confidence in the trend smoother fit)are coloured grey instead of blue and are disregarded from the 'Trend' and 'Threshold - Statistical' matrix plot calculations, see Section \@ref(TRendTHreshMat).
+The advantage of this nonparametric method is that the trend estimate is not constrained to be monotonic, i.e. the trend can change direction. More details of this nonparametric smoothing algorithm are given in Appendix \@ref(smregressCalc)
+
+
+* **Conc. Linear Trend**:
+This displays a traditional linear time series trend estimate (green solid line) together with 95\% confidence intervals (green dashed lines) to the log of historical solute  concentrations values. This is equivalent to fitting an exponential decay/growth model on a linear scale. The statistical significance of this trend is assessed by means of the well established Mann-Kendall trend test @MannKendall. The Mann-Kendall p-value and the estimated solute concentration half-life is displayed immediately below the main title of the well trend plot. \textcolor{red}{Users should be aware that individual well half-life values should not be used to estimate the plume half-life.}
+
+\definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
+
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{MyGray}{
+\parbox{440pt}{{%\fontfamily{phv}\selectfont 
+
+If the Mann-Kendall p-value is below 0.05, then the estimated trend is deemed statistically significantly different from 0, i.e. there 
+is indeed trend present in the data. A p-value above 0.05 should be interpreted as there is no evidence to suggest 
+that trend is present.
+}
+}
+}
+\end{center}
+
+
+* **Show Legend**: This controls whether to display a legend in the top right hand side of the plot 
+giving a key of the plotting symbols. 
+
+* **Scale to Conc. Data**: By default the well trend plot x-axis is scaled such that it spans the sampling dates of all data. The y-axis is scaled to span the current data concentrations and the user-specified trend threshold limit, see Section \ref{TRendTHreshMat}. By checking this control the x and y axes are scaled to the span the current combination of well and solute concentration data only. 
+
+* **Log Scale**: Controls whether to use a logarithmic or linear scale for the y-axis, i.e. solute concentration values.
+
+* **Overlay GW levels**: Allows the user to overlay the corresponding groundwater level measurements on the well trend plot. The scale is read from the right hand axis. This function is useful for assessing correlations between groundwater levels and solute concentrations. 
+
+* **Overlay NAPL Thickness**: Allows the user to overlay the corresponding NAPL thickness level measurements on the well trend plot. The scale is read from the right hand axis. This function is useful for assessing correlations between NAPL thickness and groundwater levels.
+
+
 
 ## Trends \& Thresholds
 

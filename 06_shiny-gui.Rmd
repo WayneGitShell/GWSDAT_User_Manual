@@ -1,9 +1,13 @@
 
 # GWSDAT Graphical User Interface (GUI) {#GWSDATGUI}
 
-GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window.
+The GWSDAT user interface is a web-based graphical user interface (GUI) which the user can interact with in many ways. The following sections will explain the interface in more detail.
+
 
 ## Data Input via Graphical User Interface {#DataInputviaGUI}
+
+GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window.
+
 
 ```{r echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
@@ -109,28 +113,78 @@ A key feature of GWSDAT is the ability to produce estimates of contaminant conce
 
 The *Settings* tab located to the left hand side of the spatial plot gives control over many aspects of the display:
 
-* **Aggregate by** provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Year).  In the example in Figure \@ref(fig:GWSDATSpatialPlot), a monthly model output interval has been selected and the displayed actual solute concentration values were sampled between the 2nd Oct 2009 and the 1st Nov 2009. This functionality is identical to the 'Model Output Interval' detailed in Section \@ref(ExcelAddinMenuDataProcessingOptions). 
+* **Aggregate by**: provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Year).  In the example in Figure \@ref(fig:GWSDATSpatialPlot), a monthly model output interval has been selected and the displayed actual solute concentration values were sampled between the 2nd Oct 2009 and the 1st Nov 2009. This functionality is identical to the 'Model Output Interval' detailed in Section \@ref(ExcelAddinMenuDataProcessingOptions). 
 
-* **Substance** allows different solutes to be inspected, if these have been recorded in the dataset.  Use the drop-down menu to select this.
+* **Substance**: Drop-down listbox to select the different solutes to be inspected.
 
-* **Solute Conc. Unit** allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'.
+* **Solute Conc. Unit**: allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'.
 
-* **Plot Type** allows the contour colours to be changed or the display to be focussed on the wells through the size and colour of plotted circels.
+* **Plot Type**: Drop-down listbox with the following choices: 
 
-* **Plot Options** gives control over a variety if different annotations which add detailed information to the map.
+    + **Conc-Terrain**: This option overlays the predictions of the spatiotemporal solute concentration smoother for a particular model output interval using a 'terrain' colour scheme - see example in Figure \@ref(fig:GWSDATSpatialPlot). Please note that the output of the spatiotemporal trend smoother is always given for the latest date in the displayed output interval. 
+The dark green colours indicate low solute concentration and the colours are gradated through yellow and brown 
+to almost white, to illustrate increasing estimated solute concentrations.The concentration values can be read off from the key on the right hand side of the plot. 
+As the user iterates through time steps, it may be noticed that the area covered by the spatiotemporal solute concentration smoother changes. This is due to the fact that spatiotemporal predictions are only generated between interpolated data and are not extrapolated to regions where no data exists, which could potentially lead to erroneous results. For each time step, the area of the contour is calculated only from the collection of wells for which the monitoring period spans the current model output interval. GWSDAT generates predictions in the convex hull region dictated by these wells. The convex hull 
+(see `http://en.wikipedia.org/wiki/Convex_hull`) may be visualised as the expected boundary if an elastic band was placed around the locations of these wells. 
 
-* **Groundwater Flows** gives control over the display of this information.
+    + **Conc-Topo**: This function is identical to Conc-Terrain but uses a topograghic colour scheme which gradates increasing solute concentrations through blue, green, yellow and beige.
 
+    + **Conc-GreyScale**: This function is identical to Conc-Terrain but uses a grey scale colour scheme which gradates increasing solute concentrations through light grey to black. This is useful for printing on black and white printers!
 
+    + **Conc-Terrain-Circles**: This selection overlays (terrain) colour coded circles located at the wells which have been 
+monitored within the current model output interval. The size of the circles scales with the log of the observed solute concentration values and the solute concentration range can be read off from the colour key to the right of the plot. 
 
+    + **Conc-Topo-Circles**:This selection is identical to Conc-Terrain-Circles but uses a topographic colour scheme.
+    
+    + **Conc-GreyScale-Circles**: This selection is identical to Conc-Terrain-Circles but uses a grey scale colour scheme. 
 
+    + **NAPL-Circles**:  This selection displays the observed NAPL thicknesses within the current model output interval as 
+size scaled and colour coded circles. NAPL thickness ranges are read off from the colour key on the right hand side of the plot. 
+Colours are gradated from dark red through yellow to almost pure white to illustrate increasing NAPL thickness. 
+The location of wells which have recorded NAPL in any part of their monitoring history are coloured with red solid dots instead of the usual black solid dots. 
 
-
-\newpage
 \begin{center}
 \setlength{\fboxrule}{1.5pt}
 \fcolorbox{blue}{gray!10}{
-\parbox{370pt}{{%\fontfamily{phv}\selectfont 
+\parbox{400pt}{{%\fontfamily{phv}\selectfont 
+\textbf{Hint:} In the presence of poor well location network design or limited data then it is recommended the user select 
+either the `Terrain-Circles' or `Topo-Circles' plot type. 
+%This alternative, displays colour coded circles 
+%located at the wells which have been monitored within the current time slice. The size of the circles scales 
+%with the log of the observed solute concentration values. 
+}
+}
+}
+\end{center}
+
+
+
+
+
+* **Plot Options**:
+
+
+  + **Show Well Labels**: This controls whether to display well names/labels immediately below the well locations. 
+
+  + **Scale colours to Data**: By default the colour key of solute concentrations is subdivided as shown in Figure \@ref(fig:GWSDATSpatialPlot). By using the same subdivisions the spatiotemporal solute concentration smoother plots can be directly compared between different model output intervals. This control will produce a new colour key whose subdivisions span the concentration predictions for the current model output interval only.
+
+  + **Show Conc. Values**: This controls whether to display actual sampled concentration values immediately above the well locations. If the data is identified as a NAPL measurement the value will be displayed as 'NAPL' in a red font.
+
+  + **Show GW Contour**: To add contour lines of groundwater level data. This superposes isobars of smoothed groundwater elevation data on top of the solute concentration plot. This is achieved through a 2D extension of the local linear regerssion method described in Appendix \@ref(smregressCalc). 
+
+  + **Overlay Shapefiles**: This controls whether to overlay a site plan.
+
+  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the 
+spatiotemporal solute concentration smoother (see Figure \@ref(fig:SpatialPlotwithPlumeDiagnostics)).The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. The plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
+Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified,  see Section \@ref(WellCoordinatesTable). More details about plume diagnostics can be found in Section \@ref(PlumeDiagnostics) and Appendix \@ref(AppendixPlumeDiagnostics).
+
+
+* **Groundwater Flows**: The blue arrows in Figure \ref{fig:GWSDATContour} display the estimated direction and (relative) hydraulic gradient of groundwater flow at monitoring points across the a site. This is calculated from the combination of well coordinates and recorded groundwater elevations for this particular model output interval (see Appendix \@ref(GWCalc) for more details). This radiogroup allows the user to choose either 'not to display groundwater arrows' or 'direction only arrows' or 'both direction and relative strength arrows' (default).
+
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{gray!10}{
+\parbox{450pt}{{%\fontfamily{phv}\selectfont 
 The spatiotemporal solute concentration smoother is a function which simultaneously estimates both the spatial and 
 time series trend in site solute concentrations. By smoothing the data in both space and time 
 it provides a clearer interpretation of site solute concentration dynamics than would otherwise be gleaned 
@@ -163,8 +217,15 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 }
 \end{center}
 
+*Output formats + PPT* 
+*movie*
 
 ## Time Series
+
+```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '100%', echo = FALSE}
+include_graphics("figures/time-series-plot.png")
+```
+
 
 ## Trends \& Thresholds
 

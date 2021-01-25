@@ -15,7 +15,7 @@ Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for 
 
 * **Analyse**: Begin GWSDAT analysis on the Excel active worksheet data.
 
-* **Restore Session**: Load a previously saved GWSDAT session, see Section ?? for more information.
+* **Restore Session**: Load a previously saved GWSDAT session, see Section \@ref(GWSDATSaveSession) for more information.
 
 * **Open Example -$>$ Basic Example**: Inserts an example GWSDAT worksheet data set into the active Excel workbook.
 

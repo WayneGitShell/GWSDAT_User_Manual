@@ -96,14 +96,17 @@ An example of the first spreadsheet is shown for the *Basic Example* in the scre
 
 GWSDAT is designed to produce informative visualisations of groundwater monitoring over space and time.  To illustrate this, we will use the *Basic Example*.  If you are still in the detailed pages of the *Manage Data* section, click on the `back-arrow' in the top left hand corner to return to the main \textit{manage Data} page and then click on *Analyse* on the left had sidebar.  You will then be asked to specify which dataset you would like to analyse.  In addition to the standard examples, any other datasets you have created will be listed here too.  For the moment, click on the *Select* button for the *Basic Example'*.  You should now see a screen similar to the image below.
 
-```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot",out.width = '100%', echo = FALSE}
-include_graphics("figures/analysis-1.png")
-```
+
 
 The tabs at the top of this page give access to several different forms of analysis.  These are described in detail below.
 
 
 ## Spatial plot {#SectionSpatialPlot}
+
+
+```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot",out.width = '100%', echo = FALSE}
+include_graphics("figures/analysis-1.png")
+```
 
 The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
 
@@ -158,6 +161,9 @@ either the `Terrain-Circles' or `Topo-Circles' plot type.
 \end{center}
 
 
+```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot2",out.width = '65%', echo = FALSE}
+include_graphics("figures/spatial_plot2.png")
+```
 
 
 
@@ -174,12 +180,11 @@ either the `Terrain-Circles' or `Topo-Circles' plot type.
 
   + **Overlay Shapefiles**: This controls whether to overlay a site plan.
 
-  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the 
-spatiotemporal solute concentration smoother (see Figure \@ref(fig:SpatialPlotwithPlumeDiagnostics)).The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. The plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
-Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified,  see Section \@ref(WellCoordinatesTable). More details about plume diagnostics can be found in Section \@ref(PlumeDiagnostics) and Appendix \@ref(AppendixPlumeDiagnostics).
+  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the spatiotemporal solute concentration smoother (see Figure \@ref(fig:GWSDATSpatialPlot)). The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. The plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
+Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified,  see Section \@ref(WellCoordinatesTable). More details about plume diagnostics can be found in Section \@ref(GWSDATPlumeDiagnostics) and Appendix \@ref(AppendixPlumeDiagnostics).
 
 
-* **Groundwater Flows**: The blue arrows in Figure \ref{fig:GWSDATContour} display the estimated direction and (relative) hydraulic gradient of groundwater flow at monitoring points across the a site. This is calculated from the combination of well coordinates and recorded groundwater elevations for this particular model output interval (see Appendix \@ref(GWCalc) for more details). This radiogroup allows the user to choose either 'not to display groundwater arrows' or 'direction only arrows' or 'both direction and relative strength arrows' (default).
+* **Groundwater Flows**: The blue arrows in Figure \ref{fig:GWSDATSpatialPlot2} display the estimated direction and (relative) hydraulic gradient of groundwater flow at monitoring points across the site. This is calculated from the combination of well coordinates and recorded groundwater elevations for this particular model output interval (see Appendix \@ref(GWCalc) for more details). This radiogroup allows the user to choose either 'not to display groundwater arrows' or 'direction only arrows' or 'both direction and relative strength arrows' (default).
 
 \begin{center}
 \setlength{\fboxrule}{1.5pt}
@@ -210,7 +215,7 @@ help the user visualise the distribution of solutes and as an aid to risk-based 
 However, for the reasons stated above, the predictions should be interpreted with care and 
 a more detailed evaluation may be necessary to understand observed trends and outliers. 
 
-Further methods for assessing the goodness of fit of the spatiotemporal smoother can be found in Section \ref{SectionSpatiotemporalDiagnostics}.
+Further methods for assessing the goodness of fit of the spatiotemporal smoother can be found in Section \ref{SpatiotemporalPredictions}.
 For more details on the spatiotemporal smoothing algorithm, please see Appendix \ref{SSCS}.
 }
 }
@@ -221,7 +226,9 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 *movie*
 
 
+## Plume Diagnostics {#GWSDATPlumeDiagnostics}
 
+## Well Redundancy {#WellRedundancy}
 
 ## Time Series {#SectionWellTrendPlot}
 
@@ -288,13 +295,13 @@ The *Trends and Thresholds* plot (a.k.a. Traffic Light Plot) is a summary of the
 * **Display Table**: This drop-down listbox allows the user to select from the following options: 
 
   + **Trend**: This reports the concentration trend for each solute in every well within the selected model output interval. The *Trends Thresholds* plot looks at the instantaneous gradient of the trend smoother (solid blue line) where it crosses the end of the current model output interval in the \emph{Time Series} Plot,  see Figure \@ref(fig:GWSDATTimeSeriesPlot). The cells of the *Trends Thresholds* plot are coloured to indicate the strength and direction of the current trend. White cells indicate a generally flat trend where the solute concentration is estimated to no more than double or half in the next two years. Light red and light green indicate that solute concentrations will no more than double or  half in the next year, respectively. Dark red and dark green indicate stronger upward and downward trends, respectively. In the event that the trend cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the corresponding cell is coloured grey. Blue cells represent non-detect data. 
-As an example consider Figures \@ref(fig:GWSDATTimeSeriesPlot) and \ref{fig:GWSDATTrendsThresholdsPlot}. It can be seen that the  trend at the end of the current model output interval (01-Feb-2006) for 'Benzene' at monitoring well 'MW-01' is decreasing. The corresponding cell in Figure \@ref{fig:GWSDATTrendsThresholdsPlot} (top left) has been coloured light green to illustrate this. 
+As an example consider Figures \@ref(fig:GWSDATTimeSeriesPlot) and \ref{fig:GWSDATTrendsThresholdsPlot}. It can be seen that the  trend at the end of the current model output interval (01-Feb-2006) for 'Benzene' at monitoring well 'MW-01' is decreasing. The corresponding cell in Figure \@ref(fig:GWSDATTrendsThresholdsPlot) (top left) has been coloured light green to illustrate this. 
 
-  + **Threshold - Absolute**: This assesses if the **observed** solute concentration values for all well and solute combinations are below a user-specified threshold value (default value of 500 ug/l) within any given model output interval. The threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot). The 'Threshold - Absolute' option compares the observed concentration values with the threshold value. If any observed concentration values within a model output interval are above the threshold value then the corresponding cell is coloured dark red. If the concentration values within a model output interval are all below the threshold value then the corresponding cell is coloured dark green. In the event that no data exists then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. See Section \ref() for details on how to edit the threshold values for each solute. 
+  + **Threshold - Absolute**: This assesses if the **observed** solute concentration values for all well and solute combinations are below a user-specified threshold value (default value of 500 ug/l) within any given model output interval. The threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot). The 'Threshold - Absolute' option compares the observed concentration values with the threshold value. If any observed concentration values within a model output interval are above the threshold value then the corresponding cell is coloured dark red. If the concentration values within a model output interval are all below the threshold value then the corresponding cell is coloured dark green. In the event that no data exists then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. See Section \@ref(GWSDATEditOptions) for details on how to edit the threshold values for each solute. 
 
 
   + **Threshold - Statistical**:
-This assesses if current solute concentration levels for all well and solute combinations are below a user-specified threshold value **with a statistical degree of confidence**. Again the threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot).The 'Threshold - Statistical' option looks at the intersection of the end of the current model output interval (vertical grey line) and the trend smoother (solid blue line). If the upper 95\% confidence interval (upper dashed blue line) is below the user-specified threshold value, the cell is coloured dark green. If the upper 95\% confidence interval is not below the threshold value, the corresponding cell is coloured dark red. In the event that this cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. See Section \ref() for details on how to edit the threshold values for each solute. 
+This assesses if current solute concentration levels for all well and solute combinations are below a user-specified threshold value **with a statistical degree of confidence**. Again the threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot).The 'Threshold - Statistical' option looks at the intersection of the end of the current model output interval (vertical grey line) and the trend smoother (solid blue line). If the upper 95\% confidence interval (upper dashed blue line) is below the user-specified threshold value, the cell is coloured dark green. If the upper 95\% confidence interval is not below the threshold value, the corresponding cell is coloured dark red. In the event that this cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. See Section \@ref(GWSDATEditOptions) for details on how to edit the threshold values for each solute. 
 
 * **Show colour**: this drop-down listbox allows the user to filter the *Trends and Thresholds* plot according to the different colours. For example, if the user selects red then the plot will only display the corresponding rows and columns which contain a red entry. This function is particularly useful when there exists a large number of wells and/or solutes. 
 
@@ -335,14 +342,32 @@ This selection, located under the 'More' tab, is a visualisation to help assess 
 
 ## Customise Colour Key {#customisecolourkey}
 
-This selection, located under the 'More' tab,
-New in GWSDAT version 3.1 is the ability to customise the colour key in the *Spatial* plot (see Figure  \@ref(fig:GWSDATSpatialPlot) and Section \@ref(SectionSpatialPlot)). 
+This selection, located under the 'More' tab, is a function introduced in version 3.1 to customise the colour key in the *Spatial* plot (see Figure  \@ref(fig:GWSDATSpatialPlot) and Section \@ref(SectionSpatialPlot)). Using the data editor, Figure \@ref(fig:GWSDATcustomisecolourkey), the  colour key threshold values can be edited for each solute. Note the save button, located in the bottom right, needs to be clicked in order for the colour key to be updated. 
 
 ```{r, fig.cap = "Customising the Spatial plot Colour Key.", label="GWSDATcustomisecolourkey",out.width = '65%', echo = FALSE}
 include_graphics("figures/customise_colour_key.png")
 ```
 
-see example in Figure \@ref(fig:GWSDATcustomisecolourkey).
+## Save Session {#GWSDATSaveSession}
+
+This selection, located under the 'More' tab, allows the user to save and download the current analysis session to a '.rds' file format. This is particularly useful for large data sets which may take a long time to fit the underlying models. The current display settings, e.g. Colour Scheme, Plot Options, Current Solute, are saved. This '.rds' file can be forwarded to another user and viewed once again exactly as it was saved. 
+
+If using the Excel Add-in data input interface then the *Restore Session* option (see Section \@ref(DataInputExcelAddinMenu)) can be used to open a previously saved '.rds' session. Alternatively, use the *Load Data* function, see Section \@ref(DataInputviaGUI).
+
+
+
+## Options {#GWSDATEditOptions}
+
+This selection, located under the 'More' tab, allows the user to save and download the current analysis session to a '.rds' file format. 
+
+
+* **Concentration Thresholds**: Edit and set concentration threshold values in ug/l for each solute. This is used for colour coding in the Trends and Thresholds visualisation, see Section \@ref(TRendTHreshMat). 
+
+* **Plume Diagnostic**: 
+
+* **Image Export**: Allows the user to change various image export resolution settings, including *jpeg \% quality* and pixel dimensions. 
+
+* **Model Settings**:
 
 
 ## Reporting

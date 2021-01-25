@@ -103,7 +103,7 @@ include_graphics("figures/analysis-1.png")
 The tabs at the top of this page give access to several different forms of analysis.  These are described in detail below.
 
 
-## Spatial plot
+## Spatial plot {#SectionSpatialPlot}
 
 The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
 
@@ -220,7 +220,10 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 *Output formats + PPT* 
 *movie*
 
-## Time Series
+
+
+
+## Time Series {#SectionWellTrendPlot}
 
 ```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '100%', echo = FALSE}
 include_graphics("figures/time-series-plot.png")
@@ -228,7 +231,7 @@ include_graphics("figures/time-series-plot.png")
 
 The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example dataset. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section \@ref(NAPLHandlingMethod). Red points represent the NAPL substitued solute concentration values.
 
-To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* allows the user to overlay threshold value used to colour code the Trend and Threshold Inidictor plot - see Section \@ref(TRendTHreshMat). 
+To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Inidictor plot - see Section \@ref(TRendTHreshMat). 
 
 The *Time Series Plot Options* checkbox control includes: 
 
@@ -238,7 +241,7 @@ The advantage of this nonparametric method is that the trend estimate is not con
 
 
 * **Conc. Linear Trend**:
-This displays a traditional linear time series trend estimate (green solid line) together with 95\% confidence intervals (green dashed lines) to the log of historical solute  concentrations values. This is equivalent to fitting an exponential decay/growth model on a linear scale. The statistical significance of this trend is assessed by means of the well established Mann-Kendall trend test @MannKendall. The Mann-Kendall p-value and the estimated solute concentration half-life is displayed immediately below the main title of the well trend plot. \textcolor{red}{Users should be aware that individual well half-life values should not be used to estimate the plume half-life.}
+This displays a traditional linear time series trend estimate (green solid line) together with 95\% confidence intervals (green dashed lines) to the log of historical solute  concentrations values. This is equivalent to fitting an exponential decay/growth model on a linear scale. The statistical significance of this trend is assessed by means of the well established Mann-Kendall trend test @MannKendall. The Mann-Kendall p-value and the estimated solute concentration half-life is displayed immediately below the main title of the *Time Series* plot. Users should be aware that individual well half-life values should not be used to estimate the plume half-life.
 
 \definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
 
@@ -259,7 +262,7 @@ that trend is present.
 * **Show Legend**: This controls whether to display a legend in the top right hand side of the plot 
 giving a key of the plotting symbols. 
 
-* **Scale to Conc. Data**: By default the well trend plot x-axis is scaled such that it spans the sampling dates of all data. The y-axis is scaled to span the current data concentrations and the user-specified trend threshold limit, see Section \ref{TRendTHreshMat}. By checking this control the x and y axes are scaled to the span the current combination of well and solute concentration data only. 
+* **Scale to Conc. Data**: By default the *Time Series* plot x-axis is scaled such that it spans the sampling dates of all data. The y-axis is scaled to span the current data concentrations and the user-specified trend threshold limit, see Section \ref{TRendTHreshMat}. By checking this control the x and y axes are scaled to the span the current combination of well and solute concentration data only. 
 
 * **Log Scale**: Controls whether to use a logarithmic or linear scale for the y-axis, i.e. solute concentration values.
 
@@ -269,7 +272,67 @@ giving a key of the plotting symbols.
 
 
 
-## Trends \& Thresholds
+
+Wayne: Check for 'Well trend plot' and replace with *Time Series* plot. 
+
+## Trends \& Thresholds {#TRendTHreshMat}
+
+
+
+```{r, fig.cap = "GWSDAT Trends and Thresholds Indicator Matrix Plot.", label="GWSDATTrendsThresholdsPlot",out.width = '100%', echo = FALSE}
+include_graphics("figures/trends_thresholds.png")
+```
+
+The Trends and Thresholds Indicator Matrix plot (a.k.a. Traffic Light Plot) is a summary of the level and time series trend in solute concentrations at a particular model output interval, see Figure \@ref(fig:GWSDATTrendsThresholdsPlot). The rows correspond to each well and the columns correspond to the different solutes. The options are as follows: 
+
+<!-- The user can select between the options of displaying 'Trend', 'Threshold - Absolute' or 'Threshold - Statistical' by using the radiogroup control called 'Display Table' positioned to the left of this plot (note that the example depicted in Figure \@ref(fig:GWSDATTrendsThresholdsPlot) is set to display Trend). The 'Trend' and 'Threshold - Statistical' options use the fitted nonparametric time series trend smoother described in Section \@ref(SectionWellTrendPlot).  -->
+
+* **Display Table**: This drop-down listbox allows the user to select from the following options: 
+
+  + **Trend**: This reports the concentration trend for each solute in every well within the selected model output interval. The Trend Threshold Indicator Matrix looks at the instantaneous gradient of the trend smoother (solid blue line) where it crosses the end of the current model output interval in the \emph{Time Series} Plot,  see Figure \@ref(fig:GWSDATTimeSeriesPlot). The cells of the Trend Threshold Indicator Matrix are coloured to indicate the strength and direction of the current trend. White cells indicate a generally flat trend where the solute concentration is estimated to no more than double or half in the next two years. Light red and light green indicate that solute concentrations will no more than double or  half in the next year, respectively. Dark red and Dark green indicate stronger upward and downward trends, respectively. In the event that the trend cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the corresponding cell is coloured grey. Blue cells represent non-detect data. 
+As an example consider Figures \@ref(fig:GWSDATTimeSeriesPlot) and \ref{fig:GWSDATTrendsThresholdsPlot}. It can be seen that the  trend at the end of the current model output interval (01-Feb-2006) for 'Benzene' at monitoring well 'MW-01' is decreasing. The corresponding cell in Figure \ref{fig:GWSDATTrendsThresholdsPlot} (top left) has been coloured light green to illustrate this. 
+
+  + **Threshold - Absolute**: This assesses if the **observed** solute concentration values for all well and solute combinations are below a user-specified threshold value (default value of 500 ug/l) within any given model output interval. The threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot). The 'Threshold - Absolute' Indicator Matrix compares the observed concentration values with the threshold value. If any observed concentration values within a model output interval are above the threshold value then the corresponding cell is coloured dark red. If the concentration values within a model output interval are all below the threshold value then the corresponding cell is coloured dark green. In the event that no data exists then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. 
+See Section \ref() for details on how to edit the threshold values for each solute. 
+
+
+  + **Threshold - Statistical**:
+This assesses if current solute concentration levels for all well and solute combinations are below a user-specified threshold value **with a statistical degree of confidence**. Again the threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot).The 'Threshold - Statistical' Indicator Matrix looks at the intersection of the end of the current model output interval (vertical grey line) and the trend smoother (solid blue line). If the upper 95\% confidence interval (upper dashed blue line) is below the user-specified threshold value, the cell is coloured dark green. If the upper 95\% confidence interval is not below the threshold value, the corresponding cell is coloured dark red. In the event that this cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. 
+
+See Section \ref() for details on how to edit the threshold values for each solute. 
+
+* **Show colour**: this drop-down listbox allows the user to filter the *Trends and Thresholds* plot according to the different colours. For example, if the user selects red then the plot will only display the corresponding rows and columns which contain a red entry. This function is particularly useful when there exists a large number of wells and/or solutes. 
+
+* **Aggregate by**:
+
+A floating 'Colour Key' graphic displaying the colour key explained above for the Trend and Threshold Indicator Matrix plot.
+Use the slider at the foot of the page to explore how the estimates of Benzene concentration change
+across the month of October. Note that the slider box at the foot of the page can be moved to any convenient
+position by clicking and dragging with the mouse. The ‘Play’ symbol (forward-arrow) in the bottom right
+hand corner of the slider activates a ‘movie’, which can be paused by pressing the button again.
+The Settings box gives control over many aspects of the display.
+Aggregate by provides a drop-down menu which allows the temporal resolution to be altered (Day,
+Month, Quarter, Year). This gives different perspectives on the trends present in the data. Of course,
+the highest resolution (here, day) will be constrained by the frequency of data collection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Reporting
 

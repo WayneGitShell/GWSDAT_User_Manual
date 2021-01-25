@@ -17,7 +17,7 @@ Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for 
 
 * **Restore Session**: Load a previously saved GWSDAT session, see Section ?? for more information.
 
-* **Open Example -$>$ Simple Example**: Inserts an example GWSDAT worksheet data set into the active Excel workbook.
+* **Open Example -$>$ Basic Example**: Inserts an example GWSDAT worksheet data set into the active Excel workbook.
 
 * **Open Example -$>$ Comprehensive Example**: Inserts a more detailed example GWSDAT worksheet data set which includes a site plan, NAPL thickness data, 'Electron Acceptor' flagged solutes and multiple aquifers into the active Excel workbook.
 

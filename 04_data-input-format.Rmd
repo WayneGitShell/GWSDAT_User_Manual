@@ -30,7 +30,7 @@ Please use a calendar date format, the preferred format is 'dd/mm/yyyy'. Do not 
 * **Result**: the value of the measurement made. This will be a solute concentration, a groundwater level or a NAPL thickness, as specified in the *Constituent* column.
 
   + **Solute Concentrations**:
-The concentration of the constituent is entered here. Non-detect values should be entered as either `<X` or `ND<X`, where `X` is the detection limit specified by the laboratory. For example, if the detection limit is $100\mu g/l$ then either `<100` or `ND<100` is acceptable. The non-detect threshold value must be specified so 'ND' on its own is not permissible. In the absence of known detection limits, a sensible value must be substituted.  This could be the lowest measured value for the solute in the dataset.   
+The concentration of the constituent is entered here. Non-detect values should be entered as either '<X' or 'ND<X', where 'X' is the detection limit specified by the laboratory. For example, if the detection limit is 100ug/l then either '<100' or 'ND<100' is acceptable. The non-detect threshold value must be specified so 'ND' on its own is not permissible. In the absence of known detection limits, a sensible value must be substituted.  This could be the lowest measured value for the solute in the dataset.   
 
   + **Groundwater** 
 level data is entered as an elevation above a common datum, such as metres or feet above sea level or some other common reference height. All groundwater measurement entries should have the same units, such as metres or feet, and the 'Constituent' field should be set to 'GW'. In the presence of NAPL, please ensure that the groundwater level has been corrected for NAPL density.
@@ -39,7 +39,7 @@ level data is entered as an elevation above a common datum, such as metres or fe
 have the same units, e.g. feet or metres and that the Constituent field is set to 'NAPL'. 
 If no NAPL is present, do not add a NAPL entry with zero thickness; simply omit from the table. Where NAPL is recorded in soil borings that do not reach the water table the NAPL thickness should be entered as zero.  Well location markers for soil borings or wells where NAPL has been recorded are highlighted in red.
 
-* **Units**:  Solute concentration data can either be `mg/l` or $\mu$`g/l`. For groundwater elevation and NAPL thickness data please set to one of 'mm', 'cm', 'metres', 'inches', 'feet' or 'level'. Units must be specified for each entry. All 
+* **Units**:  Solute concentration data can either be 'mg/l' or 'ug/l'. For groundwater elevation and NAPL thickness data please set to one of 'mm', 'cm', 'metres', 'inches', 'feet' or 'level'. Units must be specified for each entry. All 
 entered groundwater elevation measurements must have the same units. Likewise for NAPL thickness.
 
 * **Flags**:  Four different flags are available to modify the way in which certain types of data are handled by the software. 

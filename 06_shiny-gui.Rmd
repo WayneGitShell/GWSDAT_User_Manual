@@ -257,11 +257,8 @@ The assumptions are similar to those presented in the paper by Ricker (2008).
 
 
 * **Plume Mass, Area \& Conc**:
-
-This function attempts to calculate, for each time slice, the plume metrics of mass, area and average concentration as described in Appendix \@ref(AppendixPlumeDiagnostics). A time series plot of these quanities, for each time slice where a closed delineated plume can be formed, is displayed, see example in Figure \ref{fig:GWSDATPlumeStats}. The user can also select to export the complete time series of plume diagnostics data to a Microsoft Excel csv file. The *Plume Threshold* value (in ug/l), for the currently selected solute, can be adjusted from the numeric input control located at the bottom of this display. The individual *Plume Threshold* values for the complete set of solutes can be set in the *Options* menu, see Section \@ref(GWSDATEditOptions). 
-Note: Plume metrics are calculated based on the units of length entered in the CoordUnits field in the Well Coordinates table (Section \ref{WellCoordinatesTable}). If no units are entered then relative changes in plume parameters are plotted in dimensionless units. Note also that plume mass is calculated per unit of plume depth (e.g. kg/m in Figure \ref{fig:GWSDATPlumeStats}). To estimate total plume mass the user must multiply this value by the estimated plume thickness (using same units as those entered in the CoordUnits field). Additional information on how plume parameters are calculated can be found in Appendix \ref{AppendixPlumeDiagnostics}. 
-
-
+This function attempts to calculate, for each time slice, the plume metrics of mass, area and average concentration as described in Appendix \@ref(AppendixPlumeDiagnostics). A time series plot of these quantities, for each time slice where a closed delineated plume can be formed, is displayed, see example in Figure \ref{fig:GWSDATPlumeStats}. The user can also select to export the complete time series of plume diagnostics data to a Microsoft Excel csv file. The *Plume Threshold* value (in ug/l), for the currently selected solute, can be adjusted from the numeric input control located at the bottom of this display. The individual *Plume Threshold* values for the complete set of solutes can be set in the *Options* menu, see Section \@ref(GWSDATEditOptions). 
+Note: Plume metrics are calculated based on the units of length entered in the CoordUnits field in the Well Coordinates table (Section \ref{WellCoordinatesTable}). If no units are entered then relative changes in plume parameters are plotted in dimensionless units. Note also that plume mass is calculated per unit of plume depth (e.g. kg/m in Figure \ref{fig:GWSDATPlumeStats}). To estimate total plume mass the user must multiply this value by the estimated plume thickness (using same units as those entered in the CoordUnits field). By default the effective (interconnected) porosity of the subsurface is assumed to be 25%. See Section \@ref(GWSDATEditOptions) for details on how to modify this value. Additional information on how plume parameters are calculated can be found in Appendix \ref{AppendixPlumeDiagnostics}. 
 
 
 ```{r, fig.cap = "Time series of estimated Plume Mass, Area and Average concentration.", label="GWSDATPlumeStats",out.width = '100%', echo = FALSE}
@@ -480,16 +477,17 @@ If using the Excel Add-in data input interface then the *Restore Session* option
 
 ## Options {#GWSDATEditOptions}
 
-This selection, located under the 'More' tab, allows the user to save and download the current analysis session to a '.rds' file format. 
+This selection, located under the 'More' tab, allows the user to specify the following settings: 
 
 
 * **Concentration Thresholds**: Edit and set concentration threshold values in ug/l for each solute. This is used for colour coding in the Trends and Thresholds visualisation, see Section \@ref(TRendTHreshMat). 
 
-* **Plume Diagnostic**: 
+* **Plume Diagnostic Settings**: Edit and set plume concentration threshold values in ug/l for each solute. This is used for plume diagnostics, see Section \@ref(GWSDATPlumeDiagnostics). Also set the ground porosity to a value ranging from 0-100% (default=25%). See Section \@ref(GWSDATEditOptions) for details on how this is used. 
+
 
 * **Image Export**: Allows the user to change various image export resolution settings, including *jpeg \% quality* and pixel dimensions. 
 
-* **Model Settings**:
+* **Model Settings**: This option controls the resolution of the spatiotemporal solute concentration smoother (see Appendix \@ref(SSCS)). In an identical fashion to the Excel Add-in interface (Section \@ref(ExcelAddinMenuDataProcessingOptions)) the user can select between either a default resolution or a higher resolution model fit. In most instances there will be only small differences in the modelling results between the two settings. However, in some rare circumstances with complex data sets, it may well be necessary to use the higher resolution setting.  A default resolution model corresponds to a model *Number of segments*=6 and a higher resolution model corresponds to 8. The user can select up to a value of 12. Please note for each unit increase *Number of segments* the model will take 3-4 times longer to fit.
 
 
 ## Reporting

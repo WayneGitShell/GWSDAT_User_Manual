@@ -112,7 +112,7 @@ The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the ana
 
 A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data.  Use the slider at the foot of the page to explore how the estimates of Benzene concentration change across the month of October.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again.
 
-### Settings 
+<!-- ### Settings {-#GWSDATSpatialPlotSettings} -->
 
 The *Settings* tab located to the left hand side of the spatial plot gives control over many aspects of the display:
 
@@ -180,8 +180,8 @@ include_graphics("figures/spatial_plot2.png")
 
   + **Overlay Shapefiles**: This controls whether to overlay a site plan.
 
-  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the spatiotemporal solute concentration smoother (see Figure \@ref(fig:GWSDATSpatialPlot)). The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. The plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
-Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified,  see Section \@ref(WellCoordinatesTable). More details about plume diagnostics can be found in Section \@ref(GWSDATPlumeDiagnostics) and Appendix \@ref(AppendixPlumeDiagnostics).
+  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the spatiotemporal solute concentration smoother (see example in Figure \@ref(fig:GWSDATSpatialPlot2)). The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. If the plume boundary lies completely within the area covered by the spatiotemporal solute concentration smoother (i.e. forms a closed loop) then the plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
+Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified, see Section \@ref(WellCoordinatesTable). More details about plume diagnostics can be found in Section \@ref(GWSDATPlumeDiagnostics) and Appendix \@ref(AppendixPlumeDiagnostics).
 
 
 * **Groundwater Flows**: The blue arrows in Figure \ref{fig:GWSDATSpatialPlot2} display the estimated direction and (relative) hydraulic gradient of groundwater flow at monitoring points across the site. This is calculated from the combination of well coordinates and recorded groundwater elevations for this particular model output interval (see Appendix \@ref(GWCalc) for more details). This radiogroup allows the user to choose either 'not to display groundwater arrows' or 'direction only arrows' or 'both direction and relative strength arrows' (default).
@@ -222,13 +222,135 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 }
 \end{center}
 
-*Output formats + PPT* 
+Wayne: *Output formats + PPT* 
 *movie*
+
+
+
+
+
+
+
 
 
 ## Plume Diagnostics {#GWSDATPlumeDiagnostics}
 
-## Well Redundancy {#WellRedundancy}
+As described in the previous section, clicking the *Plume Diagnostic* checkbox automatically delineates a plume concentration boundary and displays the plume diagnostic quantities underneath the spatial plot, see example in Figure \@ref(fig:GWSDATSpatialPlot2). The *Plume Mass, Area \& Conc.* and *Estimate Boundary* tabs located to the right of the *Spatial Image* tab, see Figure \@ref(fig:GWSDATSpatialPlot), provide options for further evaluating plume stability. 
+
+
+\definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{MyGray}{
+\parbox{450pt}{{\fontfamily{phv}\selectfont 
+Note: The plume diagnostics functions provide insight into relative changes in plume mass, area and average concentration for a given site and monitoring well network. Plume mass estimates are provided in units of kg/m or kg/ft to reflect this uncertainty. Absolute values of plume mass cannot be calculated because the model does not define the vertical concentration distribution inside the plume. The assumptions made in plume mass estimation are that:
+\begin{itemize}
+\item  Vertical variation in plume concentration is averaged across monitoring well screen intervals.
+\item  The monitoring well network samples the full depth and extent of the plume and is also representative of concentration variation across the site.
+\end{itemize}
+
+The assumptions are similar to those presented in the paper by Ricker (2008).
+}
+}
+}
+\end{center}
+
+
+* **Plume Mass, Area \& Conc**:
+
+This function attempts to calculate, for each time slice, the plume metrics of mass, area and average concentration as described in Appendix \@ref(AppendixPlumeDiagnostics). A time series plot of these quanities, for each time slice where a closed delineated plume can be formed, is displayed, see example in Figure \ref{fig:GWSDATPlumeStats}. The user can also select to export the complete time series of plume diagnostics data to a Microsoft Excel csv file. The *Plume Threshold* value (in ug/l), for the currently selected solute, can be adjusted from the numeric input control located at the bottom of this display. The individual *Plume Threshold* values for the complete set of solutes can be set in the *Options* menu, see Section \@ref(GWSDATEditOptions). 
+Note: Plume metrics are calculated based on the units of length entered in the CoordUnits field in the Well Coordinates table (Section \ref{WellCoordinatesTable}). If no units are entered then relative changes in plume parameters are plotted in dimensionless units. Note also that plume mass is calculated per unit of plume depth (e.g. kg/m in Figure \ref{fig:GWSDATPlumeStats}). To estimate total plume mass the user must multiply this value by the estimated plume thickness (using same units as those entered in the CoordUnits field). Additional information on how plume parameters are calculated can be found in Appendix \ref{AppendixPlumeDiagnostics}. 
+
+
+
+
+```{r, fig.cap = "Time series of estimated Plume Mass, Area and Average concentration.", label="GWSDATPlumeStats",out.width = '100%', echo = FALSE}
+include_graphics("figures/plume_stats.png")
+```
+
+* **Estimate (Plume) Boundary**:
+This function provides a graphic to assist the user in selecting an appropriate solute concentration value that will yield a closed plume, which is an essential requirement for the estimation of plume metrics (i.e. mass, area and average concentration). The plume boundary contour is determined to be closed when it does not extend outside the area bounded by monitoring data. The function works by iterating through each time step of the spatiotemporal model and plotting minimum and maximum solute concentrations at the edge of the area bounded by the monitoring data (see Figure \ref{fig:EstimatePlumeBoundary}). The grey shaded area between the minimum and maximum lines defines the region where plume metrics can be calculated. The user-defined value of the plume threshold concentration value is displayed as a horizontal red dashed line. The user should select a solute concentration value that is just above the minimum line, for the time period within which calculation of plume parameter is required. It is clear from Figure \ref{fig:EstimatePlumeBoundary} that a value of 10 ug/l works well in this example. The selection of a higher solute concentration value within the grey area, while still producing a closed plume, would exclude part of the plume from the plume mass/ area analysis. The selection of a lower solute concentration value (e.g. 2 ug/l) would, in this example, greatly reduce the time period over which the plume was closed.
+
+
+```{r, fig.cap = "Example Estimate Plume Boundary plot. The grey shaded area defines a region where plume metrics (mass, area, average concentration) can be estimated", label="EstimatePlumeBoundary",out.width = '100%', echo = FALSE}
+include_graphics("figures/estimate_plume_boundary.png")
+```
+
+
+
+
+
+
+
+<!-- \textbf{Edit Plume Thresholds:}  -->
+<!-- This opens a data editor where the user can manually change the plume boundary  -->
+<!-- threshold concentration limits (in ug/l) for the different solutes. There is no need to -->
+<!-- save the changes, simply close down the data editor to automatically update the values. -->
+
+<!--  \textbf{Set Ground Porosity:}  -->
+
+<!-- This opens a data editor panel where the user can enter the effective (interconnected) porosity of the subsurface (default=0.25). This value is used in the calculation of plume mass  (see Appendix \ref{AppendixPlumeDiagnostics}). -->
+
+<!-- Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified,  see Section \ref{WellCoordinatesTable}. -->
+<!-- The user can select to automatically delineate a plume based on a user-defined concentration threshold. This %functionality, which can also be accessed via the Plume Diagnostics menu (Section \ref{SpatialPlotOptions}), allows the user to evaluate plume stability based on changes in the plume area, centre of mass and plume mass through time. The plume diagnostics %analysis is performed on whichever solute is selected in the solute listbox (see Section \ref{CCGFP} and Figure \ref{fig:VisOptions}).  -->
+<!-- In GWSDAT v2.2 the user can select to automatically delineate a plume based on a user-defined concentration threshold. This functionality, which is accessed via the Plume Diagnostics menu (top right in Figure \ref{fig:VisOptions}), allows the user to evaluate plume stability based on changes in the plume area, centre of mass and plume mass through time. The plume diagnostics analysis is performed on whichever solute is selected in the solute listbox (see Section \ref{CCGFP} and Figure \ref{fig:GWSDAT GUI}). -->
+<!-- **Note**: Before using the plume diagnostics functions the user must first ensure that the vertical extent of the plume is adequately delineated by the site monitoring -->
+<!-- %Plume diagnostics can only be calculated if the delineated plume is closed (i.e. forms a loop) and no part protrudes over the boundary of the spatiotemporal solute concentration smoother. -->
+<!-- %This function provides a graphic to assist the user in selecting the most appropriate plume concentration threshold value which will maximise the coverage of plume diagnostics for the complete site history. -->
+<!-- %The function works by iterating through each time step and plotting the minimum and maximum solute concentration value from the spatiotemporal solute concentration smoother (see Figure %\ref{fig:EstimatePlumeBoundary}). -->
+<!-- %Obviously, if the boundary threshold value is above the maximum or below the minimum then it will not be possible to calculate plume diagnostics. -->
+<!-- %Thus, the area between the minimum and maximum defines a feasible region (grey shaded area in Figure \ref{fig:EstimatePlumeBoundary}) where plume diagnostics can (potentially) be calculated. -->
+<!-- %The current value of plume threshold concentration value is displayed as a horizontal red dashed line. The user should select the lowest possible value whilst still remaining in the grey region such as to maximise the %coverage of plume analytics through time. -->
+<!-- %It is clear from Figure \ref{fig:EstimatePlumeBoundary} that a value of 5ug/l works well in this example. -->
+
+<!-- % Figure \ref{fig:EstimatePlumeBoundary} is an example of such a plot. -->
+<!-- %If the plume concentration threshold value is set too high or low then it will not be possible to calculate plume diagnostics. -->
+<!-- %Hence, it is necessary to tune the plume concentration threshold value for the problem in hand. -->
+
+
+<!-- %This selection produces a series of spatial plots (similar to a Contour Animation, see Section \ref{GWAnis}) with plume diagnostics from the first to the last model output interval.  -->
+<!-- %In addition, a time series plot of the plume mass, plume area and average plume concentration (see Figure \ref{fig:PlumeStats}) is generated.  -->
+<!-- %If desired the complete time series of plume diagnostics can be outputted to a Microsoft Excel csv file.  -->
+<!-- %\textbf{Note: the plume mass is calculated on a mass per unit aquifer depth basis (e.g. kg/m in Figure \ref{fig:PlumeStats}). To calculate the total plume mass the user must multiply this value by the aquifer depth.} -->
+
+<!-- This function produces a series of spatial plots incorporating plume diagnostics data from the first to the last spatiotemporal model output interval. In addition, a time series plot of plume mass, plume area and average plume concentration (see Figure \ref{fig:PlumeStats})  is generated. The user can also select to export the complete time series of plume diagnostics data to a Microsoft Excel csv file.  -->
+
+<!-- #\item \textbf{Plume Animation -$>$ PPT:} -->
+<!-- #This selection exports a series of spatial plots incorporating the plume diagnostics data directly to Microsoft PowerPoint. -->
+<!-- Fo produces a series of spatial plots incorporating plume diagnostics data from the first to the last spatiotemporal model output interval. In addition, a time series plot of plume mass, plume area and average plume concentration (see Figure \ref{fig:GWSDATPlumeStats})  is generated. The user can also select to export the complete time series of plume diagnostics data to a Microsoft Excel csv file.  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Well Redundancy Analysis {#WellRedundancy}
+
+The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left of Figure \@ref(GWSDATSpatialPlot)), is a feature newly introduced in GWSDAT version 3.1. It allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the impact. The primary intent of this tool is to understand which wells may have the most influence and also provide supporting evidence that the conclusions of the analysis would not be significantly different with the omission of some certain wells. 
+
+```{r, fig.cap = "Well Redundancy Analysis.", label="GWSDATWellRedundancyAnalysis",out.width = '100%', echo = FALSE}
+include_graphics("figures/well_redundancy1.png")
+```
+
+```{r, fig.cap = "Well Redundancy Analysis.", label="GWSDATWellRedundancyAnalysis2",out.width = '100%', echo = FALSE}
+include_graphics("figures/well_redundancy2.png")
+```
+
+
+
+
 
 ## Time Series {#SectionWellTrendPlot}
 
@@ -236,9 +358,9 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 include_graphics("figures/time-series-plot.png")
 ```
 
-The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example dataset. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section \@ref(NAPLHandlingMethod). Red points represent the NAPL substitued solute concentration values.
+The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example data set. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section \@ref(NAPLHandlingMethod). Red points represent the NAPL substituted solute concentration values.
 
-To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Inidictor plot - see Section \@ref(TRendTHreshMat). 
+To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Indicator plot - see Section \@ref(TRendTHreshMat). 
 
 The *Time Series Plot Options* checkbox control includes: 
 
@@ -294,7 +416,7 @@ The *Trends and Thresholds* plot (a.k.a. Traffic Light Plot) is a summary of the
 
 * **Display Table**: This drop-down listbox allows the user to select from the following options: 
 
-  + **Trend**: This reports the concentration trend for each solute in every well within the selected model output interval. The *Trends Thresholds* plot looks at the instantaneous gradient of the trend smoother (solid blue line) where it crosses the end of the current model output interval in the \emph{Time Series} Plot,  see Figure \@ref(fig:GWSDATTimeSeriesPlot). The cells of the *Trends Thresholds* plot are coloured to indicate the strength and direction of the current trend. White cells indicate a generally flat trend where the solute concentration is estimated to no more than double or half in the next two years. Light red and light green indicate that solute concentrations will no more than double or  half in the next year, respectively. Dark red and dark green indicate stronger upward and downward trends, respectively. In the event that the trend cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the corresponding cell is coloured grey. Blue cells represent non-detect data. 
+  + **Trend**: This reports the concentration trend for each solute in every well within the selected model output interval. The *Trends Thresholds* plot looks at the instantaneous gradient of the trend smoother (solid blue line) where it crosses the end of the current model output interval in the *Time Series* Plot,  see Figure \@ref(fig:GWSDATTimeSeriesPlot). The cells of the *Trends Thresholds* plot are coloured to indicate the strength and direction of the current trend. White cells indicate a generally flat trend where the solute concentration is estimated to no more than double or half in the next two years. Light red and light green indicate that solute concentrations will no more than double or  half in the next year, respectively. Dark red and dark green indicate stronger upward and downward trends, respectively. In the event that the trend cannot be calculated, e.g. no data or our confidence in the trend smoother estimate is poor then the corresponding cell is coloured grey. Blue cells represent non-detect data. 
 As an example consider Figures \@ref(fig:GWSDATTimeSeriesPlot) and \ref{fig:GWSDATTrendsThresholdsPlot}. It can be seen that the  trend at the end of the current model output interval (01-Feb-2006) for 'Benzene' at monitoring well 'MW-01' is decreasing. The corresponding cell in Figure \@ref(fig:GWSDATTrendsThresholdsPlot) (top left) has been coloured light green to illustrate this. 
 
   + **Threshold - Absolute**: This assesses if the **observed** solute concentration values for all well and solute combinations are below a user-specified threshold value (default value of 500 ug/l) within any given model output interval. The threshold value is displayed as a horizontal dashed red line  in the *Time Series* Plot, see Figure \@ref(fig:GWSDATTimeSeriesPlot) when the *Display Threshold* checkbox has been selected, see Section \@ref(SectionWellTrendPlot). The 'Threshold - Absolute' option compares the observed concentration values with the threshold value. If any observed concentration values within a model output interval are above the threshold value then the corresponding cell is coloured dark red. If the concentration values within a model output interval are all below the threshold value then the corresponding cell is coloured dark green. In the event that no data exists then the cell is coloured grey. If the current concentration value is classified as non-detect, then the corresponding cell is coloured blue. See Section \@ref(GWSDATEditOptions) for details on how to edit the threshold values for each solute. 

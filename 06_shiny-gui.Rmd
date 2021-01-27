@@ -1,17 +1,21 @@
 
 # GWSDAT Graphical User Interface (GUI) {#GWSDATGUI}
 
-The GWSDAT user interface is a web-based graphical user interface (GUI) which the user can interact with in many ways. The following sections will explain the interface in more detail.
+The GWSDAT user interface is a web-based graphical user interface (GUI) using the R Shiny framework (`www.shiny.rstudio.com`) which the user can interact with in many ways. The following sections will explain the interface in more detail.
 
 
 ## Data Input via Graphical User Interface {#DataInputviaGUI}
 
+The functionality to input data directly via the GUI is a feature first introduced in GWSDAT version 3.0. The user is referred to Section \@ref(DataInput) for full details on the format of the input data. 
+
 GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window.
 
 
-```{r echo = FALSE}
+```{r, fig.cap = "GWSDAT Data Manager.", label="GWSDATDataManager",out.width = '100%',echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
 ```
+
+
 
 
 
@@ -335,15 +339,25 @@ include_graphics("figures/estimate_plume_boundary.png")
 
 ## Well Redundancy Analysis {#WellRedundancy}
 
-The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left of Figure \@ref(GWSDATSpatialPlot)), is a feature newly introduced in GWSDAT version 3.1. It allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the impact. The primary intent of this tool is to understand which wells may have the most influence and also provide supporting evidence that the conclusions of the analysis would not be significantly different with the omission of some certain wells. 
 
-```{r, fig.cap = "Well Redundancy Analysis.", label="GWSDATWellRedundancyAnalysis",out.width = '100%', echo = FALSE}
+```{r, fig.cap = "Well redundancy analysis for Spatial plot using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis",out.width = '100%', echo = FALSE}
 include_graphics("figures/well_redundancy1.png")
 ```
 
-```{r, fig.cap = "Well Redundancy Analysis.", label="GWSDATWellRedundancyAnalysis2",out.width = '100%', echo = FALSE}
+The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left of Figure \@ref(fig:GWSDATSpatialPlot)), is a feature  introduced in GWSDAT version 3.1. It allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the resultant impact. The primary intent of this tool is to understand which wells may have the most influence and also provide supporting evidence that the conclusions of the analysis would not be significantly different with the omission of some certain wells. Figure \@ref(fig:GWSDATWellRedundancyAnalysis) displays an example Well Redundancy Analysis for the Spatial plot.  The listbox *Select wells to be omitted from analysis* allows the user to select any combination of wells from the complete list of wells. 
+
+
+```{r, fig.cap = "Well redundancy analysis on estimated plume metrics using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis2",out.width = '100%', echo = FALSE}
 include_graphics("figures/well_redundancy2.png")
 ```
+
+
+**Note**: Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired rather than automatically updating the model once an individual change has been detected in the listbox. 
+
+The *Use reduced set of wells?* checkbox enables the user to toggle between the full model and the model using the reduced well data set. The updated predictions of spatiotemporal concentration smoother are plotted and the omitted wells 'greyed' out. The groundwater elevation and flow strength and direction estimates are also updated to the reflect the omission of selected wells. A  title is added to the top left of the Spatial plot to notify users that *Well Redundancy Analysis* has been activated. 
+
+The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlumeDiagnostics) are calculated for both the full and reduced well data set spatiotemporal solute concentration smoother models. Both sets of estimates for plume mass, area and average concentration are overlaid on the same plot, as shown in Figure \@ref(fig:GWSDATWellRedundancyAnalysis2). This allows for a direct side by side comparison. The *Estimate (Plume) Boundary* functionality is also updated to reflect the reduced well data set and a title added to remind the user of this fact. 
+
 
 
 

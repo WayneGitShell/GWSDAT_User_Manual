@@ -84,7 +84,7 @@ fig.cap: Curve based on 20 nodes in the basis, without penalisation (left), with
 Prior to fitting the regression coefficients $\boldsymbol \alpha$ the observed solute concentration values are natural log transformed. This avoids the possibility of predicting negative concentration values and also helps the model cope with data which often spans several orders of magnitude. Furthermore, the uncertainty in the measured concentrations can reasonably be expected to be proportional to the magnitude of the value, e.g. the uncertainty around a measured value of 10ug/l would be expected to be very much less than the uncertainty surrounding a measured value of 10000ug/l. The natural log transformation stabilises the variance.
 
 The choice of the penalisation parameter $\lambda$ is a crucial matter as a
-too small value would result in 'overfitting' (tracking the noise) whereas an extremely large value would lead to 'underfitting' (producing a flat estimated function as a result of loss of signal). Several criterias have been proposed, such
+too small value would result in 'overfitting' (tracking the noise) whereas an extremely large value would lead to 'underfitting' (producing a flat estimated function as a result of loss of signal). Several criteria have been proposed, such
 as those described by @Hurvich and @WoodB, but we tackled the issue by a *Bayesian* approach; see @Denison, @Raftery and @WoodP.
 
 Under this paradigm, $\lambda$ is not considered to be a fixed unknown quantity to be estimated but rather a random variable whose value may vary within a given range. This behaviour is described in probabilistic terms which assign a measure of confidence or *probability* to each of the values $\lambda$ may take on.
@@ -119,7 +119,7 @@ This integral (and all subsequent integrals in this section) is calculated numer
 A Delaunay triangulation is performed using the R package 'deldir', @deldir, on the spatial mesh grid of predictions within the plume boundary, $D$.  
 The integral is numerically approximated by summing up the individual volumes under each prism formed. 
 
-Plume mass is calculated from the scaled product of plume area and average concentration. The scaling factor encompasses the user specified value of ground porosity (see [`Plume Diagnostics`](#PlumeDiagnostics)) and appropriate scaling values for mapping together the volumetric concentration units (e.g. ug/l) with the length scale (see \textbf{CoordUnits} in [`Well Coordinates Table`](#WellCoordsTabExplan)) of the Well coordinates (e.g. metres or feet). 
+Plume mass is calculated from the scaled product of plume area and average concentration. The scaling factor encompasses the user specified value of ground porosity (see [`Plume Diagnostics`](#GWSDATPlumeDiagnostics)) and appropriate scaling values for mapping together the volumetric concentration units (e.g. ug/l) with the length scale (see \textbf{CoordUnits} in [`Well Coordinates Table`](#WellCoordinatesTable)) of the Well coordinates (e.g. metres or feet). 
 The plume mass is calculated on a mass per unit aquifer depth basis (e.g. kg/m). To calculate the total plume mass the user must multiply this value by the aquifer depth.
 
 

@@ -7,7 +7,7 @@
 include_graphics("figures/GWSDAT_Add-in_Menu.png")
 ```
 
-Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for details on how to install the GWSDAT Excel Add-in. The menu options, as shown in Figure \ref{fig:GWSDATExcelAddinmenu}, are as follows:
+Please see Section \@ref(ExcelDataEntryInterface) for details on how to install the GWSDAT Excel Add-in. The menu options, as shown in Figure \ref{fig:GWSDATExcelAddinmenu}, are as follows:
 
 * **New GWSDAT Sheet**: Inserts a blank GWSDAT data input template worksheet into the active Excel workbook. 
 
@@ -21,11 +21,11 @@ Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for 
 
 * **Open Example -$>$ Comprehensive Example**: Inserts a more detailed example GWSDAT worksheet data set which includes a site plan, NAPL thickness data, 'Electron Acceptor' flagged solutes and multiple aquifers into the active Excel workbook.
 
-* **User Manual**: Opens the online GWSDAT user manual via user's web browser. You must be connected to the internet for this to work. 
+* **User Manual**: Opens the online GWSDAT user manual via user's web browser. You need be connected to the internet for this to work. 
 
 * **About GWSDAT**: Displays version information and Terms & Conditions for GWSDAT.
 
-* **Update GWSDAT**: Check if a newer version of the underlying GWSDAT R package exists at `https://cran.r-project.org/package=GWSDAT`. If a more recent version is detetced then it will be automatically installed. You must be connected to the internet for this to work.  
+* **Update GWSDAT**: Check if a newer version of the underlying GWSDAT R package exists at `https://cran.r-project.org/package=GWSDAT`. If a more recent version is detected then it will be automatically installed. You must be connected to the internet for this to work.  
 
 
 ## Add-in Data Processing Options {#ExcelAddinMenuDataProcessingOptions}
@@ -49,7 +49,7 @@ monthly interval so that a larger dataset is available for the plotting of eleva
 
   Note that both the monthly and quarterly model output options only aggregate the dataset used to plot groundwater elevation contours. The solute concentration dataset is not aggregated in time because the spatiotemporal model from which concentration contours are generated does not require this, i.e. the underlying spatiotemporal model used to generate the solute concentration smoother plots does not vary with the data aggregation interval.
 
-  Note that if no monitoring data is present within a particular monthly or quarterly interval, then GWSDAT will not generate a groundwater elevation contour or spatio-temporal solute concentration smoother plot. This is to avoid producing potentially misleading spatial plots far away in time from any actual data.
+  Note that if no monitoring data is present within a particular monthly or quarterly interval, then GWSDAT will not generate a groundwater elevation contour or spatiotemporal solute concentration smoother plot. This is to avoid producing potentially misleading spatial plots far away in time from any actual data.
  
 * **GW Level Aggregation Method**: In the event that there are multiple groundwater elevation measurements from the same well within a given output interval, the user can select how to use this data. The user can select to calculate either the 'Mean', 'Median',
 'Min', or 'Max' groundwater elevation. Again, this choice does not affect the spatiotemporal model used to generate the solute concentration smoother plots.
@@ -60,5 +60,5 @@ monthly interval so that a larger dataset is available for the plotting of eleva
 
 
 ## NAPL Handling Method {#NAPLHandlingMethod}
-An additional pop-up box will be displayed after the GWSDAT options box if the input contains NAPL data (i.e. 'NAPL' is entered in the constituent field). Selecting 'Yes' to the question 'Do you wish to substitute NAPL values with maximum observed solute concentrations?' forces GWSDAT to recognise NAPL data in the input dataset as indicative of high dissolved solute concentrations. This option has been added to provide the user with a more realistic picture of the area of impacted groundwater in the event that NAPL in wells prevents direct measurement of CoC concentrations. *Before using this function the user should, however, be confident that dissolved solutes are derived from the observed NAPL and not from a different source*. Solutes flagged as 'Electron Acceptors' (see Section \@ref(HistoricalMonitoringDataInputTable)) are omitted from the NAPL substitution process.
+An additional pop-up box will be displayed after the GWSDAT options box if the input contains NAPL data (i.e. 'NAPL' is entered in the constituent field). Selecting 'Yes' to the question 'Do you wish to substitute NAPL values with maximum observed solute concentrations?' forces GWSDAT to recognise NAPL data in the input dataset as indicative of high dissolved solute concentrations. This option has been added to provide the user with a more realistic picture of the area of impacted groundwater in the event that NAPL in wells prevents direct measurement of solute concentrations. *Before using this function the user should, however, be confident that dissolved solutes are derived from the observed NAPL and not from a different source*. Solutes flagged as 'Electron Acceptors' (see Section \@ref(HistoricalMonitoringDataInputTable)) are omitted from the NAPL substitution process.
 

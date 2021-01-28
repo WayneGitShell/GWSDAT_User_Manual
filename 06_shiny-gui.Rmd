@@ -7,12 +7,13 @@ The GWSDAT user interface is a web-based graphical user interface (GUI) using th
 
 ## Data Input via Graphical User Interface {#DataInputviaGUI}
 
-If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (see Section \@ref(AccessingGWSDAT)) then the input data has already been specified and the GUI goes straight into *Analyse* mode and is presented as displayed in Figure \@ref(fig:GWSDATSpatialPlot). However, if the user entry point is via the online version or the R package with no input data specified then a menu is displayed on the left hand side, see Figure \@ref(fig:GWSDATDataManager), initially engaged on the *Manage Data* option. The *Basic Example* and *Comprehensive Example* datasets are all already pre-loaded and are identical to the data sets included in the Excel Add-in interface, see Section \@ref(DataInputExcelAddinMenu). The Data Manager options allows the user to input data sets in a variety of different formats: 
+If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (Section \@ref(DataInputExcelAddin)) then the input data has already been specified and the GUI goes straight into *Analyse* mode and is presented as displayed in Figure \@ref(fig:GWSDATSpatialPlot). However, if the user entry point is via the online version or the R package (Section \@ref(AccessingGWSDAT)) with no input data specified then a menu is displayed on the left hand side, see Figure \@ref(fig:GWSDATDataManager), initially engaged on the *Manage Data* option. The *Basic Example* and *Comprehensive Example* datasets are all already pre-loaded and are identical to the data sets included in the Excel Add-in interface, see Section \@ref(DataInputExcelAddinMenu). 
 
 ```{r, fig.cap = "GWSDAT Data Manager.", label="GWSDATDataManager",out.width = '100%',echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
 ```
 
+The Data Manager options allows the user to input data sets in a variety of different formats: 
 
 * **Restore Examples**: This allows the two in-built examples to be restored at any point, should this be needed.
 
@@ -24,7 +25,7 @@ If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (
 
 * **Import Excel File**: This options allows the user to input a GWSDAT Excel Add-in formatted input dataset, see Figure \@ref(fig:GWSDATExcelAddinmenu), together with GIS Shapefiles.  Use the *Browse* button to select the Excel file. If multiple sheets are detected a pop-up menu will prompt the user to select the appropriate sheet. Example input files can be found at `https://github.com/WayneGitShell/GWSDAT/tree/master/inst/extdata`. Enter an appropriate name for the data set and click the *Import* button to add the data set to list of available data sets in the Data Manager. 
 
-Please note that data sets can also be specified when launching GWSDAT from the R Statistical Programming Language. See the ReadMe file at `https://github.com/WayneGitShell/GWSDAT` for details. The user is referred to Section \@ref(DataInput) for full details on the format of the input data. 
+Please note that data sets can also be specified when launching GWSDAT from the R Statistical Programming Language - see `https://github.com/WayneGitShell/GWSDAT` for details. The user is referred to Section \@ref(DataInput) for full details on the format of the input data. 
 
 **Note**: To select a data set for a GWSDAT analysis first select the *Analyse* option on the left hand menu located under the *Manage Data* option. 
 
@@ -117,14 +118,18 @@ Please note that data sets can also be specified when launching GWSDAT from the 
 
 ## Spatial plot {#SectionSpatialPlot}
 
+The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
+
+A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data.  Use the slider at the foot of the page to explore how the estimates of  concentration changes through time.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again. 
+
+* **Image format** provides a drop-down menu of the file type used when a spatial plot at a particular time point is created.  The available file types `png`, `jpg`, `pdf`, `ps` and `pptx`. 
+
+* **Generate PPT Animation** creates a downloads a sequence of plots which display concentration maps across the whole time course.  Paging through these slides provides a very simple but effective means of animation.
 
 ```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot",out.width = '100%', echo = FALSE}
 include_graphics("figures/analysis-1.png")
 ```
 
-The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
-
-A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data.  Use the slider at the foot of the page to explore how the estimates of Benzene concentration change across the month of October.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again.
 
 <!-- ### Settings {-#GWSDATSpatialPlotSettings} -->
 
@@ -522,7 +527,7 @@ In addition to providing visualisation of groundwater monitoring data, GWSDAT is
 
 * **Image format** provides a drop-down menu of the file type used when a spatial plot at a particular time point is created.  The available file types `png`, `jpg`, `pdf`, `ps` and `pptx`.
 
-* **Save Plot** creates and downloads a file in the specified format.
+
 
 * **Generate PPT Animation** creates a downloads a sequence of plots which display concentration maps across the whole time course.  Paging through these slides provides a very simple but effective means of animation.
 

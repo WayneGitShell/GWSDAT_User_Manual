@@ -12,12 +12,12 @@ There are only two input tables that must be completed, namely, the *Historical 
 
 ## Historical Monitoring Data Input Table {#HistoricalMonitoringDataInputTable}
 
-```{r, fig.cap = "Example Historical Monitoring Data.", label="EgHistMonitoringData"}
-include_graphics("figures/data-format-1.png")
-```
-
 Each row of this table corresponds to a unique combination of well, sampling date and solute type. Groundwater and NAPL (Non-Aqueous Phase Liquids) gauging data may also be entered in this table. Figure \ref{fig:EgHistMonitoringData} displays an example GWSDAT input data set for
 illustrative purposes. The columns (fields) in the *Historical Monitoring Data* input table are as follows: 
+
+```{r, fig.cap = "Example Historical Monitoring table", label="EgHistMonitoringData"}
+include_graphics("figures/data-format-1.png")
+```
 
 * **WellName**: the name or identifier of the well (or soil boring) from which the sample was collected. Well names must be consistent and unique. For example, 'MW-1' and 'MW1' will be treated as different wells.
 
@@ -52,11 +52,11 @@ Note, that it is only necessary to flag one data row in this way for all rows co
 
 ## Well Coordinates Table {#WellCoordinatesTable}
 
-```{r, fig.cap = "Example Well Coordinates Table.", label="EgWellCoordsTable", echo = FALSE}
+The *Well Coordinates* table, see Figure \@ref(fig:EgWellCoordsTable), is used to store the coordinates of groundwater monitoring wells or soil borings. For most of the purposes of GWSDAT modelling, it is only the relative distances between wells which are important. This means any arbitrary cartesian coordinate system can be used as long as well coordinate values have an aspect ratio very close to 1, i.e. a unit in the x-coordinate is the same distance as a unit in the y-coordinate. Hence, well coordinates can be measured directly from a map, or given in easting and northing, etc. 
+
+```{r, fig.cap = "Example Well Coordinates table.", label="EgWellCoordsTable", echo = FALSE}
 include_graphics("figures/data-format-2.png")
 ```
-
-The *Well Coordinates* table is used to store the coordinates of groundwater monitoring wells or soil borings. For most of the purposes of GWSDAT modelling, it is only the relative distances between wells which are important. This means any arbitrary cartesian coordinate system can be used as long as well coordinate values have an aspect ratio very close to 1, i.e. a unit in the x-coordinate is the same distance as a unit in the y-coordinate. Hence, well coordinates can be measured directly from a map, or given in easting and northing, etc. 
 
 
 * **WellName**: the name or identifier of the well or soil boring. Well names must be identical to those specified in the *Historical Monitoring Data* table. On a point of detail, it is better to name wells using the convention of 'MW-01' rather than 'MW1' so that plots in GWSDAT are correctly ordered. 
@@ -65,7 +65,7 @@ The *Well Coordinates* table is used to store the coordinates of groundwater mon
 
 * **YCoord**: the y-coordinate of the well.
 
-* **Aquifer**: The (optional) aquifer field allows the user to associate wells or soil borings with particular subsurface features (e.g. aquifers, sub-strata), in the event that data from these needs to be modelled separately. The user can enter the name (maximum of 8 characters) of the aquifer or sub-stratum, or select a letter A-G from the drop-down listbox. The aquifer field can also be used to partition the dataset from a large site, in the event that mutiple unrelated plumes are present or if wells are clustered with large gaps in between. On initiation of a GWSDAT analysis the user is asked to select an aquifer (subsurface feature) to analyse. **Note**: Plots generated using data associated with particular subsurface features have the feature name appended to the title, e.g. Shallow aquifer. If the user leaves the aquifer flag as blank, no such appending will occur. 
+* **Aquifer**: The (optional) aquifer field allows the user to associate wells or soil borings with particular subsurface features (e.g. aquifers, sub-strata), in the event that data from these needs to be modelled separately. The user can enter the name (maximum of 8 characters) of the aquifer or sub-stratum, or select a letter A-G from the drop-down listbox. The aquifer field can also be used to partition the dataset from a large site, in the event that multiple unrelated plumes are present or if wells are clustered with large gaps in between. On initiation of a GWSDAT analysis the user is asked to select an aquifer (subsurface feature) to analyse. **Note**: Plots generated using data associated with particular subsurface features have the feature name appended to the title, e.g. Shallow aquifer. If the user leaves the aquifer flag as blank, no such appending will occur. 
 
 * **CoordUnits**:
 Either leave this field blank or select 'metres' or 'feet'. The units specified in this field are used in the calculation of plume mass balance parameters (e.g. plume area and solute mass), for further details see Section \@ref(GWSDATPlumeDiagnostics) on plume diagnostics.
@@ -76,14 +76,16 @@ Either leave this field blank or select 'metres' or 'feet'. The units specified 
 
 A site plan can be superposed over plots of concentration distribution, NAPL
 thickness and groundwater elevation (see example in Figure \ref{fig:GWSDATSpatialPlot}). Site plans are imported
-into GWSDAT in the form of shapefiles (see `http://en.wikipedia.org/wiki/Shapefile` for more information). A shapefile is actually a collection of several files, typically created using ARC-GIS. See the section [`Converting a CAD drawing to a Shapefile`](#ConvShapRosie) for more details on how to generate a shapefile from a CAD drawing using ARC-GIS.
+into GWSDAT in the form of shapefiles (see `http://en.wikipedia.org/wiki/Shapefile` for more information). A shapefile is actually a collection of several files, typically created using ARC-GIS. See Section \@ref(ConvShapRosie) for more details on how to generate a shapefile from a CAD drawing using ARC-GIS.
 
-If using the GWSDAT Excel Add-in interface (Section \@ref(DataInputExcelAddinMenu)) then only the location of the main shapefile (file ending with a '.shp' extension) needs to be specified in the GIS Shapefile table.  The associated
+If using the GWSDAT Excel Add-in interface (Section \@ref(DataInputExcelAddinMenu)) then only the location of the main shapefile (file ending with a '.shp' extension) needs to be specified in the GIS Shapefile table, see Figure \@ref(fig:EgGISShapeFilesTable).  The associated
 data files (e.g. .dbf, .sbn, .sbx, .shx) will be picked up automatically,provided they are in the same folder (see example in Figure \ref{fig:GWSDATExcelAddinmenu}).It is possible to overlay multiple shapefiles up to a maximum of seven.
 
-Alternatively, if using the GWSDAT Graphical User Interface interface (Section \@ref(DataInputviaGUI)) to input data then all the associated Shapefiles (e.g. .shp, .dbf, .sbn, .sbx, .shx) need to be selected and uploaded. 
+Alternatively, if using the GWSDAT Graphical User Interface interface (Section \@ref(DataInputviaGUI)) to input data then all the associated shapefiles (e.g. .shp, .dbf, .sbn, .sbx, .shx) need to be selected and uploaded. 
 
-
+```{r, fig.cap = "Example GIS ShapeFiles table.", label="EgGISShapeFilesTable", echo = FALSE}
+include_graphics("figures/data-format-3.png")
+```
 
 <!-- A further possible component of the data is a site map in the form of a *shape file*.  This is optional but can be very useful in superimposing map information on spatial plots.  Examples will be given later in the manual. -->
 <!-- \fbox{The paragraphs below need to be updated.} -->

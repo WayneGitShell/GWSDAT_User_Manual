@@ -252,7 +252,7 @@ The next section details how to edit layers in ArcMap after their conversion to 
 
  #. Uncheck the CAD layer used to produce shapefile to remove image from view window.
  
- #.	Ensure exported Shapefile is selected and visible in view window.
+ #.	Ensure exported shapefile is selected and visible in view window.
  
  #.	Click 'Start Editing' on the 'Editor' toolbar above the map.
  

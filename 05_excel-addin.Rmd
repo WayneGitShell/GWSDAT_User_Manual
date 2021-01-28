@@ -11,7 +11,7 @@ Please see the section [`Excel Add-in Interface`](#ExcelDataEntryInterface) for 
 
 * **New GWSDAT Sheet**: Inserts a blank GWSDAT data input template worksheet into the active Excel workbook. 
 
-* **Insert Shapefile**: Interactively browse for a shapefile and add location to GIS Shapefiles table, see Section \@ref(GISShapeFiles) for more information.
+* **Insert Shapefile**: Interactively browse for a shapefile and add location to *GIS Shapefiles* table, see Section \@ref(GISShapeFiles) for more information.
 
 * **Analyse**: Begin GWSDAT analysis on the Excel active worksheet data.
 

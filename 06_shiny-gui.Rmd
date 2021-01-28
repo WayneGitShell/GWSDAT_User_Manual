@@ -9,7 +9,7 @@ The GWSDAT user interface is a web-based graphical user interface (GUI) using th
 
 If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (Section \@ref(DataInputExcelAddin)) then the input data has already been specified and the GUI goes straight into *Analyse* mode and is presented as displayed in Figure \@ref(fig:GWSDATSpatialPlot). However, if the user entry point is via the online version or the R package (Section \@ref(AccessingGWSDAT)) with no input data specified then a menu is displayed on the left hand side, see Figure \@ref(fig:GWSDATDataManager), initially engaged on the *Manage Data* option. The *Basic Example* and *Comprehensive Example* datasets are all already pre-loaded and are identical to the data sets included in the Excel Add-in interface, see Section \@ref(DataInputExcelAddinMenu). 
 
-```{r, fig.cap = "GWSDAT Data Manager.", label="GWSDATDataManager",out.width = '100%',echo = FALSE}
+```{r, fig.cap = "GWSDAT Data Manager.", label="GWSDATDataManager",out.width = '90%',echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
 ```
 
@@ -120,18 +120,12 @@ Please note that data sets can also be specified when launching GWSDAT from the 
 
 The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
 
-A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data.  Use the slider at the foot of the page to explore how the estimates of  concentration changes through time.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again. 
+A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective and efficient method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data, see @Mclean2019.  Use the slider at the foot of the page to explore how the estimates of concentration changes through time.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again. Select a file format (one of `png`, `jpg`, `pdf`, `ps`, `pptx` ,`tif`) from *Image format* and click the *Save plot* button to export individual spatial image plots. The *Generate PPT Animation* function exports the full series of spatial plots directly to Microsoft PowerPoint.
 
-* **Image format** provides a drop-down menu of the file type used when a spatial plot at a particular time point is created.  The available file types `png`, `jpg`, `pdf`, `ps` and `pptx`. 
-
-* **Generate PPT Animation** creates a downloads a sequence of plots which display concentration maps across the whole time course.  Paging through these slides provides a very simple but effective means of animation.
 
 ```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot",out.width = '100%', echo = FALSE}
 include_graphics("figures/analysis-1.png")
 ```
-
-
-<!-- ### Settings {-#GWSDATSpatialPlotSettings} -->
 
 The *Settings* tab located to the left hand side of the spatial plot gives control over many aspects of the display:
 
@@ -168,7 +162,7 @@ The location of wells which have recorded NAPL in any part of their monitoring h
 \begin{center}
 \setlength{\fboxrule}{1.5pt}
 \fcolorbox{blue}{gray!10}{
-\parbox{400pt}{{%\fontfamily{phv}\selectfont 
+\parbox{450pt}{{%\fontfamily{phv}\selectfont 
 \textbf{Hint:} In the presence of poor well location network design or limited data then it is recommended the user select 
 either the `Terrain-Circles' or `Topo-Circles' plot type. 
 %This alternative, displays colour coded circles 
@@ -178,11 +172,6 @@ either the `Terrain-Circles' or `Topo-Circles' plot type.
 }
 }
 \end{center}
-
-
-```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot2",out.width = '65%', echo = FALSE}
-include_graphics("figures/spatial_plot2.png")
-```
 
 
 
@@ -195,7 +184,7 @@ include_graphics("figures/spatial_plot2.png")
 
   + **Show Conc. Values**: This controls whether to display actual sampled concentration values immediately above the well locations. If the data is identified as a NAPL measurement the value will be displayed as 'NAPL' in a red font.
 
-  + **Show GW Contour**: To add contour lines of groundwater level data. This superposes isobars of smoothed groundwater elevation data on top of the solute concentration plot. This is achieved through a 2D extension of the local linear regerssion method described in Appendix \@ref(smregressCalc). 
+  + **Show GW Contour**: To add contour lines of groundwater level data. This superposes isobars of smoothed groundwater elevation data on top of the solute concentration plot. This is achieved through a 2D extension of the local linear regression method described in Appendix \@ref(smregressCalc). 
 
   + **Overlay Shapefiles**: This controls whether to overlay a site plan.
 
@@ -229,18 +218,22 @@ The converse of a small number of wells or poor well location network design
 (e.g. wells located in almost a straight line), or short monitoring history, 
 will lead to less reliable smoother predictions, particularly at the edges. 
 
-In summary, the `spatiotemporal solute concentration smoother' plot is provided to 
-help the user visualise the distribution of solutes and as an aid to risk-based decision-making.
-However, for the reasons stated above, the predictions should be interpreted with care and 
-a more detailed evaluation may be necessary to understand observed trends and outliers. 
+%In summary, the `spatiotemporal solute concentration smoother' plot is provided to
+%help the user visualise the distribution of solutes and as an aid to risk-based decision-making.
+%However, for the reasons stated above, the predictions should be interpreted with care and
+%a more detailed evaluation may be necessary to understand observed trends and outliers.
 
-Further methods for assessing the goodness of fit of the spatiotemporal smoother can be found in Section \ref{SpatiotemporalPredictions}.
-For more details on the spatiotemporal smoothing algorithm, please see Appendix \ref{SSCS}.
+For the reasons stated above, the predictions should be interpreted with care and a more detailed evaluation may be necessary to understand observed trends and outliers. Further methods for assessing the goodness of fit of the spatiotemporal smoother can be found in Section \ref{SpatiotemporalPredictions}. For more details on the spatiotemporal smoothing algorithm, please see Appendix \ref{SSCS}.
 }
 }
 }
 \end{center}
 
+
+
+```{r, fig.cap = "GWSDAT Spatial plot with plume diagnostics.", label="GWSDATSpatialPlot2",out.width = '75%', echo = FALSE}
+include_graphics("figures/spatial_plot2.png")
+```
 
 
 
@@ -250,22 +243,9 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 As described in the previous section, clicking the *Plume Diagnostic* checkbox automatically delineates a plume concentration boundary and displays the plume diagnostic quantities underneath the spatial plot, see example in Figure \@ref(fig:GWSDATSpatialPlot2). The *Plume Mass, Area \& Conc.* and *Estimate Boundary* tabs located to the right of the *Spatial Image* tab, see Figure \@ref(fig:GWSDATSpatialPlot), provide options for further evaluating plume stability. 
 
 
-\definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
-\begin{center}
-\setlength{\fboxrule}{1.5pt}
-\fcolorbox{blue}{MyGray}{
-\parbox{450pt}{{\fontfamily{phv}\selectfont 
-Note: The plume diagnostics functions provide insight into relative changes in plume mass, area and average concentration for a given site and monitoring well network. Plume mass estimates are provided in units of kg/m or kg/ft to reflect this uncertainty. Absolute values of plume mass cannot be calculated because the model does not define the vertical concentration distribution inside the plume. The assumptions made in plume mass estimation are that:
-\begin{itemize}
-\item  Vertical variation in plume concentration is averaged across monitoring well screen intervals.
-\item  The monitoring well network samples the full depth and extent of the plume and is also representative of concentration variation across the site.
-\end{itemize}
-
-The assumptions are similar to those presented in the paper by Ricker (2008).
-}
-}
-}
-\end{center}
+```{r, fig.cap = "Time series of estimated Plume Mass, Area and Average concentration.", label="GWSDATPlumeStats",out.width = '75%', echo = FALSE,fig.pos="!h"}
+include_graphics("figures/plume_stats.png")
+```
 
 
 * **Plume Mass, Area \& Conc**:
@@ -273,17 +253,13 @@ This function attempts to calculate, for each time slice, the plume metrics of m
 Note: Plume metrics are calculated based on the units of length entered in the CoordUnits field in the Well Coordinates table (Section \ref{WellCoordinatesTable}). If no units are entered then relative changes in plume parameters are plotted in dimensionless units. Note also that plume mass is calculated per unit of plume depth (e.g. kg/m in Figure \ref{fig:GWSDATPlumeStats}). To estimate total plume mass the user must multiply this value by the estimated plume thickness (using same units as those entered in the CoordUnits field). By default the effective (interconnected) porosity of the subsurface is assumed to be 25%. See Section \@ref(GWSDATEditOptions) for details on how to modify this value. Additional information on how plume parameters are calculated can be found in Appendix \ref{AppendixPlumeDiagnostics}. 
 
 
-```{r, fig.cap = "Time series of estimated Plume Mass, Area and Average concentration.", label="GWSDATPlumeStats",out.width = '100%', echo = FALSE}
-include_graphics("figures/plume_stats.png")
+```{r, fig.cap = "Example Estimate Plume Boundary plot. The grey shaded area defines a region where plume metrics (mass, area, average concentration) can be estimated", label="EstimatePlumeBoundary",out.width = '75%', echo = FALSE,fig.pos="!h"}
+include_graphics("figures/estimate_plume_boundary.png")
 ```
 
 * **Estimate (Plume) Boundary**:
 This function provides a graphic to assist the user in selecting an appropriate solute concentration value that will yield a closed plume, which is an essential requirement for the estimation of plume metrics (i.e. mass, area and average concentration). The plume boundary contour is determined to be closed when it does not extend outside the area bounded by monitoring data. The function works by iterating through each time step of the spatiotemporal model and plotting minimum and maximum solute concentrations at the edge of the area bounded by the monitoring data (see Figure \ref{fig:EstimatePlumeBoundary}). The grey shaded area between the minimum and maximum lines defines the region where plume metrics can be calculated. The user-defined value of the plume threshold concentration value is displayed as a horizontal red dashed line. The user should select a solute concentration value that is just above the minimum line, for the time period within which calculation of plume parameter is required. It is clear from Figure \ref{fig:EstimatePlumeBoundary} that a value of 10 ug/l works well in this example. The selection of a higher solute concentration value within the grey area, while still producing a closed plume, would exclude part of the plume from the plume mass/ area analysis. The selection of a lower solute concentration value (e.g. 2 ug/l) would, in this example, greatly reduce the time period over which the plume was closed.
 
-
-```{r, fig.cap = "Example Estimate Plume Boundary plot. The grey shaded area defines a region where plume metrics (mass, area, average concentration) can be estimated", label="EstimatePlumeBoundary",out.width = '100%', echo = FALSE}
-include_graphics("figures/estimate_plume_boundary.png")
-```
 
 
 
@@ -331,6 +307,24 @@ include_graphics("figures/estimate_plume_boundary.png")
 
 
 
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{gray!10}{
+\parbox{450pt}{{%\fontfamily{phv}\selectfont 
+
+Note: The plume diagnostics functions provide insight into relative changes in plume mass, area and average concentration for a given site and monitoring well network. Plume mass estimates are provided in units of kg/m or kg/ft to reflect this uncertainty. Absolute values of plume mass cannot be calculated because the model does not define the vertical concentration distribution inside the plume. The assumptions made in plume mass estimation are that:
+
+\begin{itemize}
+\item  Vertical variation in plume concentration is averaged across monitoring well screen intervals.
+\item  The monitoring well network samples the full depth and extent of the plume and is also representative of concentration variation across the site.
+\end{itemize}
+
+The assumptions are similar to those presented in the paper by Ricker (2008).
+
+}
+}
+}
+\end{center}
 
 
 
@@ -348,21 +342,23 @@ include_graphics("figures/estimate_plume_boundary.png")
 ## Well Redundancy Analysis {#WellRedundancy}
 
 
-```{r, fig.cap = "Well redundancy analysis for Spatial plot using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis",out.width = '100%', echo = FALSE}
+```{r, fig.cap = "Well redundancy analysis for Spatial plot using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis",out.width = '80%', echo = FALSE,fig.pos = "!h"}
 include_graphics("figures/well_redundancy1.png")
 ```
 
 The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left of Figure \@ref(fig:GWSDATSpatialPlot)), is a feature  introduced in GWSDAT version 3.1. It allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the resultant impact. The primary intent of this tool is to understand which wells may have the most influence and also provide supporting evidence that the conclusions of the analysis would not be significantly different with the omission of some certain wells. Figure \@ref(fig:GWSDATWellRedundancyAnalysis) displays an example Well Redundancy Analysis for the Spatial plot.  The listbox *Select wells to be omitted from analysis* allows the user to select any combination of wells from the complete list of wells. 
 
 
-```{r, fig.cap = "Well redundancy analysis on estimated plume metrics using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis2",out.width = '100%', echo = FALSE}
-include_graphics("figures/well_redundancy2.png")
-```
-
 
 **Note**: Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired rather than automatically updating the model once an individual change has been detected in the listbox. 
 
 The *Use reduced set of wells?* checkbox enables the user to toggle between the full model and the model using the reduced well data set. The updated predictions of spatiotemporal concentration smoother are plotted and the omitted wells 'greyed' out. The groundwater elevation and flow strength and direction estimates are also updated to the reflect the omission of selected wells. A  title is added to the top left of the Spatial plot to notify users that *Well Redundancy Analysis* has been activated. 
+
+
+```{r, fig.cap = "Well redundancy analysis on estimated plume metrics using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis2",out.width = '80%', echo = FALSE,fig.pos = "!h"}
+include_graphics("figures/well_redundancy2.png")
+```
+
 
 The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlumeDiagnostics) are calculated for both the full and reduced well data set spatiotemporal solute concentration smoother models. Both sets of estimates for plume mass, area and average concentration are overlaid on the same plot, as shown in Figure \@ref(fig:GWSDATWellRedundancyAnalysis2). This allows for a direct side by side comparison. The *Estimate (Plume) Boundary* functionality is also updated to reflect the reduced well data set and a title added to remind the user of this fact. 
 
@@ -373,13 +369,15 @@ The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlume
 
 ## Time Series {#SectionWellTrendPlot}
 
-```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '100%', echo = FALSE}
-include_graphics("figures/time-series-plot.png")
-```
 
 The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example data set. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section \@ref(NAPLHandlingMethod). Red points represent the NAPL substituted solute concentration values.
 
 To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Indicator plot - see Section \@ref(TRendTHreshMat). 
+
+```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '80%', echo = FALSE,fig.pos="!h"}
+include_graphics("figures/time-series-plot.png")
+```
+
 
 The *Time Series Plot Options* checkbox control includes: 
 
@@ -427,7 +425,7 @@ Wayne: Check for 'Well trend plot' and replace with *Time Series* plot.
 
 
 
-```{r, fig.cap = "GWSDAT Trends and Thresholds plot.", label="GWSDATTrendsThresholdsPlot",out.width = '100%', echo = FALSE}
+```{r, fig.cap = "GWSDAT Trends and Thresholds plot.", label="GWSDATTrendsThresholdsPlot",out.width = '75%', echo = FALSE}
 include_graphics("figures/trends_thresholds.png")
 ```
 
@@ -460,7 +458,7 @@ Use the slider (see bottom left of Figure \@ref(fig:GWSDATTrendsThresholdsPlot) 
 
 ## Well Report {#WellReportPlot}
 
-```{r, fig.cap = "GWSDAT Well Report plot.", label="GWSDATWellReportPlot",out.width = '100%', echo = FALSE}
+```{r, fig.cap = "GWSDAT Well Report plot.", label="GWSDATWellReportPlot",out.width = '75%', echo = FALSE}
 include_graphics("figures/well_report.png")
 ```
 
@@ -475,7 +473,7 @@ trend smoother with 95\% confidence intervals are overlaid as thin black lines o
 ## Spatiotemporal Predictions {#SpatiotemporalPredictions}
 
 
-```{r, fig.cap = "GWSDAT Spatiotemporal Predictions plot.", label="GWSDATSpatiotemporalPredictionsPlot",out.width = '100%', echo = FALSE}
+```{r, fig.cap = "GWSDAT Spatiotemporal Predictions plot.", label="GWSDATSpatiotemporalPredictionsPlot",out.width = '75%', echo = FALSE}
 include_graphics("figures/spatiotemporal_predictions.png")
 ```
 This selection, located under the 'More' tab, is a visualisation to help assess the goodness of fit of spatiotemporal solute concentration smoother (see Section \@ref(SectionSpatialPlot) and \@ref(SSCS)) to the observed concentration data. A matrix of graphs displaying time series solute concentration values are generated on a well by well basis and the predictions of spatiotemporal solute concentration smoother are overlaid as solid grey lines, see example in Figure \@ref(fig:GWSDATSpatiotemporalPredictionsPlot). The choice of which solute and wells to include, together with the choice of units and whether to use a log-scale for the solute concentration values, is selected by the user from the controls on the left hand side of the plot.
@@ -485,7 +483,7 @@ This selection, located under the 'More' tab, is a visualisation to help assess 
 
 This selection, located under the 'More' tab, is a function introduced in version 3.1 to customise the colour key in the *Spatial* plot (see Figure  \@ref(fig:GWSDATSpatialPlot) and Section \@ref(SectionSpatialPlot)). Using the data editor, Figure \@ref(fig:GWSDATcustomisecolourkey), the  colour key threshold values can be edited for each solute. Note the save button, located in the bottom right, needs to be clicked in order for the colour key to be updated. 
 
-```{r, fig.cap = "Customising the Spatial plot Colour Key.", label="GWSDATcustomisecolourkey",out.width = '65%', echo = FALSE}
+```{r, fig.cap = "Customising the Spatial plot Colour Key.", label="GWSDATcustomisecolourkey",out.width = '45%', echo = FALSE}
 include_graphics("figures/customise_colour_key.png")
 ```
 
@@ -514,7 +512,7 @@ This selection, located under the 'More' tab, allows the user to specify the fol
 
 <!-- ## Reporting -->
 
-<!-- <!-- \label{sec:reporting} --> -->
+<!-- <!-- \label{sec:reporting} --> 
 
 <!-- In addition to providing visualisation of groundwater monitoring data, GWSDAT is also able to export displays in a variety of file formats, for inclusion in reports.  The map displays in the *Spatial Plot* tab of the *Analyse* section are used to illustrate this.  At the foot of the main map display there are three buttons. -->
 

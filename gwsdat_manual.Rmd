@@ -21,6 +21,7 @@ bibliography: gwsdat_manual.bib
 
 \newpage
 \tableofcontents
+\newpage
 \listoffigures
 
 ```{r setup, include = FALSE}

@@ -1,54 +1,75 @@
 
 # GWSDAT Graphical User Interface (GUI) {#GWSDATGUI}
 
-The GWSDAT user interface is a web-based graphical user interface (GUI) using the R Shiny framework (`www.shiny.rstudio.com`) which the user can interact with in many ways. The following sections will explain the interface in more detail.
+The GWSDAT user interface is a web-based graphical user interface (GUI) using the R Shiny framework (`https://shiny.rstudio.com/`) which the user can interact with in many ways. The following sections explain the interface in  detail.
+
 
 
 ## Data Input via Graphical User Interface {#DataInputviaGUI}
 
-The functionality to input data directly via the GUI is a feature first introduced in GWSDAT version 3.0. The user is referred to Section \@ref(DataInput) for full details on the format of the input data. 
-
-GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window.
-
+If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (see Section \@ref(AccessingGWSDAT)) then the input data has already been specified and the GUI goes straight into *Analyse* mode and is presented as displayed in Figure \@ref(fig:GWSDATSpatialPlot). However, if the user entry point is via the online version or the R package with no input data specified then a menu is displayed on the left hand side, see Figure \@ref(fig:GWSDATDataManager), initially engaged on the *Manage Data* option. The *Basic Example* and *Comprehensive Example* datasets are all already pre-loaded and are identical to the data sets included in the Excel Add-in interface, see Section \@ref(DataInputExcelAddinMenu). The Data Manager options allows the user to input data sets in a variety of different formats: 
 
 ```{r, fig.cap = "GWSDAT Data Manager.", label="GWSDATDataManager",out.width = '100%',echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
 ```
 
 
+* **Restore Examples**: This allows the two in-built examples to be restored at any point, should this be needed.
+
+* **Load Data**: This allows the user to load a previously saved GWSDAT session, see Section \@ref(GWSDATSaveSession). Use the *Browse* button to select the '.rds'  file, enter an appropriate name and press the *Add Data* button to  add the data set to list of available data sets in the Data Manager. 
+
+* **Add New Data**: This displays a data editor which allows the user to enter a *Historical Monitoring Data* table and *Well Coordinate data* table in much the same way as data is entered into an Excel spreadsheet. Shapefiles (Section \@ref(GISShapeFiles)) can be selected via the *Browse* button. Enter an appropriate name for the data set and click the *Save* button to add the data set to list of available data sets in the Data Manager. 
+
+* **Import .csv Data**: This option allows the user to select, via *Browse* buttons, comma separated value (csv) formatted data for the *Historical Monitoring Data* and *Well Coordinate data* tables together with GIS Shapefiles. Example '.csv' formatted input data sets and GIS Shapefiles can be downloaded from `https://github.com/WayneGitShell/GWSDAT/tree/master/data`.
+
+* **Import Excel File**: This options allows the user to input a GWSDAT Excel Add-in formatted input dataset, see Figure \@ref(fig:GWSDATExcelAddinmenu), together with GIS Shapefiles.  Use the *Browse* button to select the Excel file. If multiple sheets are detected a pop-up menu will prompt the user to select the appropriate sheet. Example input files can be found at `https://github.com/WayneGitShell/GWSDAT/tree/master/inst/extdata`. Enter an appropriate name for the data set and click the *Import* button to add the data set to list of available data sets in the Data Manager. 
+
+Please note that data sets can also be specified when launching GWSDAT from the R Statistical Programming Language. See the ReadMe file at `https://github.com/WayneGitShell/GWSDAT` for details. The user is referred to Section \@ref(DataInput) for full details on the format of the input data. 
+
+**Note**: To select a data set for a GWSDAT analysis first select the *Analyse* option on the left hand menu located under the *Manage Data* option. 
+
+
+<!-- GWSDAT comes supplied with examples of groundwater monitoring data and these can be used to experiment with the tools for analysis and visualisation.  If you would like to do this you can move immediately to Section~X of this manual.  However, the aim of GWSDAT is of course to provide means of analysing user-supplied data and various options are supplied to allow this.  These options are all available from the *Manage Data* page which is the point of entry when GWSDAT is launched but can also be accessed at any time from the *Manage Data* item on the menu bar on the left hand side of the window. -->
+
+
+<!-- GWSDAT is designed to produce informative visualisations of groundwater monitoring over space and time.  To illustrate this, we will use the *Basic Example*.  If you are still in the detailed pages of the *Manage Data* section, click on the `back-arrow' in the top left hand corner to return to the main \textit{manage Data} page and then click on *Analyse* on the left had sidebar.  You will then be asked to specify which dataset you would like to analyse.  In addition to the standard examples, any other datasets you have created will be listed here too.  For the moment, click on the *Select* button for the *Basic Example'*.  You should now see a screen similar to the image below. -->
 
 
 
-A *Basic Example* and a *Comprehensive Example* are supplied but the buttons at the top of the page allow other data to be entered, in different forms.
 
-```{r echo = FALSE}
-tbl <- matrix(c("Restore Examples", "This allows the two in-built examples to be restored at any point, should this be needed.",
-                "Load Data", "Use the *Browse* button to	loaded from a previous GWSDAT session.",
-                "Add New Data", "This allows data to be entered manually into a spreadsheet (and saved for later use).",
-                "Import .csv Data", "Use the *Browse* buttons to load separate 'Contaminant Data' and 'Well Coordinates' files, each in `.csv` form.  One or more shapefiles may also be loaded.",
-                "Import Excel File", "Use the *Browse* button to load an Excel spreadsheet containing both 'Contaminant Data' and 'Well Coordinates'. One or more shapefiles may also be loaded."
-                ), ncol = 2, byrow = TRUE)
-kable(tbl) %>%
-  column_spec(2, width = "30em")
-```
+<!-- The tabs at the top of this page give access to several different forms of analysis.  These are described in detail below. -->
+<!-- The functionality to input data directly via the GUI is a feature first introduced in GWSDAT version 3.0.  -->
 
+<!-- A *Basic Example* and a *Comprehensive Example* are supplied but the buttons at the top of the page allow other data to be entered, in different forms. -->
 
-
-
-
-
+<!-- ```{r echo = FALSE} -->
+<!-- tbl <- matrix(c("Restore Examples", "This allows the two in-built examples to be restored at any point, should this be needed.", -->
+<!--                 "Load Data", "Use the *Browse* button to	loaded from a previous GWSDAT session.", -->
+<!--                 "Add New Data", "This allows data to be entered manually into a spreadsheet (and saved for later use).", -->
+<!--                 "Import .csv Data", "Use the *Browse* buttons to load separate 'Contaminant Data' and 'Well Coordinates' files, each in `.csv` form.  One or more shapefiles may also be loaded.", -->
+<!--                 "Import Excel File", "Use the *Browse* button to load an Excel spreadsheet containing both 'Contaminant Data' and 'Well Coordinates'. One or more shapefiles may also be loaded." -->
+<!--                 ), ncol = 2, byrow = TRUE) -->
+<!-- kable(tbl) %>% -->
+<!--   column_spec(2, width = "30em") -->
+<!-- ``` -->
 
 
-```{r echo = FALSE}
-tbl <- matrix(c("Import Excel File", "The file to be loaded should contain two spreadsheets labelled `Contaminant Data` and `Well Coordinates` and have the structure described above.  An example spreadsheet is available at *web address at gwsdat.net*.",
-              "Import .csv Data", "The data can be exported from *Excel() into `.csv` format.  In this case there should be separate `.csv` files for the *Contaminant Data* and *Well Coordinates*.  Click on the *Browse* button to select these files.  For convenience, GWSDAT gives options for the *Column separator* and the *Quote for Character Strings* at the foot of this page. Click on the *Import|* button to read the data.",
-              "Add New Data", "This creates blank spreadsheets with the required structure.  Entries can by typed in directly or copied and pasted from another source.  There is an *+Add Row* button and right clicking gives further options for adding and removing rows.",
-              "Load Data", "This allows data which has previously been saved from GWSDAT to be loaded again."
-              ), ncol = 2, byrow = TRUE)
-kable(tbl) %>%
-  column_spec(2, width = "30em")
-```
 
+
+
+
+
+
+<!-- # ```{r echo = FALSE} -->
+<!-- # tbl <- matrix(c("Import Excel File", "The file to be loaded should contain two spreadsheets labelled `Contaminant Data` and `Well Coordinates` and have the structure described above.  An example spreadsheet is available at *web address at gwsdat.net*.", -->
+<!-- #               "Import .csv Data", "The data can be exported from *Excel() into `.csv` format.  In this case there should be separate `.csv` files for the *Contaminant Data* and *Well Coordinates*.  Click on the *Browse* button to select these files.  For convenience, GWSDAT gives options for the *Column separator* and the *Quote for Character Strings* at the foot of this page. Click on the *Import|* button to read the data.", -->
+<!-- #               "Add New Data", "This creates blank spreadsheets with the required structure.  Entries can by typed in directly or copied and pasted from another source.  There is an *+Add Row* button and right clicking gives further options for adding and removing rows.", -->
+<!-- #               "Load Data", "This allows data which has previously been saved from GWSDAT to be loaded again." -->
+<!-- #               ), ncol = 2, byrow = TRUE) -->
+<!-- # kable(tbl) %>% -->
+<!-- #   column_spec(2, width = "30em") -->
+<!-- # ``` -->
+<!-- #  -->
 
 
 <!-- \begin{tabular}{rm{0.7\textwidth}} -->
@@ -70,11 +91,11 @@ kable(tbl) %>%
 <!-- \cline{2-2} -->
 <!-- \end{tabular} -->
 
-The details of data entry are described below but it is helpful first to describe the format of the data which is required.  The essential information is in are two spreadsheets - one which contains the contaminant data, and a second one which gives the co-ordinates of the wells.  There is also an option to use shape files to superimpose map information on spatial plots.
+<!-- The details of data entry are described below but it is helpful first to describe the format of the data which is required.  The essential information is in are two spreadsheets - one which contains the contaminant data, and a second one which gives the co-ordinates of the wells.  There is also an option to use shape files to superimpose map information on spatial plots. -->
 
-An example of the first spreadsheet is shown for the *Basic Example* in the screenshot below.  The full spreadsheet can be viewed by clicking the *Edit* button for the *Basic Example* in the *Manage Data* page of GWSDAT.  (When you wish to return to the *Manage Data* page, click the `back-arrow' button in the top left hand corner of the *Edit Data* page.)  The columns of the spreadsheet are explained in detail below.
+<!-- An example of the first spreadsheet is shown for the *Basic Example* in the screenshot below.  The full spreadsheet can be viewed by clicking the *Edit* button for the *Basic Example* in the *Manage Data* page of GWSDAT.  (When you wish to return to the *Manage Data* page, click the `back-arrow' button in the top left hand corner of the *Edit Data* page.)  The columns of the spreadsheet are explained in detail below. -->
 
-\fbox{Wayne advises against the use of the term 'contaminant' but this is the terminology used in the software.}
+<!-- \fbox{Wayne advises against the use of the term 'contaminant' but this is the terminology used in the software.} -->
 
 <!-- \colorbox{NavyBlue}{\color{white} \textsf{Import Excel File}}  The file to be loaded should contain two spreadsheets labelled `Contaminant Data' and `Well Coordinates' and have the structure described above.  An example spreadsheet is available at \fbox{web address at gwsdat.net}. -->
 
@@ -92,17 +113,6 @@ An example of the first spreadsheet is shown for the *Basic Example* in the scre
 
 <!-- \noindent -->
 <!-- \colorbox{NavyBlue}{\color{white} \textsf{Load Data}}  \fbox{Is this option available - I can't see a Save option?} -->
-
-
-
-
-
-
-GWSDAT is designed to produce informative visualisations of groundwater monitoring over space and time.  To illustrate this, we will use the *Basic Example*.  If you are still in the detailed pages of the *Manage Data* section, click on the `back-arrow' in the top left hand corner to return to the main \textit{manage Data} page and then click on *Analyse* on the left had sidebar.  You will then be asked to specify which dataset you would like to analyse.  In addition to the standard examples, any other datasets you have created will be listed here too.  For the moment, click on the *Select* button for the *Basic Example'*.  You should now see a screen similar to the image below.
-
-
-
-The tabs at the top of this page give access to several different forms of analysis.  These are described in detail below.
 
 
 ## Spatial plot {#SectionSpatialPlot}

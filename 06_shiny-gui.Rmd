@@ -241,13 +241,6 @@ For more details on the spatiotemporal smoothing algorithm, please see Appendix 
 }
 \end{center}
 
-Wayne: *Output formats + PPT* 
-*movie*
-
-
-
-
-
 
 
 
@@ -519,15 +512,15 @@ This selection, located under the 'More' tab, allows the user to specify the fol
 * **Model Settings**: This option controls the resolution of the spatiotemporal solute concentration smoother (see Appendix \@ref(SSCS)). In an identical fashion to the Excel Add-in interface (Section \@ref(ExcelAddinMenuDataProcessingOptions)) the user can select between either a default resolution or a higher resolution model fit. In most instances there will be only small differences in the modelling results between the two settings. However, in some rare circumstances with complex data sets, it may well be necessary to use the higher resolution setting.  A default resolution model corresponds to a model *Number of segments*=6 and a higher resolution model corresponds to 8. The user can select up to a value of 12. Please note for each unit increase *Number of segments* the model will take 3-4 times longer to fit.
 
 
-## Reporting
+<!-- ## Reporting -->
 
-<!-- \label{sec:reporting} -->
+<!-- <!-- \label{sec:reporting} --> -->
 
-In addition to providing visualisation of groundwater monitoring data, GWSDAT is also able to export displays in a variety of file formats, for inclusion in reports.  The map displays in the *Spatial Plot* tab of the *Analyse* section are used to illustrate this.  At the foot of the main map display there are three buttons.
+<!-- In addition to providing visualisation of groundwater monitoring data, GWSDAT is also able to export displays in a variety of file formats, for inclusion in reports.  The map displays in the *Spatial Plot* tab of the *Analyse* section are used to illustrate this.  At the foot of the main map display there are three buttons. -->
 
-* **Image format** provides a drop-down menu of the file type used when a spatial plot at a particular time point is created.  The available file types `png`, `jpg`, `pdf`, `ps` and `pptx`.
+<!-- * **Image format** provides a drop-down menu of the file type used when a spatial plot at a particular time point is created.  The available file types `png`, `jpg`, `pdf`, `ps` and `pptx`. -->
 
 
 
-* **Generate PPT Animation** creates a downloads a sequence of plots which display concentration maps across the whole time course.  Paging through these slides provides a very simple but effective means of animation.
+<!-- * **Generate PPT Animation** creates a downloads a sequence of plots which display concentration maps across the whole time course.  Paging through these slides provides a very simple but effective means of animation. -->
 

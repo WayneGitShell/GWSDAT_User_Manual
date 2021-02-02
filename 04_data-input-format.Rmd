@@ -1,7 +1,7 @@
 
 # Input Data Format {#DataInput}
-There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables are identical. Hence, this section is dedicated to describing the standardised data table input structure and formatting conventions. Later sections will discuss the data input details with respect to the mode of access. See Section \@ref(DataInputExcelAddin) for data input via Excel Add-in and Section \@ref(DataInputviaGUI) for data input directly via the Graphical User Interface. 
- 
+There are a few different ways to enter user data into GWSDAT and the available choices will depend upon the way the user is accessing GWSDAT. However, no matter, which way you are [`Accessing GWSDAT`](#AccessingGWSDAT) the formatting standard and conventions of the raw data input tables are identical. Hence, this section is dedicated to describing the standardised data table input structure and formatting conventions. Later sections will discuss the data input details with respect to the mode of access. See Section \@ref(DataInputExcelAddin) for data input via Excel Add-in and Section \@ref(DataInputviaGUI) for data input directly via the Graphical User Interface (in case of tool installation as per Section \@ref(GWSDATOnline) and \@ref(GWSDATRPackage)).
+
 There are only two input tables that must be completed, namely, the *Historical Monitoring Data* table and the *Well Coordinates* table. Please note that there should be no empty rows in either table. Optionally, users can also specify links to the location of GIS shapefiles for use as basemaps or site plans.
 
 <!-- THe user can optionally specify an associated additionally -->
@@ -39,7 +39,7 @@ level data is entered as an elevation above a common datum, such as metres or fe
 have the same units, e.g. feet or metres and that the Constituent field is set to 'NAPL'. 
 If no NAPL is present, do not add a NAPL entry with zero thickness; simply omit from the table. Where NAPL is recorded in soil borings that do not reach the water table the NAPL thickness should be entered as zero.  Well location markers for soil borings or wells where NAPL has been recorded are highlighted in red.
 
-* **Units**:  Solute concentration data can either be 'mg/l' or 'ug/l'. For groundwater elevation and NAPL thickness data please set to one of 'mm', 'cm', 'metres', 'inches', 'feet' or 'level'. Units must be specified for each entry. All 
+* **Units**:  Solute concentration data can either be 'mg/l' or 'ug/l'. For groundwater elevation and NAPL thickness data please set to one of 'level' or one of 'mm', 'cm', 'metres', 'inches', 'feet', respectively. Units must be specified for each entry. All 
 entered groundwater elevation measurements must have the same units. Likewise for NAPL thickness.
 
 * **Flags**:  Four different flags are available to modify the way in which certain types of data are handled by the software. 
@@ -61,6 +61,7 @@ include_graphics("figures/data-format-2.png")
 
 * **WellName**: the name or identifier of the well or soil boring. Well names must be identical to those specified in the *Historical Monitoring Data* table. On a point of detail, it is better to name wells using the convention of 'MW-01' rather than 'MW1' so that plots in GWSDAT are correctly ordered. 
 
+On a point of detail, if wells are named using the convention of 'MW-01' rather than 'MW1' then well plots in GWSDAT are correctly ordered. 
 * **XCoord**: the x-coordinate of the well.
 
 * **YCoord**: the y-coordinate of the well.

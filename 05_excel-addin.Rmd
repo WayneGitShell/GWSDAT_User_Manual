@@ -13,7 +13,7 @@ Please see Section \@ref(ExcelDataEntryInterface) for details on how to install 
 
 * **Insert Shapefile**: Interactively browse for a shapefile and add location to *GIS Shapefiles* table, see Section \@ref(GISShapeFiles) for more information.
 
-* **Analyse**: Begin GWSDAT analysis on the Excel active worksheet data.
+* **Analyse**: Begin GWSDAT analysis on the Excel active worksheet data.  Please refer to Sections \@ref(DataInputviaGUI) to \@ref(GWSDATEditOptions) for details on the analysis options and process.
 
 * **Restore Session**: Load a previously saved GWSDAT session, see Section \@ref(GWSDATSaveSession) for more information.
 

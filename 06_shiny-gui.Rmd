@@ -7,7 +7,7 @@ The GWSDAT user interface is a web-based graphical user interface (GUI) using th
 
 ## Data Input via Graphical User Interface {#DataInputviaGUI}
 
-If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (Section \@ref(DataInputExcelAddin)) then the input data has already been specified and the GUI goes straight into *Analyse* mode and is presented as displayed in Figure \@ref(fig:GWSDATSpatialPlot). However, if the user entry point is via the online version or the R package (Section \@ref(AccessingGWSDAT)) with no input data specified then a menu is displayed on the left hand side, see Figure \@ref(fig:GWSDATDataManager), initially engaged on the *Manage Data* option. The *Basic Example* and *Comprehensive Example* datasets are all already pre-loaded and are identical to the data sets included in the Excel Add-in interface, see Section \@ref(DataInputExcelAddinMenu). 
+If the user entry point to a GWSDAT analysis is via the Excel Add-in interface (Section \@ref(DataInputExcelAddin)) then the input data has already been specified and the GUI goes straight into *Analyse* mode and is presented as displayed in Figure \@ref(fig:GWSDATSpatialPlot). However, if the user entry point is via the online version or the R package (Sections \@ref(GWSDATOnline) and \@ref(GWSDATRPackage))) with no input data specified then a menu is displayed on the left hand side, see Figure \@ref(fig:GWSDATDataManager), initially engaged on the *Manage Data* option. The *Basic Example* and *Comprehensive Example* datasets are all already pre-loaded and are identical to the data sets included in the Excel Add-in interface, see Section \@ref(DataInputExcelAddinMenu). 
 
 ```{r, fig.cap = "GWSDAT Data Manager.", label="GWSDATDataManager",out.width = '90%',echo = FALSE}
     include_graphics("figures/data_manager.png", auto_pdf = FALSE)
@@ -175,6 +175,7 @@ either the `Terrain-Circles' or `Topo-Circles' plot type.
 
 
 
+\newpage
 * **Plot Options**:
 
 
@@ -188,7 +189,7 @@ either the `Terrain-Circles' or `Topo-Circles' plot type.
 
   + **Overlay Shapefiles**: This controls whether to overlay a site plan.
 
-  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the spatiotemporal solute concentration smoother (see example in Figure \@ref(fig:GWSDATSpatialPlot2)). The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. If the plume boundary lies completely within the area covered by the spatiotemporal solute concentration smoother (i.e. forms a closed loop) then the plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
+  + **Plume Diagnostics**: This controls whether to calculate and display plume diagnostic quantities from the predictions of the spatiotemporal solute concentration smoother (please refer to insert box below and example in Figure \@ref(fig:GWSDATSpatialPlot2)). The delineated plume is displayed with a solid red contour line which also includes a label displaying the plume boundary threshold value. If the plume boundary lies completely within the area covered by the spatiotemporal solute concentration smoother (i.e. forms a closed loop) then the plume centre of mass is displayed with a red cross and the plume mass and area printed at the bottom left margin of the spatial plot. 
 Note: in order for the correct plume diagnostics units to be used the *CoordUnits* field in the *Well Coordinates* table must be specified, see Section \@ref(WellCoordinatesTable). More details about plume diagnostics can be found in Section \@ref(GWSDATPlumeDiagnostics) and Appendix \@ref(AppendixPlumeDiagnostics).
 
 
@@ -198,7 +199,7 @@ Note: in order for the correct plume diagnostics units to be used the *CoordUnit
 \setlength{\fboxrule}{1.5pt}
 \fcolorbox{blue}{gray!10}{
 \parbox{450pt}{{%\fontfamily{phv}\selectfont 
-The spatiotemporal solute concentration smoother is a function which simultaneously estimates both the spatial and 
+Note: The spatiotemporal solute concentration smoother is a function which simultaneously estimates both the spatial and 
 time series trend in site solute concentrations. By smoothing the data in both space and time 
 it provides a clearer interpretation of site solute concentration dynamics than would otherwise be gleaned 
 from the raw data. 
@@ -350,17 +351,33 @@ The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left
 
 
 
-**Note**: Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired rather than automatically updating the model once an individual change has been detected in the listbox. 
+<!-- **Note**: Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired rather than automatically updating the model once any change has been detected in the listbox.  -->
+
+
+
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{gray!10}{
+\parbox{450pt}{{%\fontfamily{phv}\selectfont 
+
+Note: Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired, rather than automatically updating the model once any change has been detected in the listbox. 
+
+}
+}
+}
+\end{center}
+
+
 
 The *Use reduced set of wells?* checkbox enables the user to toggle between the full model and the model using the reduced well data set. The updated predictions of spatiotemporal concentration smoother are plotted and the omitted wells 'greyed' out. The groundwater elevation and flow strength and direction estimates are also updated to the reflect the omission of selected wells. A  title is added to the top left of the Spatial plot to notify users that *Well Redundancy Analysis* has been activated. 
 
 
-```{r, fig.cap = "Well redundancy analysis on estimated plume metrics using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute.", label="GWSDATWellRedundancyAnalysis2",out.width = '80%', echo = FALSE,fig.pos = "!h"}
+```{r, fig.cap = "Well redundancy analysis on estimated plume metrics using the basic example data set having omitted monitoring well MW-04 and using Xylene as the current selection of solute. Note: full well data set is color-coded black; reduced well data set is color-coded green.", label="GWSDATWellRedundancyAnalysis2",out.width = '80%', echo = FALSE,fig.pos = "!h"}
 include_graphics("figures/well_redundancy2.png")
 ```
 
 
-The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlumeDiagnostics) are calculated for both the full and reduced well data set spatiotemporal solute concentration smoother models. Both sets of estimates for plume mass, area and average concentration are overlaid on the same plot, as shown in Figure \@ref(fig:GWSDATWellRedundancyAnalysis2). This allows for a direct side by side comparison. The *Estimate (Plume) Boundary* functionality is also updated to reflect the reduced well data set and a title added to remind the user of this fact. 
+The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlumeDiagnostics) are calculated for both the full (black colour-coded) and reduced (green colour-coded)  well data set spatiotemporal solute concentration smoother models. Both sets of estimates for plume mass, area and average concentration are overlaid on the same plot, as shown in Figure \@ref(fig:GWSDATWellRedundancyAnalysis2). This allows for a direct side by side comparison. The *Estimate (Plume) Boundary* functionality is also updated to reflect the reduced well data set and a title added to remind the user of this fact. 
 
 
 
@@ -382,7 +399,7 @@ include_graphics("figures/time-series-plot.png")
 The *Time Series Plot Options* checkbox control includes: 
 
 * **Conc. Trend Smoother**:
-This displays the estimated time series trend in solute concentration using a nonparametric smoother (see Figure \@ref(fig:GWSDATTimeSeriesPlot). The solid blue line displays the estimate of the mean trend level at a particular point in time. The upper and lower dashed blue lines depict a 95\% confidence interval around this estimate. This is interpreted as *'one is 95\% confident that the actual mean trend level lies within this region'*. The smaller the 95\% confidence interval, the more confidence one has in the estimated time series trend. Areas of the trend smoother fit in which the 95\% confidence intervals are very large (i.e. very low confidence in the trend smoother fit)are coloured grey instead of blue and are disregarded from the 'Trend' and 'Threshold - Statistical' matrix plot calculations, see Section \@ref(TRendTHreshMat).
+This displays the estimated time series trend in solute concentration using a nonparametric smoother (see Figure \@ref(fig:GWSDATTimeSeriesPlot). The solid blue line displays the estimate of the mean trend level at a particular point in time. The upper and lower dashed blue lines depict a 95\% confidence interval around this estimate. This is interpreted as *'one is 95\% confident that the actual mean trend level lies within this region'*. The smaller the 95\% confidence interval, the more confidence one has in the estimated time series trend. Areas of the trend smoother fit in which the 95\% confidence intervals are very large (i.e. very low confidence in the trend smoother fit) are coloured grey instead of blue and are disregarded from the 'Trend' and 'Threshold - Statistical' matrix plot calculations, see Section \@ref(TRendTHreshMat).
 The advantage of this nonparametric method is that the trend estimate is not constrained to be monotonic, i.e. the trend can change direction. More details of this nonparametric smoothing algorithm are given in Appendix \@ref(smregressCalc)
 
 
@@ -429,7 +446,7 @@ Wayne: Check for 'Well trend plot' and replace with *Time Series* plot.
 include_graphics("figures/trends_thresholds.png")
 ```
 
-The *Trends and Thresholds* plot (a.k.a. Traffic Light Plot) is a summary of the level and time series trend in solute concentrations at a particular model output interval, see Figure \@ref(fig:GWSDATTrendsThresholdsPlot). It use the fitted nonparametric time series trend smoother described in Section \@ref(SectionWellTrendPlot). The rows correspond to each well and the columns correspond to the different solutes. The options are as follows: 
+The *Trends and Thresholds* plot (a.k.a. Traffic Light Plot) is a summary of the strength and direction of the current trend or exceedance relative to a user defined threshold in solute concentrations at a particular model output interval, see Figure \@ref(fig:GWSDATTrendsThresholdsPlot). It use the fitted nonparametric time series trend smoother described in Section \@ref(SectionWellTrendPlot). The rows correspond to each well and the columns correspond to the different solutes. The options are as follows: 
 
 * **Display Table**: This drop-down listbox allows the user to select from the following options: 
 
@@ -449,7 +466,7 @@ This assesses if current solute concentration levels for all well and solute com
 * **Colour Key**: A graphic displaying the colour key explained above for the *Trends and Thresholds* plot. Note that this graphic can be moved to any convenient position by clicking and dragging with the mouse.
 
 * **Temporal Slider**: 
-Use the slider (see bottom left of Figure \@ref(fig:GWSDATTrendsThresholdsPlot) to explore trends and thresholds across different time slices of the data. Note that this slider box can be moved to any convenient position by clicking and dragging with the mouse. The 'Play' symbol(forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again.
+Use the slider (see bottom left of Figure \@ref(fig:GWSDATTrendsThresholdsPlot) to explore trends and thresholds across different time slices of the data. Note that this slider box can be moved to any convenient position by clicking and dragging with the mouse. The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again.
 
 
 
@@ -462,7 +479,7 @@ Use the slider (see bottom left of Figure \@ref(fig:GWSDATTrendsThresholdsPlot) 
 include_graphics("figures/well_report.png")
 ```
 
-This selection, which can be found under the tab named 'More', generates a matrix of graphs displaying time series solute concentration values on a well by well basis. In contrast to the *Time Series* plot (Section \@ref(SectionWellTrendPlot) it is possible to overlay different solute concentration values within the same graph. Figure \@ref(fig:GWSDATWellReportPlot) is an example 'Well Reporting' output. The colour key at the top identifies each solute and the name of each well is displayed in a banner at the top of each of the individual time series graphs. The 'Well Reporting' output provides a very concise method of visualising a lot of data.
+This selection, which can be found under the tab named 'More', generates a matrix of graphs displaying time series solute concentration values on a well by well basis. In contrast to the *Time Series* plot (Section \@ref(SectionWellTrendPlot)), it is possible to overlay different solute concentration values within the same graph. Figure \@ref(fig:GWSDATWellReportPlot) is an example 'Well Reporting' output. The colour key at the top identifies each solute and the name of each well is displayed in a banner at the top of each of the individual time series graphs. The 'Well Reporting' output provides a very concise method of visualising a lot of data.
 
 The choice of which solutes and wells to include, together with the choice of whether to use a log-scale for the solute concentration values, is selected by the user from the controls on the left hand side of the plot.
 

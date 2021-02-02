@@ -1,17 +1,18 @@
 # Accessing GWSDAT {#AccessingGWSDAT}
 
-There are several different ways for users to gain access to GWSDAT: 
+There are three different ways for users to gain access to GWSDAT: 
 
 ## Online Version {#GWSDATOnline}
-With no software installation required, the easiest way is to use the online version, available at `www.gwsdat.net`. This web site also has general information about the software tool, including help files, videos and case studies (`www.gwsdat.net/case-studies`). The underlying architecture is the GWSDAT [`R package`](#GWSDATRPackage) deployed as an app on a [`Shiny server`](https://shiny.rstudio.com/articles/shiny-server.html) hosted by the University of Glasgow's School of Mathematics and Statistics. See the GWSDAT GitHub development page `www.github.com/WayneGitShell/GWSDAT` for more details on how to deploy on a Shiny server. 
+With no software installation required, the easiest way is to use the online version, available at `www.gwsdat.net`. This web site also has general information about the software tool, including help files, videos and case studies (`www.gwsdat.net/case-studies`). The underlying architecture is the GWSDAT [`R package`](#GWSDATRPackage) deployed as an app on a [`Shiny server`](https://shiny.rstudio.com/articles/shiny-server.html) hosted by the University of Glasgow's School of Mathematics and Statistics.  Note that the data the user enters is sent over the internet and analysed on this server. See the GWSDAT GitHub development page `www.github.com/WayneGitShell/GWSDAT` for more details on how to deploy on a Shiny server. 
 
+<!-- The reader is referred to Section \@ref(GWSDATGUI): GWSDAT Graphical User Interface, for details on how to use the tool. -->
 ## Excel Add-in Interface {#ExcelDataEntryInterface}
 The most traditional and  widely used method to access GWSDAT is via the Excel Add-in interface. The latest version together with installation instructions and supporting information can be found on the industry websites:
 
 * American Petroleum Institute (API): `www.api.org/GWSDAT`
 * Contaminated Land: Applications in Real Environments (CL:AIRE): `www.claire.co.uk/GWSDAT`
 
-This method of deployment involves installing the open source statistical program R (@R) and Excel Add-in locally on a user's computer. All data sets are retained and analysed locally with no information being sent over the internet. Please note that administrator rights may be required for successful installation. 
+This method of deployment involves installing the open source statistical program R (@R) and Excel Add-in locally on a user's computer. All data sets are retained and analysed locally with no information being sent over the internet. Please note that administrator rights may be required for successful installation. Please refer to Section\@ref(DataInputExcelAddin): GWSDAT Excel Add-in more details.
 
 
 ## GWSDAT R Package {#GWSDATRPackage}

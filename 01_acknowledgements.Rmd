@@ -9,6 +9,6 @@ We acknowledge and thank the R project for Statistical Computing and all its con
 
 A big thank you to Shell's worldwide environmental consultants for assistance in evaluating and testing GWSDAT.  Thanks also to the Shell Year in Industry students Tess Brina, Rosemary Archard, Emma Toms, Stephanie Marrs and Rachel Stroud who spent a great deal of time using GWSDAT and making suggestions for improvements. 
 
-We thank our colleagues Matthew Lahvis, George Devaull, Matthijs Bonte, Hayley Thomas, Karina Cady, Jonathan Smith from Shell Projects & Technology; HSE Technology: Soil & Groundwater and Philip Jonathan, Shell Chief Statistician, for their support, vision and advocacy of GWSDAT.  
+We thank our colleagues Matthew Lahvis, George Devaull, Matthijs Bonte, Hayley Thomas, Karina Cady, Jonathan Smith from the Shell SGW Projects & Technology and FDG teams and Philip Jonathan, Shell Chief Statistician, for their support, vision and advocacy of GWSDAT.  
 
 The original idea of GWSDAT was inspired by Marco Giannitrapani.

@@ -16,6 +16,8 @@ urlcolor: blue
 
 subtitle: Version 3.1 User Manual
 bibliography: gwsdat_manual.bib
+header-includes: 
+  - \hypersetup{bookmarksnumbered = true}
 ---
 
 

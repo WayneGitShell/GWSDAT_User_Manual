@@ -1,6 +1,6 @@
 # Accessing GWSDAT {#AccessingGWSDAT}
 
-There are three different ways for users to gain access to GWSDAT: 
+This section describes the three different ways for users to gain access to GWSDAT. Please refer to Section \@ref(GWSDATGUI): GWSDAT Graphical User Interface, for details on how to use the tool.
 
 ## Online Version {#GWSDATOnline}
 With no software installation required, the easiest way is to use the online version, available at `www.gwsdat.net`. This web site also has general information about the software tool, including help files, videos and case studies (`www.gwsdat.net/case-studies`). The underlying architecture is the GWSDAT [`R package`](#GWSDATRPackage) deployed as an app on a [`Shiny server`](https://shiny.rstudio.com/articles/shiny-server.html) hosted by the University of Glasgow's School of Mathematics and Statistics.  Note that the data the user enters is sent over the internet and analysed on this server. See the GWSDAT GitHub development page `www.github.com/WayneGitShell/GWSDAT` for more details on how to deploy on a Shiny server. 
@@ -14,10 +14,8 @@ The most traditional and  widely used method to access GWSDAT is via the Excel A
 
 This method of deployment involves installing the open source statistical program R (@R) and Excel Add-in locally on a user's computer. All data sets are retained and analysed locally with no information being sent over the internet. Please note that administrator rights may be required for successful installation. Please refer to Section\@ref(DataInputExcelAddin): GWSDAT Excel Add-in more details.
 
-
 ## GWSDAT R Package {#GWSDATRPackage}
 GWSDAT uses the widely available, open source, statistical program `R` [@R].  This should be downloaded from `www.r-project.org` where versions for all major computing platforms are available.  The user may also find it convenient to install the *RStudio* 'Integrated Development Environment' for `R`, freely available from `www.rstudio.com`.  This manages some aspects of the `R` environment in a helpful way.
-
 When `R` or `RStudio` is launched, one of the visible windows is a 'console'.  GWSDAT is available as a package in `R` and this can be installed by typing the instruction
 ```{r eval = FALSE, echo = TRUE}
     install.packages("GWSDAT")

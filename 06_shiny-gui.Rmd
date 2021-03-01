@@ -425,18 +425,18 @@ that trend is present.
 * **Show Legend**: This controls whether to display a legend in the top right hand side of the plot 
 giving a key of the plotting symbols. 
 
-* **Scale to Conc. Data**: By default the *Time Series* plot x-axis is scaled such that it spans the sampling dates of all data. The y-axis is scaled to span the current data concentrations and the user-specified trend threshold limit, see Section \ref{TRendTHreshMat}. By checking this control the x and y axes are scaled to the span the current combination of well and solute concentration data only. 
+* **Scale to Conc. Data**: By default the *Time Series* plot x-axis is scaled such that it spans the sampling dates of all data. The y-axis is scaled to span the current data concentrations and the user-specified trend threshold limit, see Section \ref{TRendTHreshMat}. By checking this control the x and y axes are scaled to the span of the current combination of well and solute concentration data only. 
 
 * **Log Scale**: Controls whether to use a logarithmic or linear scale for the y-axis, i.e. solute concentration values.
 
-* **Overlay GW levels**: Allows the user to overlay the corresponding groundwater level measurements on the well trend plot. The scale is read from the right hand axis. This function is useful for assessing correlations between groundwater levels and solute concentrations. 
+* **Overlay GW levels**: Allows the user to overlay the corresponding groundwater level measurements on the time series plot. The scale is read from the right hand axis. This function is useful for assessing correlations between groundwater levels and solute concentrations. 
 
-* **Overlay NAPL Thickness**: Allows the user to overlay the corresponding NAPL thickness level measurements on the well trend plot. The scale is read from the right hand axis. This function is useful for assessing correlations between NAPL thickness and groundwater levels.
-
-
+* **Overlay NAPL Thickness**: Allows the user to overlay the corresponding NAPL thickness level measurements on the time series plot. The scale is read from the right hand axis. This function is useful for assessing correlations between NAPL thickness and groundwater levels.
 
 
-Wayne: Check for 'Well trend plot' and replace with *Time Series* plot. 
+
+
+<!-- Wayne: Check for 'Well trend plot' and replace with *Time Series* plot.  -->
 
 ## Trends \& Thresholds {#TRendTHreshMat}
 
@@ -446,7 +446,7 @@ Wayne: Check for 'Well trend plot' and replace with *Time Series* plot.
 include_graphics("figures/trends_thresholds.png")
 ```
 
-The *Trends and Thresholds* plot (a.k.a. Traffic Light Plot) is a summary of the strength and direction of the current trend or exceedance relative to a user defined threshold in solute concentrations at a particular model output interval, see Figure \@ref(fig:GWSDATTrendsThresholdsPlot). It use the fitted nonparametric time series trend smoother described in Section \@ref(SectionWellTrendPlot). The rows correspond to each well and the columns correspond to the different solutes. The options are as follows: 
+The *Trends and Thresholds* plot (a.k.a. Traffic Light Plot) is a summary of the strength and direction of the current trend or exceedance relative to a user defined threshold in solute concentrations at a particular model output interval, see Figure \@ref(fig:GWSDATTrendsThresholdsPlot). It uses the fitted nonparametric time series trend smoother described in Section \@ref(SectionWellTrendPlot). The rows correspond to each well and the columns correspond to the different solutes. The options are as follows: 
 
 * **Display Table**: This drop-down listbox allows the user to select from the following options: 
 
@@ -519,7 +519,7 @@ This selection, located under the 'More' tab, allows the user to specify the fol
 
 * **Concentration Thresholds**: Edit and set concentration threshold values in ug/l for each solute. This is used for colour coding in the Trends and Thresholds visualisation, see Section \@ref(TRendTHreshMat). 
 
-* **Plume Diagnostic Settings**: Edit and set plume concentration threshold values in ug/l for each solute. This is used for plume diagnostics, see Section \@ref(GWSDATPlumeDiagnostics). Also set the ground porosity to a value ranging from 0-100% (default=25%). See Section \@ref(GWSDATEditOptions) for details on how this is used. 
+* **Plume Diagnostic Settings**: Edit and set plume concentration threshold values in ug/l for each solute. This is used for plume diagnostics, see Section \@ref(GWSDATPlumeDiagnostics). Also set the ground porosity to a value ranging from 0-100% (default=25%). See Section \@ref(AppendixPlumeDiagnostics) for details on how this is used. 
 
 
 * **Image Export**: Allows the user to change various image export resolution settings, including *jpeg \% quality* and pixel dimensions. 

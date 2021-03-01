@@ -60,8 +60,8 @@ include_graphics("figures/data-format-2.png")
 
 
 * **WellName**: the name or identifier of the well or soil boring. Well names must be identical to those specified in the *Historical Monitoring Data* table. On a point of detail, it is better to name wells using the convention of 'MW-01' rather than 'MW1' so that plots in GWSDAT are correctly ordered. 
+<!-- On a point of detail, if wells are named using the convention of 'MW-01' rather than 'MW1' then well plots in GWSDAT are correctly ordered.  -->
 
-On a point of detail, if wells are named using the convention of 'MW-01' rather than 'MW1' then well plots in GWSDAT are correctly ordered. 
 * **XCoord**: the x-coordinate of the well.
 
 * **YCoord**: the y-coordinate of the well.

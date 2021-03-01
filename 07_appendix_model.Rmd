@@ -177,9 +177,9 @@ For any given model output interval this algorithm is applied to each and every 
 
 
 
-## Well Trend Plot Smoother {#smregressCalc}
+## Time Series Plot Smoother {#smregressCalc}
 
-The well trend plot smoother is fitted using a nonparametric method called local linear regression. 
+The time series plot smoother is fitted using a nonparametric method called local linear regression. 
 This involves solving locally the least squares problem:
 
 \begin{equation}\label{locallinreg}

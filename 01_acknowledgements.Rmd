@@ -1,7 +1,7 @@
 
 # Acknowledgements
 
-The authors gratefully acknowledge the many different people who have willingly contributed their knowledge and their time to the development of GWSDAT.
+The authors gratefully acknowledge the many different people who have willingly contributed their knowledge and their time to the development of GWSDAT^[Copyright Shell Global Solutions International, B.V. 2012. All rights reserved.].
  
 The authors wish to express their gratitude to Ludger Evers and Daniel Molinari from the Department of Statistics, University of Glasgow, for their invaluable contributions to the statistical aspects of GWSDAT. Thanks also to Ewan Crawford for his assistance in the development of the original GWSDAT user interface. 
 
@@ -12,3 +12,8 @@ A big thank you to Shell's worldwide environmental consultants for assistance in
 We thank our colleagues Matthew Lahvis, George Devaull, Matthijs Bonte, Hayley Thomas, Karina Cady, Jonathan Smith from the Shell SGW Projects & Technology and FDG teams and Philip Jonathan, Shell Chief Statistician, for their support, vision and advocacy of GWSDAT.  
 
 The original idea of GWSDAT was inspired by Marco Giannitrapani.
+
+
+
+
+    

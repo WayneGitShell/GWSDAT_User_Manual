@@ -1,7 +1,7 @@
 ---
 title:  |
   ![](figures/gwsdat-logo.png){width=6in}  
-author: "| Wayne R. Jones (Wayne.W.Jones@shell.com)\n| Principal Data Scientist \n|  Shell Global Solutions (U.K.) Ltd,
+author: "| Wayne R. Jones (Wayne.W.Jones@shell.com)\n| Principal Data Scientist \n|  Shell Research Limited (U.K.) Ltd,
   London \n|\n| Luc Rock (Luc.Rock@shell.com)\n| Soil and Groundwater Scientist \n|  Shell Global Solutions International B.V., Netherlands,
   Rijswijk\n|\n|\n| Claire Miller (Claire.Miller@glasgow.ac.uk) \n| Marnie Low (Marnie.Low@glasgow.ac.uk)\n|
   Craig Alexander (Craig.Alexander.2@glasgow.ac.uk)\n| Adrian Bowman (Adrian.Bowman@glasgow.ac.uk)\n|

@@ -123,8 +123,7 @@ Plume mass is calculated from the scaled product of plume area and average conce
 The plume mass is calculated on a mass per unit aquifer depth basis (e.g. kg/m). To calculate the total plume mass the user must multiply this value by the aquifer depth.
 
 
-The plume center of mass $(x,y)$ is defined as the mean location of the concentration distribution within the plume boundary region $D$. 
-The x-coordinate of the plume Centre of Mass is evaluated by numerical calculation of 
+The plume center of mass $(x,y)$ is defined as the mean location of the concentration distribution within the plume boundary region $D$. The x-coordinate of the plume Centre of Mass is evaluated by numerical calculation of 
 
 \begin{equation}\label{EqCOMX}
 X_c= \frac{\iint\limits_D x \hat{s_t}\left(x,y\right)  dx dy}{\iint\limits_D  \hat{s_t}\left(x,y\right)  dx dy}

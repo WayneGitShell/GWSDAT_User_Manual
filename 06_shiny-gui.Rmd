@@ -347,7 +347,7 @@ The assumptions are similar to those presented in the paper by Ricker (2008).
 include_graphics("figures/well_redundancy1.png")
 ```
 
-The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left of Figure \@ref(fig:GWSDATSpatialPlot)), is a feature  introduced in GWSDAT version 3.1. It allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the resultant impact. The primary intent of this tool is to understand which wells may have the most influence and also provide supporting evidence that the conclusions of the analysis would not be significantly different with the omission of some certain wells. Figure \@ref(fig:GWSDATWellRedundancyAnalysis) displays an example Well Redundancy Analysis for the Spatial plot.  The listbox *Select wells to be omitted from analysis* allows the user to select any combination of wells from the complete list of wells. 
+The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left of Figure \@ref(fig:GWSDATSpatialPlot)), is a feature first introduced in GWSDAT version 3.1. It allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the resultant impact. The primary intent of this tool is to understand which wells may have the most influence and also provide supporting evidence that the conclusions of the analysis would not be significantly different with the omission of some certain wells. Figure \@ref(fig:GWSDATWellRedundancyAnalysis) displays an example Well Redundancy Analysis for the Spatial plot.  The listbox *Select wells to be omitted from analysis* allows the user to select any combination of wells from the complete list of wells. 
 
 
 

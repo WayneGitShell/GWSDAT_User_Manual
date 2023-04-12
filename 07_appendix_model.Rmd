@@ -142,6 +142,17 @@ In the event that multiple plumes are detected then the above quantities are cal
 
 
 
+## Cook's Distance {#WellOrderDiagnostics}
+
+Cook's distance @cook, devised by Ralph Dennis Cook in 1977, is commonly used to estimate the influence of a data point in least-squares regression analysis. It is a measure of the change in regression estimates if an observation is deleted. In a P-splines model, it can be expressed using standardised residuals, the effective degrees of freedom and leverages:
+
+
+\begin{equation}
+    CD = \frac{1}{p} (r_i^s)^2 \frac{h_{ii}}{1-h_{ii}},
+\end{equation}
+
+where $p$ is the effective degrees of freedom which is given by the trace of the hat matrix, $r^s_i$ is the internally studentised (standardised) residual of the $i$-th observation and $h_{ii}$ is the leverage of the fitted value as given by the $i$-th row and $i$-th column of the hat matrix $H$.
+ 
 
 
 

@@ -142,8 +142,9 @@ In the event that multiple plumes are detected then the above quantities are cal
 
 
 
-## Cook's Distance {#WellOrderDiagnostics}
+## Well Influence Analysis {#WellOrderDiagnostics}
 
+This order is established via an approximation methodology documented [here](https://github.com/peterradv/Well-Influence-Analysis) 
 Cook's distance @cook, devised by Ralph Dennis Cook in 1977, is commonly used to estimate the influence of a data point in least-squares regression analysis. It is a measure of the change in regression estimates if an observation is deleted. In a P-splines model, it can be expressed using standardised residuals, the effective degrees of freedom and leverages:
 
 

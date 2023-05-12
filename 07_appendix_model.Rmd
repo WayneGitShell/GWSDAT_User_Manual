@@ -18,7 +18,7 @@ where the $b_j$, $j = 1, \ldots, m$ are $m$ functions (known as *basis functions
 %value  is known as
 the *variance* of the random component $\epsilon_i$.  By using the matrix notation
 
-\begin{equation*}
+\begin{equation}
 \boldsymbol B(\boldsymbol{x}) =
  \begin{pmatrix}
   b_1(x_1)   & \cdots &  b_j(x_1)  & \cdots &  b_m(x_1) \\
@@ -28,9 +28,9 @@ the *variance* of the random component $\epsilon_i$.  By using the matrix notati
   \vdots     & \cdots &  \vdots    & \cdots &  \vdots   \\
   b_1(x_n)   & \cdots &  b_j(x_n)  & \cdots &  b_m(x_n) \\
 \end{pmatrix}
-\end{equation*}
+\end{equation}
 
-equation (\ref{eq:int}) can be written in a more compact fashion as
+equation(\ref{eq:int}) can be written in a more compact fashion as
 $\boldsymbol y  = \boldsymbol B(\boldsymbol{x})\boldsymbol\alpha + \boldsymbol\epsilon$. Because, as mentioned earlier, we expect the $\epsilon_i$'s to oscillate around zero, a sensible choice for the regression parameters $\boldsymbol\alpha$ is the one that minimises the norm of the vector $\boldsymbol\epsilon$ defined as $\mathrm{S}\left(\boldsymbol\alpha\right) = \Vert
 \boldsymbol\epsilon \Vert^2 = \Vert \boldsymbol y - \boldsymbol B(\boldsymbol x) \boldsymbol\alpha\Vert^2$. A large value of basis functions is
 generally chosen to allow the model to capture most of the signal. The downside of this approach is that it tends also to overfit, that is to fit the noise in the observations, with the consequent loss of smoothness. To overcome this hurdle, the objective function
@@ -42,7 +42,7 @@ $\mathrm{S}\left(\boldsymbol\alpha\right)
   = \Vert \boldsymbol y - \boldsymbol B(\boldsymbol x) \boldsymbol\alpha\Vert^2 + \lambda \Vert D \alpha \Vert^2$
 where $\lambda$ is a non-negative smoothing parameter and $D$ is the $(m-2) \times m$ matrix
 
-\begin{equation*}
+\begin{equation}
 \boldsymbol D = \begin{pmatrix}
       1 & -2  &  1 &  0 & 0 & \cdots & 0 & 0 & 0 \\
       0 &  1  & -2 &  1 & 0 & \cdots & 0 & 0 & 0 \\
@@ -50,7 +50,7 @@ where $\lambda$ is a non-negative smoothing parameter and $D$ is the $(m-2) \tim
       \vdots &  \vdots  &  \vdots & \vdots & \vdots & \ddots  & \vdots \\
       0 &  0  &  0 & 0 & 0 & \cdots & 1  &-2 & 1
       \end{pmatrix}
-\end{equation*}
+\end{equation}
 
 The additional term in the objective function
 
@@ -62,14 +62,20 @@ $$
 controls the smoothness of the fit by applying penalties over adjacent coefficients.
 By minimising the new objective function for a given value of $\lambda$, we obtain
 the least squares estimator of the parameters
-$$
+<!-- $$ -->
+<!--       \boldsymbol{\hat{\alpha}} = \left(\boldsymbol B'\boldsymbol B + \lambda \boldsymbol D'\boldsymbol D\right)^{-1}\boldsymbol B'\boldsymbol y . -->
+<!-- $$ -->
+\begin{equation}
       \boldsymbol{\hat{\alpha}} = \left(\boldsymbol B'\boldsymbol B + \lambda \boldsymbol D'\boldsymbol D\right)^{-1}\boldsymbol B'\boldsymbol y .
-$$
+\end{equation}
+
+
 Consequently, the fitted values are given by:
-$$
+\begin{equation}
+\label{eq:Hat}
 \boldsymbol{\hat{y}} = \boldsymbol{B\hat{\alpha}} =
 \boldsymbol B\left(\boldsymbol B'\boldsymbol B + \lambda \boldsymbol D' \boldsymbol D\right)^{-1}\boldsymbol B'\boldsymbol y = \boldsymbol{Hy}
-$$
+\end{equation}
 
 When $\lambda = 0$, the expression for the estimator of the parameters {\mathversion{bold} $\hat{\alpha}$ } boils down to the classical solution in linear models theory. As $\lambda \rightarrow \infty$, the fitted function tends to a linear function. The Figure below shows the effect of penalisation: it forces the coefficients to yield a smooth pattern. The fitting process of a function using B-Splines is pictured with and without penalisation, together with the basis functions (the columns of the $\boldsymbol B$ matrix). The left plot
  results from not penalising ($\lambda=0$) the term in the objective function that accounts for the smoothness; it can be noticed that it yields a rather wiggly regression function. In the right plot, a suitable choice for $\lambda$ constrains the optimisation method to find values for the coefficients $\hat{\alpha}$ which
@@ -144,15 +150,58 @@ In the event that multiple plumes are detected then the above quantities are cal
 
 ## Well Influence Analysis {#WellOrderDiagnostics}
 
-The Well Redundancy Analysis feature described in Section \@ref(WellRedundancy) allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the resultant impact. The order of wells to potentially omit is presented to the user in such a way that the wells which have been estimated to have the least influence on the spatiotemporal solute concentration smoother are presented first. This order is established using the average Cook's distance from each data point for a particular well. The Cook's distance @cook, devised by Ralph Dennis Cook in 1977, is commonly used to estimate the influence of a data point in least-squares regression analysis. It is a measure of the change in regression estimates if an observation is deleted. In a P-splines model, it can be expressed using standardised residuals, the effective degrees of freedom and leverages:
+The *Well Redundancy Analysis* feature described in Section \@ref(WellRedundancy) allows the user to very conveniently drop a well or a combination of wells from the analysis and investigate the resultant impact. The order of monitoring wells to potentially omit is presented to the user in such a way that the monitoring wells which have been estimated to have the least influence on the spatiotemporal solute concentration smoother are presented first. The ordered list of monitoring wells is created by calculating the average Cook's distance value of the observations in each well. The Cook's distance @cook, devised by Ralph Dennis Cook in 1977, is commonly used to estimate the influence of a data point in least-squares regression analysis. It is a measure of the change in regression estimates if an observation is deleted. In a P-splines model, it can be expressed using standardised residuals, the effective degrees of freedom and leverages:
+
 
 \begin{equation}
-    CD = \frac{1}{p} (r_i^s)^2 \frac{h_{ii}}{1-h_{ii}},
+    C_i = \frac{1}{p} (r^s_i)^2 \frac{h_{ii}}{1-h_{ii}}.
 \end{equation}
 
-where $p$ is the effective degrees of freedom which is given by the trace of the hat matrix, $r^s_i$ is the internally studentised (standardised) residual of the $i$-th observation and $h_{ii}$ is the leverage of the fitted value as given by the $i$-th row and $i$-th column of the hat matrix $H$.
+The effective degrees of freedom $p$ is the trace of the hat matrix $H$, see Section \ref{SSCS}, equation (\ref{eq:Hat}). The leverage of the $i$-th observation $h_{ii}$ is the diagonal element of the hat matrix $H$ in row $i$ and column $i$. The standardised residual of the $i$-th observation is represented by $r^s_i$. Standardised residuals are the differences between an observation and its corresponding fitted value divided by an estimate of their standard deviation and defined as follows:
+
+\begin{equation}
+    r^s_i = \frac{(y_i-\hat{y}_i)}{\sqrt{\frac{\sum_{i=1}^{n}{(y_i-\hat{y}_i)^2}}{n-p}}\sqrt{1-h_{ii}}},
+\end{equation}
+
+where $y_i$ is the $i$-th observation and $\hat{y}_i$ is its corresponding fitted value and $n$ is the number of observations.
+
+<!-- where $p$ is the effective degrees of freedom which is given by the trace of the hat matrix, $r^s_i$ is the internally studentised (standardised) residual of the $i$-th observation and $h_{ii}$ is the leverage of the fitted value as given by the $i$-th row and $i$-th column of the hat matrix $H$. -->
  
 The underlying research and development justification for selecting the Cook's distance over a range of other measures is fully described and documented [here](https://github.com/peterradv/Well-Influence-Analysis).  
+
+
+<!-- Cook's distance (CD), devised by Ralph Dennis Cook (1977), is an influence statistic used in regression analysis that measures the change in estimates if an observation is deleted. It can be used to identify observations that need to be checked for validity due to their disproportionate influence, or to indicate regions of the design space where more data points would be beneficial. In the context of GWSDAT's Well Redundancy Analysis, CD is used to order monitoring wells by their influence on the solute concentration estimates. The CD value of an observation can be expressed using information from the spatiotemporal P-Splines model fitted by GWSDAT (section 7.1), namely the standardised residuals, the effective degrees of freedom of the model and the leverages, as shown in the following equation: -->
+
+<!-- \begin{equation} -->
+<!--     C_i = \frac{1}{p} (r^s_i)^2 \frac{h_{ii}}{1-h_{ii}}. -->
+<!-- \end{equation} -->
+
+<!-- The effective degrees of freedom $p$ is the trace of the hat matrix $H$ (see 7.1, equation x). The leverage of the $i$-th observation $h_{ii}$ is the diagonal element of the hat matrix $H$ in row $i$ and column $i$. The standardised residual of the $i$-th observation is represented by $r^s_i$. Standardised residuals are the differences between an observation and its corresponding fitted value divided by an estimate of their standard deviation. They can be expressed using the following equation: -->
+
+<!-- \begin{equation} -->
+<!--     r^s_i = \frac{(y_i-\hat{y}_i)}{\sqrt{\frac{\sum_{i=1}^{n}{(y_i-\hat{y}_i)^2}}{n-p}}\sqrt{1-h_{ii}}}, -->
+<!-- \end{equation} -->
+
+<!-- where $y_i$ is the $i$-th observation and $\hat{y}_i$ is its corresponding fitted value and $n$ is the number of observations. The ordered list of monitoring wells is created by calculating the median CD value of the observations in each well. The median is calculated using the following formulae: -->
+
+<!-- \begin{equation} -->
+<!--     Med(L_j) = \begin{cases} -->
+<!--     L_j\frac{n+1}{2}, & \text{if n is odd}.\\ -->
+<!--     \frac{L_j[\frac{n}{2}]+L_j[\frac{n}{2}+1]}{2}, & \text{if n is even}, -->
+<!--     \end{cases} -->
+<!-- \end{equation} -->
+
+<!-- where $L_j$ is the ordered list of CD values of observations from monitoring well $j$, where $j=1,2,...,m$ and $m$ is the number of monitoring wells. The influence of a monitoring well on regression estimates is then proportional to the median CD value of its observations: -->
+
+<!-- \begin{equation} -->
+<!--     I_j \propto Med(L_j). -->
+<!-- \end{equation} -->
+
+<!-- Thus, the monitoring wells are arranged in increasing numerical order based on their estimated influence, $I_j$. -->
+
+
+
+
 
 
 ## Groundwater Flow Calculation {#GWCalc}

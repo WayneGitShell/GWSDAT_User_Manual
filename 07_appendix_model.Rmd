@@ -260,16 +260,4 @@ The next section details how to edit layers in ArcMap after their conversion to 
  #.	'Editor' -$>$ 'Stop Editing'. Click 'Yes' to save edits.
  
  #.	Repeat data export as detailed in steps 6-9 above and re-save as new shapefile.
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

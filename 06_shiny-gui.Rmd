@@ -1,7 +1,7 @@
 
 # GWSDAT Graphical User Interface (GUI) {#GWSDATGUI}
 
-The GWSDAT user interface is a web-based graphical user interface (GUI) using the R Shiny framework (`https://shiny.rstudio.com/`) which the user can interact with in many ways. The following sections explain the interface in  detail.
+The GWSDAT user interface is a web-based graphical user interface (GUI) using the R Shiny framework (`https://shiny.posit.co/`) which the user can interact with in many ways. The following sections explain the interface in  detail.
 
 
 
@@ -354,7 +354,7 @@ The *Well Redundancy Analysis* tab, located next to the *Settings* tab (top left
 <!-- **Note**: Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired rather than automatically updating the model once any change has been detected in the listbox.  -->
 
 
-The listbox *Select wells to be omitted from analysis* allows the user to select any combination of wells from the complete list of wells. The order of wells in the list box are presented such that the wells which have been estimated to have the least influence on the spatiotemporal solute concentration smoother are presented first. This order is established via a procedure fully documented [here](https://github.com/peterradv/Well-Influence-Analysis). This approximation procedure has been adopted to greatly increase computational speed and efficiency. For this reason, the order of wells is to be interpreted as a guide only. Please note that this order is also dependent on the current selection of omitted wells and substance and will be updated once the model is updated or a different substance selected. For this reason, it is suggested to omit wells in an incremental one-by-one fashion.
+The listbox *Select wells to be omitted from analysis* allows the user to select any combination of wells from the complete list of wells. The order of wells in the list box are presented such that the wells which have been estimated to have the least influence on the spatiotemporal solute concentration smoother are presented first. This order is established via a procedure fully documented [here](https://github.com/peterradv/Well-Influence-Analysis) and [here](https://eprints.gla.ac.uk/303347/1/303347.pdf). This approximation procedure has been adopted to greatly increase computational speed and efficiency. For this reason, the order of wells is to be interpreted as a guide only. Please note that this order is also dependent on the current selection of omitted wells and substance and will be updated once the model is updated or a different substance selected. For this reason, it is suggested to omit wells in an incremental one-by-one fashion.
 
 Once the candidate set of wells have been selected the user must manually update the models by clicking the *Update Model* button. This step applies the same spatiotemporal model to each solute as described in Section \@ref(SSCS) but with a reduced input data set. The calculation of the underlying reduced well data set models can be computationally expensive. Hence the manual decision to update the model when desired, rather than automatically updating the model once any change has been detected in the listbox.
 

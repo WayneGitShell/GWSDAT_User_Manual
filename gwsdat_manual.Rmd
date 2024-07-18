@@ -14,7 +14,7 @@ number_sections: true
 link-citations: true   
 urlcolor: blue
 
-subtitle: Version 3.2 User Manual
+subtitle: Version 3.3 User Manual
 bibliography: gwsdat_manual.bib
 header-includes: 
   - \usepackage[bookmarksnumbered]{hyperref}

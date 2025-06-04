@@ -120,7 +120,7 @@ Please note that data sets can also be specified when launching GWSDAT from the 
 
 The GWSDAT spatial plot (see Figure \@ref(fig:GWSDATSpatialPlot)) is for the analysis of spatial trends in solute concentrations, groundwater flow and, if present, NAPL thickness. It displays the locations of the monitoring wells (black solid dots) together with the well names and actual measured solute concentration values (detect data is displayed in a red font; non-detect in a black font). The date interval for the displayed data is indicated above the spatial plot. If a GIS shapefile has been supplied then the major site features (roads, tanks, etc) are overlaid on the spatial plot as light blue lines. 
 
-A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective and efficient method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data, see @Mclean2019.  Use the slider at the foot of the page to explore how the estimates of concentration changes through time.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again. Select a file format (one of `png`, `jpg`, `pdf`, `ps`, `pptx` ,`tif`) from *Image format* and click the *Save plot* button to export individual spatial image plots. The *Generate PPT Animation* function exports the full series of spatial plots directly to Microsoft PowerPoint.
+A key feature of GWSDAT is the ability to produce estimates of contaminant concentrations over space and time simultaneously.  This gives a more effective and efficient method of analysis than the examination of concentration maps at isolated time points, or of time trends at isolated locations.  The simultaneous use of information over space and time allows estimates at particular locations and times to 'borrow strength' from neighbouring data, see @Mclean2019.  Use the slider at the foot of the page to explore how the estimates of concentration changes through time.  Note that the slider box at the foot of the page can be moved to any convenient position by clicking and dragging with the mouse.  The 'Play' symbol (forward-arrow) in the bottom right hand corner of the slider activates a 'movie', which can be paused by pressing the button again. Select a file format (one of `png`, `jpg`, `pdf`, `ps`, `pptx` ,`tif`, `asc`,`wmf`) from *Image format* and click the *Save plot* button to export individual spatial image plots. The `tif`, and `asc` options export the spatial GWSDAT concentration  predictions into a file format which can be imported into GIS software applications such as ArcGIS or QGIS. The [windows metafile format](http://en.wikipedia.org/wiki/Windows_Metafile) (`wmf`) is only available when GWSDAT is running on Windows. The *Generate PPT Animation* function exports the full series of spatial plots directly to Microsoft PowerPoint.
 
 
 ```{r, fig.cap = "GWSDAT Spatial Plot", label="GWSDATSpatialPlot",out.width = '100%', echo = FALSE}
@@ -394,11 +394,33 @@ The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlume
 
 The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example data set. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section  \@ref(ExcelAddinMenuDataProcessingOptions). Red points represent the NAPL substituted solute concentration values.
 
-To switch between different solutes and monitoring wells, simply select from the *Substance* and *Select Monitoring Well* listboxes. The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Indicator plot - see Section \@ref(TRendTHreshMat). 
+Since GWSDAT version 3.3, users can modify the plotting date range and select multiple monitoring wells and multiple substances. Simply add and remove selections from the *Substance* and *Select Monitoring Well* listboxes. This produces a matrix of individual time series plots where the monitoring wells are arranged in rows and the substances are arranged in columns. The slider at the right hand foot of the page controls the date range.  Note that the slider box at the foot of the page can be
+moved to any convenient position by clicking and dragging with the mouse. Figure \@ref(fig:MultivarGWSDATTimeSeriesPlot) displays an exampleGWSDAT Matrix Time Series plot with a subset of the original date range. 
+
+\definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
+\begin{center}
+\setlength{\fboxrule}{1.5pt}
+\fcolorbox{blue}{MyGray}{
+\parbox{440pt}{{%\fontfamily{phv}\selectfont 
+
+Please note that the date range selection only applies to the Time Series plot and does not influence the Trend and Threshold Indicator plot which is always calculated from the full data set - see Section @ref(TRendTHreshMat)
+}
+}
+}
+\end{center}
+
+The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Indicator plot - see Section \@ref(TRendTHreshMat). 
 
 ```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '80%', echo = FALSE,fig.pos="!h"}
 include_graphics("figures/time-series-plot.png")
 ```
+
+
+```{r, fig.cap = "GWSDAT Matrix Time Series Plot with date range selection.", label="MultivarGWSDATTimeSeriesPlot",out.width = '80%', echo = FALSE,fig.pos="!h"}
+include_graphics("figures/time-series-plot_V3.3.png")
+```
+
+
 
 The *Generate Well Report* button produces a plot similar to the *Well Report* (Section \@ref(WellReportPlot)) plot but additionally allows the overlay of groundwater level and/or NAPL thickness on each plot with the axis being placed on the right hand side. The time series of observed groundwater level is represented by
 open circles joined by a black solid line. The functionality works by iterating through the selected wells and pasting the Well Time Series
@@ -413,13 +435,13 @@ The *Time Series Plot Options* checkbox control includes:
 
 * **Conc. Trend Smoother**:
 This displays the estimated time series trend in solute concentration using a nonparametric smoother (see Figure \@ref(fig:GWSDATTimeSeriesPlot). The solid blue line displays the estimate of the mean trend level at a particular point in time. The upper and lower dashed blue lines depict a 95\% confidence interval around this estimate. This is interpreted as *'one is 95\% confident that the actual mean trend level lies within this region'*. The smaller the 95\% confidence interval, the more confidence one has in the estimated time series trend. Areas of the trend smoother fit in which the 95\% confidence intervals are very large (i.e. very low confidence in the trend smoother fit) are coloured grey instead of blue and are disregarded from the 'Trend' and 'Threshold - Statistical' matrix plot calculations, see Section \@ref(TRendTHreshMat).
-The advantage of this nonparametric method is that the trend estimate is not constrained to be monotonic, i.e. the trend can change direction. More details of this nonparametric smoothing algorithm are given in Appendix \@ref(smregressCalc)
+The advantage of this nonparametric method is that the trend estimate is not constrained to be monotonic, i.e. the trend can change direction. More details of this nonparametric smoothing algorithm are given in Appendix \@ref(smregressCalc).
 
 
 * **Conc. Linear Trend**:
 This displays a traditional linear time series trend estimate (green solid line) together with 95\% confidence intervals (green dashed lines) to the log of historical solute  concentrations values. This is equivalent to fitting an exponential decay/growth model on a linear scale. The statistical significance of this trend is assessed by means of the well established Mann-Kendall trend test @MannKendall. The Mann-Kendall p-value and the estimated solute concentration half-life is displayed immediately below the main title of the *Time Series* plot. Users should be aware that individual well half-life values should not be used to estimate the plume half-life.
 
-\definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
+
 
 \begin{center}
 \setlength{\fboxrule}{1.5pt}

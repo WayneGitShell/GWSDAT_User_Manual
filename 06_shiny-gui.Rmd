@@ -389,13 +389,16 @@ The plume diagnostic metric quantities as described in Section \@ref(GWSDATPlume
 
 
 
-## Time Series {#SectionWellTrendPlot}
+## Well Time Series Plot {#SectionWellTrendPlot}
 
+```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '80%', echo = FALSE,fig.pos="!h"}
+include_graphics("figures/time-series-plot.png")
+```
 
 The Time Series plot enables the user to investigate time series historical trends of solute  concentrations in individual wells. Figure \@ref(fig:GWSDATTimeSeriesPlot) displays an example GWSDAT Time Series plot of' 'Benzene' in well 'MW-01' using an illustrative example data set. The actual sampled concentration values are plotted against sampling date and are represented as black solid points. Orange points represent the substituted non-detect values according to the selection chosen in Section  \@ref(ExcelAddinMenuDataProcessingOptions). Red points represent the NAPL substituted solute concentration values.
 
 Since GWSDAT version 3.3, users can modify the plotting date range and select multiple monitoring wells and multiple substances. Simply add and remove selections from the *Substance* and *Select Monitoring Well* listboxes. This produces a matrix of individual time series plots where the monitoring wells are arranged in rows and the substances are arranged in columns. The slider at the right hand foot of the page controls the date range.  Note that the slider box at the foot of the page can be
-moved to any convenient position by clicking and dragging with the mouse. Figure \@ref(fig:MultivarGWSDATTimeSeriesPlot) displays an exampleGWSDAT Matrix Time Series plot with a subset of the original date range. 
+moved to any convenient position by clicking and dragging with the mouse. Figure \@ref(fig:MultivarGWSDATTimeSeriesPlot) displays an example GWSDAT Matrix Time Series plot with a subset of the original date range. 
 
 \definecolor{MyGray}{rgb}{0.96,0.97,0.98} 
 \begin{center}
@@ -409,28 +412,27 @@ Please note that the date range selection only applies to the Time Series plot a
 }
 \end{center}
 
-The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Indicator plot - see Section \@ref(TRendTHreshMat). 
-
-```{r, fig.cap = "GWSDAT Time Series Plot", label="GWSDATTimeSeriesPlot",out.width = '80%', echo = FALSE,fig.pos="!h"}
-include_graphics("figures/time-series-plot.png")
-```
-
 
 ```{r, fig.cap = "GWSDAT Matrix Time Series Plot with date range selection.", label="MultivarGWSDATTimeSeriesPlot",out.width = '80%', echo = FALSE,fig.pos="!h"}
 include_graphics("figures/time-series-plot_V3.3.png")
 ```
 
+The *Solute Conc. Unit* radiogroup allows the units to be changed between one of 'ng/l', 'ug/l' or 'mg/l'. The *Display Threshold* checkbox allows the user to overlay threshold value used to colour code the Trend and Threshold Indicator plot - see Section \@ref(TRendTHreshMat). 
+
+
+
+
 
 
 The *Generate Well Report* button produces a plot similar to the *Well Report* (Section \@ref(WellReportPlot)) plot but additionally allows the overlay of groundwater level and/or NAPL thickness on each plot with the axis being placed on the right hand side. The time series of observed groundwater level is represented by
 open circles joined by a black solid line. The functionality works by iterating through the selected wells and pasting the Well Time Series
-plots into a 2X2 matrix. The current  options selected in the *Time Series Plot Options* checkbox are respected. Figure \@ref(fig:GWWellReport) is an example `GW Well Reporting' output.
+plots into a 2x2 matrix. The current  options selected in the *Time Series Plot Options* checkbox are respected. Figure \@ref(fig:GWWellReport) is an example `GW Well Reporting' output.
 
 ```{r, fig.cap = "Generate Well Report", label="GWWellReport",out.width = '75%', echo = FALSE}
 include_graphics("figures/Gw Well Report.png")
 ```
 
-
+\newpage
 The *Time Series Plot Options* checkbox control includes: 
 
 * **Conc. Trend Smoother**:

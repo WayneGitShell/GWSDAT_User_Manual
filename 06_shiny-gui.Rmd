@@ -175,7 +175,7 @@ either the `Terrain-Circles' or `Topo-Circles' plot type.
 
 
 
-\newpage
+<!-- \newpage -->
 * **Plot Options**:
 
 
@@ -496,6 +496,9 @@ include_graphics("figures/trends_thresholds.png")
 * **Show colour**: this drop-down listbox allows the user to filter the *Trends and Thresholds* plot according to the different colours. For example, if the user selects red then the plot will only display the corresponding rows and columns which contain a red entry. This function is particularly useful when there exists a large number of wells and/or solutes. 
 
 * **Aggregate by**: provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Year).  This functionality is identical to the 'Aggregate by' option detailed in Section \@ref(SectionSpatialPlot).
+
+* **Substance**: listbox to add and remove different substances from the plot. 
+
 
 * **Colour Key**: A graphic displaying the colour key explained above for the *Trends and Thresholds* plot. Note that this graphic can be moved to any convenient position by clicking and dragging with the mouse.
 

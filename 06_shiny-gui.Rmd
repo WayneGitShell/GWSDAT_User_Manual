@@ -129,7 +129,7 @@ include_graphics("figures/analysis-1.png")
 
 The *Settings* tab located to the left hand side of the spatial plot gives control over many aspects of the display:
 
-* **Aggregate by**: provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Year).  In the example in Figure \@ref(fig:GWSDATSpatialPlot), a monthly model output interval has been selected and the displayed actual solute concentration values were sampled between the 2nd Oct 2009 and the 1st Nov 2009. This functionality is identical to the 'Model Output Interval' detailed in Section \@ref(ExcelAddinMenuDataProcessingOptions). 
+* **Aggregate by**: provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Semi-Annual, Year).  In the example in Figure \@ref(fig:GWSDATSpatialPlot), a monthly model output interval has been selected and the displayed actual solute concentration values were sampled between the 2nd Oct 2009 and the 1st Nov 2009. This functionality is identical to the 'Model Output Interval' detailed in Section \@ref(ExcelAddinMenuDataProcessingOptions). 
 
 * **Substance**: Drop-down listbox to select the different solutes to be inspected.
 
@@ -495,7 +495,7 @@ include_graphics("figures/trends_thresholds.png")
 
 * **Show colour**: this drop-down listbox allows the user to filter the *Trends and Thresholds* plot according to the different colours. For example, if the user selects red then the plot will only display the corresponding rows and columns which contain a red entry. This function is particularly useful when there exists a large number of wells and/or solutes. 
 
-* **Aggregate by**: provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Year).  This functionality is identical to the 'Aggregate by' option detailed in Section \@ref(SectionSpatialPlot).
+* **Aggregate by**: provides a drop-down menu which allows the temporal plotting resolution to be altered (Day, Month, Quarter, Semi-Annual, Year).  This functionality is identical to the 'Aggregate by' option detailed in Section \@ref(SectionSpatialPlot).
 
 * **Substance**: listbox to add and remove different substances from the plot. 
 
@@ -518,7 +518,7 @@ include_graphics("figures/well_report.png")
 
 This selection, which can be found under the tab named 'More', generates a matrix of graphs displaying time series solute concentration values on a well by well basis. In contrast to the *Time Series* plot (Section \@ref(SectionWellTrendPlot)), it is possible to overlay different solute concentration values within the same graph. Figure \@ref(fig:GWSDATWellReportPlot) is an example 'Well Reporting' output. The colour key at the top identifies each solute and the name of each well is displayed in a banner at the top of each of the individual time series graphs. The 'Well Reporting' output provides a very concise method of visualising a lot of data.
 
-The choice of which solutes and wells to include, together with the choice of whether to use a log-scale for the solute concentration values, is selected by the user from the controls on the left hand side of the plot.
+The choice of which solutes and wells to include, together with the choice of whether to use a log-scale for the solute concentration values, is selected by the user from the controls on the left hand side of the plot. In addition, it is possible to select/deselect all wells. After edits are made to display, please click on 'Update Plot'.
 
 If only one solute is selected, then the plotting behaviour is modified such that the detect and non-detect data points are coloured black and orange, respectively. Furthermore, if the 'Conc. Trend Smoother' is checked in Figure \@ref(fig:GWSDATTimeSeriesPlot) then the corresponding
 trend smoother with 95\% confidence intervals are overlaid as thin black lines onto each graph.
@@ -530,7 +530,7 @@ trend smoother with 95\% confidence intervals are overlaid as thin black lines o
 ```{r, fig.cap = "GWSDAT Spatiotemporal Predictions plot.", label="GWSDATSpatiotemporalPredictionsPlot",out.width = '75%', echo = FALSE}
 include_graphics("figures/spatiotemporal_predictions.png")
 ```
-This selection, located under the 'More' tab, is a visualisation to help assess the goodness of fit of spatiotemporal solute concentration smoother (see Section \@ref(SectionSpatialPlot) and \@ref(SSCS)) to the observed concentration data. A matrix of graphs displaying time series solute concentration values are generated on a well by well basis and the predictions of spatiotemporal solute concentration smoother are overlaid as solid grey lines, see example in Figure \@ref(fig:GWSDATSpatiotemporalPredictionsPlot). The choice of which solute and wells to include, together with the choice of units and whether to use a log-scale for the solute concentration values, is selected by the user from the controls on the left hand side of the plot.
+This selection, located under the 'More' tab, is a visualisation to help assess the goodness of fit of spatiotemporal solute concentration smoother (see Section \@ref(SectionSpatialPlot) and \@ref(SSCS)) to the observed concentration data. A matrix of graphs displaying time series solute concentration values are generated on a well by well basis and the predictions of spatiotemporal solute concentration smoother are overlaid as solid grey lines, see example in Figure \@ref(fig:GWSDATSpatiotemporalPredictionsPlot). The choice of which solute and wells to include, together with the choice of units and whether to use a log-scale for the solute concentration values, is selected by the user from the controls on the left hand side of the plot. In addition, it is possible to select/deselect all wells. After edits are made to display, please click on 'Update Plot'.
 
 
 ## Customise Colour Key {#customisecolourkey}

@@ -12,7 +12,7 @@ The most traditional and  widely used method to access GWSDAT is via the Excel A
 * American Petroleum Institute (API): `www.api.org/GWSDAT`
 * Contaminated Land: Applications in Real Environments (CL:AIRE): `www.claire.co.uk/GWSDAT`
 
-This method of deployment involves installing the open source statistical program R (@R) and Excel Add-in locally on a user's computer. All data sets are retained and analysed locally with no information being sent over the internet. Please note that administrator rights may be required for successful installation. Please refer to Section\@ref(DataInputExcelAddin): GWSDAT Excel Add-in more details.
+This method of deployment involves installing the open source statistical program R (@R) and Excel Add-in locally on a user's computer. All data sets are retained and analysed locally with no information being sent over the internet. Please note that administrator rights may be required for successful installation. Please refer to Section \@ref(DataInputExcelAddin): GWSDAT Excel Add-in more details.
 
 ## GWSDAT R Package {#GWSDATRPackage}
 GWSDAT uses the widely available, open source, statistical program `R` [@R].  This should be downloaded from `www.r-project.org` where versions for all major computing platforms are available.  The user may also find it convenient to install the *RStudio* 'Integrated Development Environment' for `R`, freely available from `www.rstudio.com`.  This manages some aspects of the `R` environment in a helpful way.

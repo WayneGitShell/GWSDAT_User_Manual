@@ -543,10 +543,9 @@ include_graphics("figures/customise_colour_key.png")
 
 ## Save Session {#GWSDATSaveSession}
 
-This selection, located under the 'More' tab, allows the user to save and download the current analysis session to a '.rds' file format. This is particularly useful for large data sets which may take a long time to fit the underlying models. The current display settings, e.g. Colour Scheme, Plot Options, Current Solute, are saved. This '.rds' file can be forwarded to another user and viewed once again exactly as it was saved. 
+This selection, located under the 'More' tab, allows the user to save and download the current analysis session to a '.rds' file format. This is particularly useful for large data sets which may take a long time to fit the underlying models. The current display settings, e.g. Colour Scheme, Plot Options, Current Solute, are saved. This '.rds' file can be forwarded to another user and viewed once again exactly as it was saved. In version 3.3 there is an option to save a session file in a backwards compatible format. This is to avoid issues related to version 3.3 multiple well/solute selection in the Well Time-Series plot not being support in older versions. 
 
-If using the Excel Add-in data input interface then the *Restore Session* option (see Section \@ref(DataInputExcelAddinMenu)) can be used to open a previously saved '.rds' session. Alternatively, use the *Load Data* function, see Section \@ref(DataInputviaGUI).
-
+If using the Excel Add-in data input interface then the *Restore Session* option (see Section \@ref(DataInputExcelAddinMenu)) can be used to open a previously saved '.rds' session. Alternatively, use the *Load Data* function, see Section \@ref(DataInputviaGUI). 
 
 
 ## Options {#GWSDATEditOptions}
